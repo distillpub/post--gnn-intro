@@ -1,0 +1,26 @@
+#graph-description {
+  display: flex;
+}
+
+.line-holder {
+  position: relative;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.letter {
+  position: absolute;
+  font-size: larger;
+  font-weight: bold;
+}
+.eg {
+  color: #aaa;
+  margin-left: 25px;
+}
+.desc {
+  margin-left: 25px;
+}
+.line-holder.selected{
+  background: #efefef;
+  border-radius: 10px;
+}

@@ -1,0 +1,49 @@
+
+#shuffle-sm{
+  padding: 10px;
+  max-width: 800px;
+  margin: 0px auto;
+}
+
+.chart-yellow-bg {
+  background: rgb(255, 254, 247);
+  outline: 1px solid #ccc;
+  margin: 1px;
+}
+
+#shuffle-sm > div{
+  display: inline-block;
+
+  background: rgb(255, 254, 247);
+  outline: 1px solid #ccc;
+  margin: 1px;
+}
+
+#shuffle-sm > div:first-child{
+  display: block;
+}
+
+#shuffle-sm .link, .num{
+  cursor: pointer;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#shuffle-sm .permute-sm{
+  margin-top: 0px;
+  margin-right: 10px;
+  margin-left: 0px;
+}
+#shuffle-sm .permute-sm.active{
+  outline: 1px solid #000;
+}
+
+
+#shuffle-sm text{
+  pointer-events: none;
+}

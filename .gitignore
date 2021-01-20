@@ -1,0 +1,14 @@
+# Python stuff
+__pycache__/
+*.py[cod]
+*$py.class
+# Mac stuff
+.DS_Store
+# yarn/node
+node_modules
+static
+.cache
+yarn-error.log
+# gdrive related stuff
+gdrive_token.pickle
+downloaded_gdoc.html

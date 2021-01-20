@@ -1,0 +1,45 @@
+#layerwise-trace {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  position: relative;
+  height: 380px;
+}
+
+.graph-div {
+  height: 300px;
+  width: 300px;
+  background: rgba(250, 250, 250, .9);
+  border: 1px solid #ccc;
+  transform: scale(0.7) perspective(1000px) rotateY(-45deg) rotateZ(24deg) translateZ(180px);
+  position: absolute;
+  top: 50px;
+}
+
+#layerwise-trace circle{
+  stroke-width:1;
+}
+
+#layerwise-trace line, #layerwise-trace circle {
+  transition: all 200ms linear;
+}
+
+#layerwise-trace line.selected {
+  stroke-opacity: 1 !important;
+}
+
+#layerwise-trace circle.selected {
+  stroke-width: 6;
+}
+
+#layerwise-trace .holder {
+  transition: transform 1s ease-in;
+}
+
+.lines-holder-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100vw;
+}

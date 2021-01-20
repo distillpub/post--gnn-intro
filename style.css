@@ -1,0 +1,184 @@
+.teaser {
+  grid-column: text;
+  width: 100%;
+}
+
+.two-imgs{
+  display: flex;
+  width: 350px;
+}
+
+#image-as-graph{
+  justify-content: space-between;
+  display: flex;
+}
+
+#image-as-graph > div {
+  /*display: inline-block;*/
+  /*margin-left: 40px;*/
+  /*margin-right: 40px;*/
+  flex: 1;
+}
+
+#image-as-graph svg{
+  background: #aaa;
+}
+
+#image-as-graph svg{
+  overflow: visible;
+}
+
+#image-as-graph text{
+  /*pointer-events: none;*/
+}
+
+#image-as-graph .graph text.active{
+  font-size: 12px;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+  font-weight: 600;
+
+}
+
+#image-as-graph .image text.active{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#image-as-graph .force text.active{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#image-as-graph .force .link.active{
+  stroke: #315b7e; /*d3.color(steelblue).darker(1)*/
+  stroke-width: 3px;
+}
+
+
+.fullscreen{
+  margin-left: auto;
+  margin-right: auto;
+  grid-column: page;
+  width: 100%;
+  max-width: 2000px;
+}
+
+svg .link {
+  cursor: auto;
+}
+
+
+
+.monospace{
+  font-family: monospace;
+}
+
+
+#graph-to-tensor{
+  justify-content: center;
+  display: flex;
+  line-height: 18px;
+  width: 100%;
+  user-select: none;
+}
+
+#graph-to-tensor .monospace{
+  margin-top: -10px;
+}
+
+#graph-to-tensor > div {
+  display: inline-block;
+  /*margin-left: 40px;*/
+  /*margin-right: 40px;*/
+}
+
+
+#graph-to-tensor{
+  padding: 10px;
+}
+
+#pooling-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.chart-yellow-bg {
+  background: rgb(255, 254, 247);
+  outline: 1px solid #ccc;
+  margin: 1px;
+}
+
+#graph-to-tensor > div{
+  display: inline-block;
+
+  background: rgb(255, 254, 247);
+  outline: 1px solid #ccc;
+  margin: 1px;
+}
+
+#graph-to-tensor > div:first-child{
+  margin-right: 10px;
+}
+
+#graph-to-tensor .node, #graph-to-tensor .link, #graph-to-tensor .num{
+  cursor: pointer;
+}
+
+#graph-to-tensor .comma-after{
+  width: 11px;
+  display: inline-block;
+  margin-right: 20px;
+  padding: 2px;
+}
+#graph-to-tensor .comma-after:after{
+  content: ",";
+  color: #000;
+  margin-left: 6px;
+}
+
+#graph-to-tensor .comma-after:last-of-type:after, #graph-to-tensor .bracket-after:after{
+  content: "]";
+}
+
+#graph-to-tensor .comma-after.adj{
+  width: 55px;
+  margin-right: 20px;
+  white-space: nowrap;
+
+}
+
+#graph-to-tensor .hidden{
+  display: none;
+}
+
+
+.annotations path{
+  fill: none;
+  stroke: #000;
+  stroke-width: .8px;
+  stroke-dasharray: 2 2;
+}
+
+.annotations text{
+  font-size: 14px;
+  font-weight: 300;
+}
+
+
+
+.chart-label{
+  font-size: 12px;
+}
+
+
+p{
+  background: rgba(255,255,255,.3);
+}
+
+h1{
+  line-height: 1.33em;
+}
+
+
+

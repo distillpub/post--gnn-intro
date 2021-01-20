@@ -1,0 +1,18 @@
+.mol-holder {
+  display: flex;
+  margin: 20px;
+  align-items: center;
+  justify-content: space-around;
+}
+.mol-holder svg{
+  width: 300px;
+  height: 300px;
+}
+.img-holder {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.img-holder img{
+  width: 200px;
+}

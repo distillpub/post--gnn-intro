@@ -1,0 +1,40 @@
+.table-holder {
+  border-right: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.degree {
+  flex: 3 !important;
+  padding: 6px !important;
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+}
+.spacer {
+  flex: 5 !important;
+  border: none !important;
+}
+
+.row.header {
+  border-bottom: 2px solid steelblue;
+  background: none;
+  font-weight: bold;
+}
+
+.row>* {
+  flex: 1;
+  border-left: 1px solid #ddd;
+  padding: 2px 5px;
+}
+
+.row>*:first-child {
+  flex: 2;
+}
+
+.row:nth-child(2n+3){
+  background: aliceblue;
+}

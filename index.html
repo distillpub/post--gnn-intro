@@ -1,0 +1,492 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://distill.pub/template.v2.js"></script>
+
+<!-- Mathjax -->
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+
+<!-- End Mathjax -->
+</head>
+<body>
+<title>A gentle introduction to Graph Neural Networks</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="visualizations/layerwise_trace.css">
+<link rel="stylesheet" href="visualizations/shuffle.css">
+<link rel="stylesheet" href="visualizations/text-as-graph.css">
+<link rel="stylesheet" href="visualizations/pca-layers.css">
+<link rel="stylesheet" href="visualizations/playground/gnn-playground.css">
+<link rel="stylesheet" href="visualizations/mols-as-graph.css">
+<link rel="stylesheet" href="visualizations/shuffle-sm.css">
+<link rel="stylesheet" href="visualizations/table.css">
+<link rel="stylesheet" href="visualizations/graph-description.css">
+<link rel="stylesheet" href="visualizations/graph-description-embeddings.css">
+
+<script id="distill-front-matter" type="text/json">
+{
+  "title": "A gentle introduction to Graph Neural Networks",
+  "description": "Neural networks have been adapted to leverage the structure and properties of graphs. We explore the components needed for building a graph neural network - and motivate the design choices behind them.",
+  "authors": [
+    {
+      "author": "Emily Reif",
+      "affiliations": [{
+        "name": "Google Research",
+        "affiliationURL": "https://research.google/teams/brain/"
+      }]
+    },
+    {
+      "author": "Benjamin Sanchez-Lengeling",
+      "affiliations": [{
+        "name": "Google Research",
+        "affiliationURL": "https://research.google/teams/brain/"
+      }]
+    },
+    {
+      "author": "Adam Pearce",
+      "authorURL": "https://roadtolarissa.com",
+      "affiliations": [{
+        "name": "Google Research",
+        "affiliationURL": "https://research.google/teams/brain/"
+      }]
+     },
+    {
+      "author": "Alex Wiltschko",
+      "affiliations": [{
+        "name": "Google Research",
+        "affiliationURL": "https://research.google/teams/brain/"
+      }]
+    }
+  ],
+}
+</script></d-front-matter>
+
+
+
+<d-title>
+  <h1>A gentle introduction to Graph Neural Networks</h1>
+  <p>Neural networks have been adapted to leverage the structure and properties of graphs. We explore the components needed for building a graph neural network - and motivate the design choices behind them.</p>
+
+  <figure class=teaser>
+    <div id=layerwise-trace> </div>
+    <figcaption>
+Hover over a node in the diagram below to see how it accumulates information from nodes around it through the layers of the network.
+    </figcaption>
+</figure>
+</d-title>
+<d-byline>
+<div class="byline grid">
+<div class="authors-affiliations grid">
+<h3>Authors</h3>
+<h3>Affiliations</h3>
+<p class="author"><a class="name" href="">Benjamin Sanchez-Lengeling</a></p>
+<p class="affiliation"><span class="affiliation">Google Research</span></p>
+
+<p class="author"><a class="name" href="">Emily Reif</a></p>
+<p class="affiliation"><span class="affiliation">Google Research</span></p>
+
+<p class="author"><a class="name" href="https://roadtolarissa.com/">Adam Pearce</a></p>
+<p class="affiliation"><span class="affiliation">Google Research</span></p>
+
+<p class="author"><a class="name" href="">Alex Wiltschko</a></p>
+<p class="affiliation"><span class="affiliation">Google Research</span></p>
+
+</div>
+<div><h3>Published</h3><p>January 5, 2021</p></div>
+<div>
+  <h3>DOI</h3>
+  <p><a href="https://doi.org/10.23915/distill.00026">10.55555/distill.00026</a></p>
+</div>
+</div>
+</d-byline>
+
+<d-article>
+
+<p>Graphs are all around us; real world objects are often defined in terms of their connections to other things. A set of objects, and the connections between them are naturally expressed as a <em>graph</em>. Researchers have developed neural networks that operate on graph data (called graph neural networks, or GNNs) for over a decade <a href="https://paperpile.com/c/eglPYY/hKwb">(Scarselli et al. 2009)</a>, and many recent developments have increased their capabilities, and have now been used in many practical applications.</p>
+<p>This article explores and explains modern graph neural networks. We divide this work into four parts. First, we look at what kind of data is most naturally phrased as a graph, and some common examples. Second, we explore what makes graphs different from other types of data, and some of the specialized choices we have to make when using graphs. Third, we build a modern GNN, walking through each of the parts of the model, starting with historic modeling innovations in the field. We move gradually from a bare-bones implementation to a state-of-the-art GNN model. Fourth and finally, we provide a GNN playground where you can play around with a synthetic task and dataset to build a stronger intuition of how each component of a GNN model contributes to the predictions it makes.</p>
+<p>To start, let’s establish what a graph is. A graph represents the relations (<em>edges</em>) between a collection of entities (<em>nodes</em>). </p>
+<figure><div id='graph-description' style="margin-bottom:0.25cm;"></div>
+<figcaption>
+Three types of attributes we might find in a graph, hover over to highlight each attribute. Other types of graphs and attributes are explored in the <a href="#other-types-of-graphs-multigraphs-hypergraphs-hypernodes">Other types of graphs<a> section.
+</figcaption></figure>
+
+
+<p>To further describe each node, edge or the entire graph, we can store information in each of these pieces of the graph to further describe them. </p>
+<figure><div id='graph-description-embeddings'></div>
+<figcaption>
+Information in the form of scalars or embeddings can be stored at each graph node (left) or edge (right).
+</figcaption></figure>
+
+<p>We can further specialize graphs by associating directionality to edges (<em>directed, undirected</em>). </p>
+<figure><img src='images/directed_undirected.png''></img>
+<figcaption>
+The edges can be directed, where an edge $e$ has a source node, $v_{src}$, and a destination node $v_{dst}$. In this case, information flows from $v_{src}$ to $v_{dst}$. They can also be undirected, where there is no notion of source or destination nodes, and information flows both directions. Note that having a single undirected edge is equivalent to having one directed edge from $v_{src}$ to $v_{dst}$, and another directed edge from $v_{dst}$ to $v_{src}$.
+</figcaption></figure>
+
+<p>Graphs are very flexible data structures, and if this seems abstract now, we will make this all concrete with examples in the next section. </p>
+<h2 id="graphs-and-where-to-find-them">Graphs and where to find them</h2>
+<p>You’re probably already familiar with some types of graph data, such as social networks. However, graphs are an extremely powerful and general representation of data, and you can even think of images and text as a graph.</p>
+<h3 id="images-as-graphs">Images as graphs</h3>
+<p>We typically think of images as rectangular grids with image channels, representing them as matrices (e.g., 244x244x3 floats). Another way to think of images is as graphs with regular structure, where each pixel represents a node and is connected via an edge to adjacent pixels. Each non-border pixel has exactly 8 neighbors, and the information stored at each node is a 3-dimensional vector representing the rgb value of the pixel.</p>
+<p>A way of visualizing the connectivity of a graph is with its associated <em>adjacency matrix</em>. We order the nodes, in this case each of 25 pixels in a simple 5x5 image of a smiley face, and fill a matrix of $n_{nodes} \times n_{nodes}$ with an entry if such a node shares an edge. Note that each of these three representations below are different views of the same piece of data. </p>
+<figure class='fullscreen'>
+<div id='image-as-graph' style="padding-bottom: 10px;"></div>
+<figcaption>
+Click on an image pixel to toggle its value, and see how the graph representation changes.
+</figcaption>
+</figure>
+
+<h3 id="text-as-graphs">Text as graphs</h3>
+<p>We can digitize text by associating indices to each character, word, or token, and representing text as a sequence of these indices. This creates a simple directed graph, where each character or index is a node and is connected via an edge to the node that follows it.</p>
+<figure>
+<div id='text-as-graph'></div>
+<figcaption>
+Edit the text above to see how the graph representation changes.
+</figcaption>
+</figure>
+
+<p>Of course, in practice, this is not usually how text and images are encoded: these graph representations are redundant since all images and all text will have very regular structures. For instance, images have a banded structure in their adjacency matrix because all nodes (pixels) are connected in a grid. The adjacency matrix for text is just a diagonal line, because each word only connects to the prior word, and to the next one. </p>
+<aside markdown=1>
+This refers to the way text is represented in RNNs; other models, such as Transformers, where text can be viewed as a fully connected graph. See more in <a href="#graph-attention-networks">Graph Attention Networks</a>.
+</aside>
+
+<h3 id="graph-valued-data-in-the-wild">Graph-valued data in the wild</h3>
+<p>These are simple motivating examples that graphs can be adapted to describe data you’re already familiar with. Let’s move on to data that is best thought of as a graph which is more heterogeneously structured, and where the number of neighbors to each node is variable (as opposed to the fixed neighborhood size of images and text). This data is hard to phrase in any other way besides a graph.</p>
+<p><strong>Molecules as graphs.</strong> Molecules are the building blocks of matter, and are built of atoms and electrons in 3D space. All particles are interacting, but when a pair of atoms are stuck in a stable distance from each other, we say they share a covalent bond. Different pairs of atoms and bonds have different distances (e.g. single-bonds, double-bonds). It’s a very convenient and common abstraction to describe 3D objects as a graph, where nodes are atoms and edges are covalent bonds. <a href="https://paperpile.com/c/eglPYY/9l1U">(Duvenaud et al. 2015)</a> Here are two common molecules, and their associated graphs.</p>
+<figure class='fullscreen'><div id='mols-as-graph-citronellal'></div>
+<figcaption>
+(Left) 3d representation of the Citronellal molecule (Center) Adjacency matrix of the bonds in the molecule (Right) Graph representation of the molecule.
+</figcaption>
+</figure>
+
+<figure class='fullscreen'><div id='mols-as-graph-caffeine'></div>
+<figcaption>
+(Left) 3d representation of the Caffeine molecule (Center) Adjacency matrix of the bonds in the molecule (Right) Graph representation of the molecule.
+</figcaption>
+</figure>
+
+
+<p><strong>Social networks as graphs.</strong> We can build a graph representing groups of people by modelling individuals as nodes, and their relationships as edges, called a social network. Social networks are tools to study patterns in collective behaviour of people, institutions and organizations. </p>
+<figure class='fullscreen'><div id='mols-as-graph-othello'></div>
+<figcaption>
+(Left) Image of a scene from the play "Othello". (Center) Adjacency matrix of the interaction between characters in the play. (Right) Graph representation of these interactions.
+</figcaption>
+</figure>
+
+<p>Unlike image and text data, social networks do not have identical adjacency matrices. </p>
+<figure class='fullscreen'><div id='mols-as-graph-karate'></div>
+<figcaption>
+(Left) Image of karate tournament. (Center) Adjacency matrix of the interaction between people in a karate club. (Right) Graph representation of these interactions.
+</figcaption>
+</figure>
+
+<p><strong>Citation networks as graphs.</strong> Scientists routinely cite other scientists’ work when publishing papers. We can visualize these networks of citations as a graph, where each paper is a node, and each <em>directed</em> edge is a citation between one paper and another. Additionally, we can add information about each paper into each node, such as a word embedding of the abstract. <a href="https://paperpile.com/c/eglPYY/uUQE+ZEOn+Ajru">(Mikolov et al. 2013; Devlin et al. 2018; Pennington et al. 2014)</a></p>
+<p><strong>Other examples.</strong> In computer vision, we sometimes want to tag objects in visual scenes. We can then build graphs by treating these objects as nodes, and their relationships as edges. <a href="https://www.tensorflow.org/tensorboard/graphs">Machine learning models</a>, <a href="https://openreview.net/pdf?id=BJOFETxR-">programming code</a> <a href="https://paperpile.com/c/eglPYY/d1Dc">(Allamanis et al. 2017)</a> and <a href="https://openreview.net/forum?id=S1eZYeHFDS">math equations</a> <a href="https://paperpile.com/c/eglPYY/IW4j">(Lample and Charton 2019)</a> can also be phrased as graphs, where the variables are nodes, and edges are operations that have these variables as input and output. You might see the term “dataflow graph” used in some of these contexts.</p>
+<p>The structure of real-world graphs can vary greatly between different types of data — some graphs have many nodes with few connections between them, or vice versa. Graph datasets can vary widely (both within a given dataset, and between datasets) in terms of the number of nodes, edges, and the connectivity of nodes.</p>
+<figure>
+<div id='table'></div>
+<figcaption>
+
+<p>Summary statistics on graphs found in the real world. Numbers are dependent on featurization decisions. More useful statistics and graphs can be found in KONECT
+ <a href="https://paperpile.com/c/eglPYY/P3zi">(Kunegis 2013)</a>.</p>
+<p><d-cite key="Kunegis2013-er"></d-cite></p>
+</figcaption></figure>
+
+<h2 id="what-types-of-problems-have-graph-structured-data">What types of problems have graph structured data?</h2>
+<p>We have described some examples of graphs in the wild, but what tasks do we want to perform on this data? There are three general types of prediction tasks on graphs: graph-level, node-level, and edge-level. </p>
+<p>In a graph-level task, we predict a single property for a whole graph. For a node-level task, we predict some property for each node in a graph. For an edge-level task, we want to predict the property or presence of edges in a graph.</p>
+<p>For the three levels of prediction problems described above (graph-level, node-level, and edge-level), we will show that all of the following problems can be solved with a single model class, the GNN. But first, let’s take a tour through the three classes of graph prediction problems in more detail, and provide concrete examples of each.</p>
+<aside>
+There are other related tasks that are areas of active research. For instance, we might want to <a href=”#generative-modelling”>generate graphs</a>, or <a href=”#graph-explanations-and-attributions”>explain predictions on a graph<a>. More topics can be found in the <a href=”#into-the-weeds”>Into the weeds section </a>.
+</aside>
+
+<h3 id="graph-level">Graph-level</h3>
+<p>In a graph-level task, our goal is to predict the property of an entire graph. For example, for a molecule represented as a graph, we might want to predict what the molecule smells like, or whether it will bind to a receptor implicated in a disease.</p>
+<figure>
+<div id='graph-level-problems'></div>
+</figure>
+
+<p>This is analogous to image classification problems with MNIST and CIFAR, where we want to associate a label to an entire image. With text, a similar problem is sentiment analysis where we want to identify the mood or emotion of an entire sentence at once.</p>
+<h3 id="node-level">Node-level</h3>
+<p>Node-level tasks are concerned with predicting the identity or role of each node within a graph.</p>
+<p>A classic example of a node-level prediction problem is Zach’s karate club <a href="https://paperpile.com/c/eglPYY/8BOb">(Zachary 1977)</a>. The dataset is a single social network graph made up of individuals that have sworn allegiance to one of two karate clubs after a political rift. As the story goes, a feud between Mr. Hi (Instructor) and John H (Administrator) creates a schism in the karate club. The nodes represent individual karate practitioners, and the edges represent interactions between these members outside of karate. The prediction problem is to classify whether a given member becomes loyal to either Mr. Hi or John H, after the feud. In this case, distance between a node to either the Instructor or Administrator is highly correlated to this label.</p>
+<figure>
+<div id='node-level-problems'></div>
+<figcaption>
+On the left we have the initial conditions of the problem, on the right we have a possible solution, where each node has been classified based on the alliance. The dataset can be used in other graph problems like unsupervised learning. 
+</figcaption></figure>
+
+<p>Following the image analogy, node-level prediction problems are analogous to <em>image segmentation</em>, where we are trying to label the role of each pixel in an image. With text, a similar task would be predicting the parts-of-speech of each word in a sentence (e.g. noun, verb, adverb, etc).</p>
+<h3 id="edge-level">Edge-level</h3>
+<p>The remaining prediction problem in graphs is <em>edge prediction</em>. </p>
+<p>One example of edge-level inference is in image classification. Often deep learning models will identify objects in images, but besides just identifying objects, we also care about the relationship between them. We can phrase this as an edge-level classification: given nodes that represent the objects in the image, we wish to predict which of these nodes share an edge or what the value of that edge is. If we wish to discover connections between entities, we could consider the graph fully connected and based on their predicted value prune edges to arrive at a sparse graph.</p>
+<figure>
+<img src='images/edge_classification/merged.png''></img>
+<figcaption>
+In (b), above, the original image (a) has been segmented into five entities: each of the fighters, the referee, the audience and the mat. (C) shows the relationships between these entities. 
+</figcaption></figure>
+
+<figure>
+<img src='images/edges_level_diagram.png''></img>
+<figcaption>
+On the left we have an initial graph built from the previous visual scene. On the right is a possible edge-labeling of this graph when some connections were pruned based on the model’s output.
+</figcaption></figure>
+
+<h2 id="the-challenges-of-using-graphs-in-machine-learning">The challenges of using graphs in machine learning</h2>
+<p>So, how do we go about solving these different graph tasks with neural networks? The first step is to think about how we will represent graphs to be compatible with neural networks.</p>
+<p>Because of the non-rectangular form of graphs, it’s not immediately intuitive how to represent them in a format that is compatible with deep learning (i.e., as arrays/tensors). Graphs have up to four types of information that we will potentially want to leverage: nodes, edges,  global-context and connectivity. The first three are relatively straightforward: for example, with nodes we can form a node feature matrix $N$ by assigning each node an index $i$ and storing the feature for $node_i$ in $N$. While these matrices have a variable number of examples, they can be processed by basic neural network techniques.</p>
+<p>However, representing a graph’s connectivity is more complicated. Perhaps the most obvious choice would be to use an adjacency matrix, since this is easily tensorisable. However, this representation has a few drawbacks. From the <a href="#table">example dataset table</a>, we see the number nodes in a graph can be on the order of millions, and the number of edges per node can be highly variable. Often, this leads to very sparse adjacency matrices, which are space-inefficient.</p>
+<p>Another problem is that there are many adjacency matrices that can encode the same connectivity, and there is no guarantee that these different matrices would produce the same result in a deep neural network (that is to say, they are not permutation invariant).</p>
+<aside markdown=1>
+There is much current research in the direction of learning permutation invariant operations [(Mena et al. 2018; Murphy et al. 2018)](https://paperpile.com/c/eglPYY/eO6h+z0HX)
+</aside>
+
+<p>For example, the <a href="mols-as-graph-othello"> Othello graph </a> from before can be described equivalently with these two adjacency matrices.  It can also be described with every other possible permutation of the nodes.</p>
+<figure>
+<div class='two-imgs'>
+<img src='images/othello1.png'></img>
+<img src='images/othello2.png'></img>
+</div>
+<figcaption>
+Two adjacency matrices representing the same graph.
+</figcaption>
+</figure>
+
+<p>The example below shows every adjacency matrix that can describe this small graph of 4 nodes. This is already a significant number of adjacency matrices– for larger examples like Othello, the number is untenable.</p>
+<figure class='fullscreen'><div id='shuffle-sm'></div>
+<figcaption>
+All of these adjacency matrices represent the same graph. Click on an edge to remove it on a “virtual edge” to add it and the matrices will update accordingly.
+</figcaption>
+</figure>
+
+<p>One elegant and memory-efficient way of representing sparse matrices is as adjacency lists. These describe the connectivity of edge $e_k$ between nodes $n_i$ and $n_j$ as a tuple (i,j) in the k-th entry of an adjacency list. They are $O(n_{edges})$, rather than $O(n_{nodes}^2)$, and since they are used to directly index the node information, they are permutation invariant.</p>
+<p>To make this notion concrete, we can see how information in different graphs might be represented under this specification:</p>
+<figure class='fullscreen'>
+<div id='graph-to-tensor'></div>
+<figcaption>
+Hove and click over different edge attributes to change their value. On one side we have a small graph and on the other the information of the graph in a tensor representation.
+</figcaption></figure>
+
+<h2 id="graph-neural-networks">Graph Neural Networks</h2>
+<p>Now that we have all of a graph’s description in a matrix format that is permutation invariant, we will describe using graph neural networks (GNNs) to solve graph prediction tasks. <strong>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).</strong> We’re going to build GNNs using the “message passing neural network” framework proposed by Gilmer et al. <a href="https://paperpile.com/c/eglPYY/cxSc">(Gilmer et al. 2017)</a> using the architecture Graph Nets schematics introduced by Battaglia et al. <a href="https://paperpile.com/c/eglPYY/0q4v">(Battaglia et al. 2018)</a>.  GNNs adopt a “graph-in, graph-out” architecture meaning that these model types accept a graph as input, with information loaded into its nodes, edges and global-context, and progressively transform these embeddings, without changing the connectivity of the input graph. </p>
+<h3 id="the-simplest-gnn">The simplest GNN</h3>
+<p>With our numerical representation of graphs that <a href="#graph-to-tensor">we’ve constructed above</a>, we are now ready to build a GNN. We will start with the simplest GNN architecture, one where we learn new embeddings for all graph attributes (nodes, edges, global), but where we do not yet use the connectivity of the graph.</p>
+<p>This GNN uses a separate multilayer perceptron (MLP) (or your favorite differentiable model) on each component of a graph; we call this a GNN block. For each node vector, we apply the MLP and get back a learned node-vector. We do the same for each edge, learning a per-edge embedding, and also for the global-context vector, learning a single embedding for the entire graph.</p>
+<aside>
+You could also call it a GNN layer. Because it contains multiple operations/layers (like a ResNet block) the term block is more commonly used .
+</aside>
+
+<figure>
+<img src='images/arch_independent.png''></img>
+<figcaption>
+A single block of a simple GNN. A graph is the input, and each component (V,E,U) gets updated by a MLP to produce a new graph. Each function subscript indicates a separate function for a different graph attribute at the n-th layer of a GNN model.
+</figcaption></figure>
+
+<p>As we’re accustomed to with neural networks, we can stack these GNN blocks together. </p>
+<p>Because a GNN does not update connectivity, we can describe the output graph of a GNN with the same adjacency list and the same number of feature vectors as the input graph, but with updated embeddings, since the GNN has updated each of the node, edge and global-context representations.</p>
+<h3 id="gnn-predictions-by-pooling-information">GNN Predictions by Pooling Information</h3>
+<p>We have built a simple GNN, but how do we make predictions? We have a variety of tasks to which we might want to apply this model.</p>
+<p>We will consider the case of binary classification, but this framework can easily be extended to the multi-class or regression case. If the task is to make binary predictions on nodes, and the graph already contains node information, the approach is straightforward — for each node embedding, apply a linear classifier.</p>
+<figure><img src='images/prediction_nodes_nodes.png''></img></figure>
+
+<p>However, it’s not always so simple. For instance, you might have information in the graph stored in edges, but no information in nodes, but still need to make predictions on nodes. We need a way to collect information from edges and give them to nodes for prediction. We can do this by <em>pooling</em>. Pooling proceeds in two steps:</p>
+<ol>
+<li><p>For each item to be pooled, <em>gather</em> each of their embeddings and concatenate them into a matrix.</p>
+</li>
+<li><p>The gathered embeddings are then <em>aggregated</em>, usually via a sum operation.</p>
+</li>
+</ol>
+<aside markdown=1>
+For a more in-depth discussion on aggregation operations go to the <a href="#comparing-aggregation-operations"> Comparing aggregation operations </a> section.
+</aside>
+
+<p>We represent the <em>pooling</em> operation by the letter $g$, and denote that we are gathering information from each node’s edges as $g_{E_n \to V_{i,n}}$. </p>
+<figure><div id='node-step-small'></div>
+<figcaption>
+The center node has a black edge, while neighboring nodes are in grey. 
+</figcaption>
+</figure>
+
+
+<p>If we only have edge-level features, and are trying to predict binary node information, we can use pooling to route information to where it needs to go. The model looks like this. </p>
+<figure><img src='images/prediction_edges_nodes.png' style="padding-bottom: 10px;"'></img>
+<figcaption>
+The center node has a black edge, while neighboring nodes are in grey. 
+</figcaption>
+</figure>
+
+<p>If we only have node-level features, and are trying to predict binary edge-level information, the model looks like this.</p>
+<figure><img src='images/prediction_nodes_edges.png''></img></figure>
+
+<p>If we only have node-level features, and need to predict a binary global property, we need to gather all available node information together and aggregate them. This is similar to <em>Global Average Pooling</em> layers in CNNs. Same can be done for edges.</p>
+<figure><img src='images/prediction_nodes_edges_global.png''></img></figure>
+
+<p>In our examples, the classification model <em>$c$</em> can easily be replaced with any differentiable model, or adapted to multi-class classification using a generalized linear model.</p>
+<figure><img src='images/Overall.png''></img>
+<figcaption>
+An end-to-end prediction task with a GNN model.
+</figcaption>
+</figure>
+
+<p>Now we’ve demonstrated that we can build a simple GNN model, and make binary predictions by routing information between different parts of the graph. This pooling technique will serve as a building block for constructing more sophisticated GNN models. If we have new graph attributes, we just have to define how to pass information from one attribute to another. </p>
+<p>Note that in this simplest GNN formulation, we’re not using the connectivity of the graph at all inside the GNN block. Each node is processed independently, as is each edge, as well as the global context. We only use connectivity when pooling information for prediction. </p>
+<h3 id="passing-messages-between-parts-of-the-graph">Passing messages between parts of the graph</h3>
+<p>We could make more sophisticated predictions by using pooling within the GNN block, in order to make our learned embeddings aware of graph connectivity. We can do this using <em>message passing</em> <a href="https://paperpile.com/c/eglPYY/cxSc">(Gilmer et al. 2017)</a>, where neighboring nodes or edges exchange information and influence each other’s updated embeddings.</p>
+<p>Message passing works in three steps: </p>
+<ol>
+<li><p>For each node in the graph, <em>gather</em> all the neighboring node embeddings (or messages), which is the $g$ function described above.</p>
+</li>
+<li><p>Aggregate all messages via an aggregate function (like sum).</p>
+</li>
+<li><p>All pooled messages are passed through an <em>update function</em>, usually a learned neural network.</p>
+</li>
+</ol>
+<aside>
+You could also 1) gather messages, 3) update them and 2) aggregate them and still have a permutation invariant operation [(Zaheer et al. 2017)](https://paperpile.com/c/eglPYY/Or4Q). 
+</aside>
+
+<p>Note that just like pooling can be applied to either nodes or edges, message passing can occur between either nodes or edges.</p>
+<p>These steps are key for leveraging the connectivity of graphs. We will build more elaborate variants of message passing in GNN blocks that yield GNN models of increasing expressiveness and power. </p>
+<figure class='fullscreen'><div id='node-step' style="padding-bottom: 10px;"></div>
+<figcaption>
+Hover over a node, to highlight adjacent nodes and visualize the adjacent embedding that would be pooled, updated and stored.
+</figcaption>
+</figure>
+
+<p>This sequence of operations, when applied once, is the simplest type of message-passing GNN block.</p>
+<p>This is reminiscent of standard convolution: in essence, message passing and convolution are operations to aggregate and process the information of an element’s neighbors in order to update the element’s value. In graphs, the element is a node, and in images, the element is a pixel. However, the number of neighboring nodes in a graph can be variable, unlike in an image where each pixel has a set number of neighboring elements.</p>
+<p>By stacking message passing GNN blocks together, a node can eventually incorporate information from across the entire graph: after three layers, a node has information about the nodes three steps away from it.</p>
+<p>We can update our architecture diagram to include this new source of information for nodes:</p>
+<figure><img src='images/arch_gcn.png''></img>
+<figcaption>
+Schematic for a GCN architecture, which updates node representations of a graph by pooling neighboring nodes.
+</figcaption></figure>
+
+<h3 id="learning-edge-representations">Learning edge representations</h3>
+<p>Our dataset does not always contain all types of information (node, edge, and global context). 
+When we want to make a prediction on nodes, but our dataset only has edge information, we showed above how to use pooling to route information from edges to nodes, but only at the final prediction step of the model. We can share information between nodes and edges within the GNN block using message passing.</p>
+<p>We can incorporate the information from neighboring edges in the same way we used neighboring node information earlier, by first pooling the edge information, transforming it with an update function, and storing it.</p>
+<p>However, the node and edge information stored in a graph are not necessarily the same size or shape, so it is not immediately clear how to combine them. One way is to learn a linear mapping from the space of edges to the space of nodes, and vice versa. Alternatively, one may concatenate them together before the update function.</p>
+<figure><img src='images/arch_mpnn.png'></img>
+<figcaption>
+Architecture schematic
+</figcaption></figure>
+
+<p>Which graph attributes we update and in which order we update them is one design design behind GNNs. We could whether to update node embeddings before edge embeddings, or the other way around. This is an open area of research with a variety of solutions– for example we could update in a ‘weave’ fashion <a href="https://paperpile.com/c/eglPYY/RvkL">(Kearnes et al. 2016)</a> where we have four updated representations that get combined into new node and edge representations: node to node (linear), edge to edge (linear), node to edge (edge block), edge to node (node block).</p>
+<figure><img src='images/arch_weave.png'></img>
+<figcaption>
+Different ways of combining edge and node representation in a GNN block.
+</figcaption></figure>
+
+<h3 id="adding-global-representations">Adding global representations</h3>
+<p>There is one flaw with the networks we have described so far: nodes that are far away from each other in the graph may never be able to efficiently transfer information to one another, even if we apply message passing several times. For one node, If we have k-blocks, information will propagate at most k-steps away.  This can be a problem for situations where the prediction task depends on nodes, or groups of nodes, that are far apart.  One solution would be to have all nodes be able to pass information to each other, but for large graphs, this quickly becomes computationally expensive (although this approach, called ‘virtual edges’ has been used for small graphs, like molecules). <a href="https://paperpile.com/c/eglPYY/cxSc">(Gilmer et al. 2017)</a></p>
+<p>One solution to this problem is by using the global representation of a graph (U) which is sometimes called a <strong>master node</strong> <a href="https://paperpile.com/c/eglPYY/0q4v+cxSc">(Battaglia et al. 2018; Gilmer et al. 2017)</a> or context vector. This global context vector is connected to all other nodes and edges in the network, and can act as a bridge between them to pass information, building up a representation for the graph as a whole. This creates a richer and more complex representation of the graph than could have otherwise been learned. </p>
+<figure><img src='images/arch_graphnet.png'></img>
+<figcaption>Schematic of a Graph Nets architecture leavearing global representations.
+</figcaption></figure>
+
+<p>In this view all graph attributes have learnt representations, so we can leverage them during pooling by conditioning the information of our attribute of interest wrt to the rest. For example, for one node we can pool neighboring nodes, neighboring edges and the global information. To condition the new node embedding to all these possible sources of information, we can simply concatenate them. Additionally  we also map them to the same space via linear map and add them or apply a feature-wise modulation layer <a href="https://paperpile.com/c/eglPYY/ai0k">(Dumoulin et al. 2018)</a>, these are just some of the possibilities.</p>
+<h2 id="gnn-playground">GNN playground</h2>
+<p>We’ve described a wide range of GNN components here, but how do they actually differ in practice? This GNN playground below allows you to see how these different components and architectures contribute to a GNN’s ability to learn a real task. </p>
+<p>We will consider a graph-level prediction task with small molecular graphs. We will be using the Leffingwell Odor Dataset <a href="https://paperpile.com/c/eglPYY/pRSE+yclQ">(Sanchez-Lengeling et al. 2020; Sanchez-Lengeling et al. 2019)</a>, which is composed of molecules with associated odor percepts (labels). Predicting the relation of a molecular structure (graph) to its smell is a 70+ year-old problem straddling chemistry, physics, neuroscience, and machine learning.</p>
+<p>To simplify the problem,  we will focus on a single label, classifying if a molecular graph is likely to smell “pungent’ or not, as labeled by a professional smeller. While this is an abstract notion, we say something is “pungent” if it has a strong, striking smell. For example garlic and mustard which might contain the molecule ‘allyl alcohol’ have this quality. The molecule ‘piperitone’, often used for peppermint-flavored candy, also is described with a pungent smell.</p>
+<p>Our input graphs will have atoms as nodes one-hot encoding its atomic symbol (C, N, O, F) and bonds are edges one-hot encoding its bond type (single, double, triple or aromatic). We will not consider initial global information, but in practice you could use a few chemoinformatic descriptors.</p>
+<p>Our model for this problem will be a GNN composed sequentially by a number of GNN blocks, followed by a linear model with a sigmoid activation for classification. The design space for our GNN has many levers:</p>
+<ol>
+<li><p>The depth or number of GNN blocks.</p>
+</li>
+<li><p>The dimensionality of each attribute when updated. The update function is a 1-layer MLP with relu activation function and a layer norm for normalization of activations. </p>
+</li>
+<li><p>We will be able to toggle (on or off) if we want to learn graph aware node, edge and global representations. A baseline model would be a graph-independent GNN (all off) which aggregates all data at the end into the global attribute. All on is similar to a GraphNets architecture.</p>
+</li>
+<li><p>The aggregation function used in pooling: max, mean or sum.</p>
+</li>
+</ol>
+<p>To better understand how a GNN is learning a task-optimized representation of a graph, we also look at the penultimate layer activations of the GNN. These embeddings are the outputs of the GNN model right before prediction.  Since we are using a generalized linear model for prediction, a linear mapping is enough to allow us to see how we are learning representations around the decision boundary. Since these are high dimensional vectors, we reduce them to 2D via principal component analysis (PCA). </p>
+<aside>This playground is running live on the browser in <a href="https://www.tensorflow.org/js/">tfjs</a>.</aside>
+
+<figure class='fullscreen'><div id='playground'></div>
+<figcaption>Edit the molecule to see how the prediction changes, or change the model params to load a different model. Select a different molecule in the scatter plot.</figcaption></figure>
+
+
+
+<p>[TODO: Add interactive plot of architecture trends]</p>
+<h2 id="into-the-weeds">Into the Weeds</h2>
+<h3 id="other-types-of-graphs-multigraphs-hypergraphs-hypernodes">Other types of graphs (multigraphs, hypergraphs, hypernodes)</h3>
+<p>While we only described graphs with vectorized information for each attribute, graph structures are more flexible and can accommodate other types of information. Fortunately, the message passing framework is flexible enough that often adapting GNNs to more complex graph structures is about defining how information is passed and updated by new graph attributes. </p>
+<p>For example, we can consider multi-edge graphs or <em>multigraphs</em> <a href="https://paperpile.com/c/eglPYY/NDst">(Harary 1969)</a>, where a pair of nodes can share multiple types of edges, this happens when we want to model the interactions between nodes differently based on their type. For example with a social network, we can specify edge types based on the type of relationships (acquaintance, friend, family). A GNN can be adapted by having different types of message passing steps for each edge type. 
+We can also consider nested graphs, where for example a node represents a graph, also called a hypernode graph <a href="https://paperpile.com/c/eglPYY/2QRS">(Poulovassilis and Levene 1994)</a>. Nested graphs are useful for representing hierarchical information. For example, we can consider a network of molecules, where a node represents a molecule and an edge is shared between two molecules if we have a way (reaction) of transforming one to the other <a href="https://paperpile.com/c/eglPYY/Pvmy">(Zitnik et al. 2018)</a>. 
+In this case, we can learn on a nested graph by having a GNN that learns representations at the molecule level and another at the reaction network level, and alternate between them during training.</p>
+<p>Another type of graph is a hypergraph <a href="https://paperpile.com/c/eglPYY/LVFi">(Berge 1976)</a>, where an edge can be connected to multiple nodes instead of just two. For a given graph, we can build a hypergraph by identifying communities of nodes and assigning a hyper-edge that is connected to all nodes in a community.</p>
+<p>[Image sketch of other types of Graphs]</p>
+<h3 id="batching-in-gnns">Batching in GNNs</h3>
+<p>A common practice for training neural networks is to update network parameters with gradients calculated on randomized constant size (batch size) subsets of the training data (mini-batches). This practice presents a challenge for graphs due to the variability in the number of nodes and edges adjacent to each other, meaning that we cannot have a constant batch size. The main idea for batching with graphs is to create subgraphs that preserve essential properties of the larger graph. This graph sampling operation is highly dependent on context and involves sub-selecting nodes and edges from a graph. These operations might make sense in some contexts (citations networks) and in others, these might be too strong of an operation (molecules, where a subgraph simply represents a new, smaller molecule). How to sample a graph is an open research question <a href="https://paperpile.com/c/eglPYY/Kp5n">(Rozemberczki et al. 2020)</a>. 
+If we care about preserving structure at a neighborhood level, one way would be to randomly sample a uniform number of nodes, our <em>node-set</em>. Then add neighboring nodes of distance k adjacent to the node-set, including their edges <a href="https://paperpile.com/c/eglPYY/zYqr">(Leskovec and Faloutsos 2006)</a>. Each neighborhood can be considered an individual graph and a GNN can be trained on batches of these subgraphs. The loss can be masked to only consider the node-set since all neighboring nodes would have incomplete neighborhoods.
+A more information efficient strategy might be to first randomly sample a single node, expand its neighborhood to distance k, and then pick the other node within the expanded set. These operations can be terminated once a certain amount of nodes, edges, or subgraphs is constructed.
+If the context allows, we can build constant size neighborhoods by picking an initial node-set and then sub-sampling a constant number of nodes (e.g randomly, or via a random walk or Metropolis algorithm <a href="https://paperpile.com/c/eglPYY/pxwO">(Hübler et al. 2008)</a>).</p>
+<p>[TODO: Image sketch of batching in GNN]</p>
+<h3 id="inductive-biases">Inductive biases</h3>
+<p>When building a model to solve a problem on a specific kind of data, we want to specialize our models to leverage the characteristics of that data. When this is done successfully, we often see better predictive performance, lower training time, fewer parameters and/or better generalization.  </p>
+<p>When labeling on images, for example, we want to take advantage of the fact that a dog is still a dog whether it is in the top-left or bottom-right corner of an image. Thus, most image models use convolutions, which are translation invariant. For text, the order of the tokens is highly important, so recurrent neural networks process data sequentially. Further, the presence of one token (e.g. the word ‘not’) can affect the meaning of the rest of a sentence, and so we need components that can ‘attend’ to other parts of the text, which transformer models like BERT and GPT-3 can do. These are some examples of inductive biases, we are identifying symmetries in the data and adding modelling components that reflect these properties.</p>
+<p>In the case of graphs, we care about how each graph component (edge, node, global) is related to each other so we seek models that have a relational inductive bias <a href="https://paperpile.com/c/eglPYY/0q4v">(Battaglia et al. 2018)</a>. A model should preserve explicit relationships between entities (adjacency matrix) and preserve graph symmetries (permutation invariance). We expect problems where the interaction between entities is important will benefit from a graph structure. Concretely this means designing transformation on sets: the order of operation on nodes or edges should not matter and  the operation should work on a variable number of inputs. </p>
+<h3 id="comparing-aggregation-operations">Comparing aggregation operations</h3>
+<p>Pooling information from neighboring nodes and edges is a critical step in any reasonably powerful GNN architecture. Because each node has a variable number of neighbors, and because we want a differentiable method of aggregating this information, we want to use a smooth aggregation operation that is invariant to node ordering and the number of nodes provided.</p>
+<p>Selecting and designing optimal aggregation operations is an open research topic <a href="https://paperpile.com/c/eglPYY/vmRH">(Xu et al. 2018)</a>. A desirable property of an aggregation operation is that similar inputs provide similar aggregated outputs, and vice-versa. Some very simple candidate permutation-invariant operations are sum, mean, and max. Summary statistics like variance also work. All of these take a variable number of inputs, and provide an output that is the same, no matter the input ordering. Let’s explore the difference between these operations.</p>
+<figure><div id='pooling-table'> </div>
+<figcaption>
+Max pooling doesn't distinguish between the pair of graphs on the left. 
+</figcaption></figure>
+
+<p>There is no operation that is uniformly the best choice. The mean operation can be useful when nodes have a highly-variable number of neighbors or you need a normalized view of the features of a local neighborhood. The max operation can be useful when you want to highlight single salient features in local neighborhoods. Sum provides a balance between these two, by providing a snapshot of the local distribution of features, but because it is not normalized, can also highlight outliers. In practice, sum is commonly used. </p>
+<p>Designing aggregation operations is an open research problem that intersects with machine learning on sets <a href="https://paperpile.com/c/eglPYY/apvQ">(Skianis et al. 2019)</a>. New approaches such as Principal Neighborhood aggregation <a href="https://paperpile.com/c/eglPYY/1o3U">(Corso et al. 2020 )</a> take into account several aggregation operations by concatenating them and adding a scaling function that depends on the degree of connectivity of the entity to aggregate.</p>
+<h3 id="gcn-as-subgraph-function-approximators">GCN as subgraph function approximators</h3>
+<p>Another way to see GCN (and MPNN) of k-layers with a 1-degree neighbor lookup is as a neural network that operates on learned embeddings of subgraphs of size k <a href="https://paperpile.com/c/eglPYY/xOjZ+vmRH">(Liu et al. 2018; Xu et al. 2018)</a>.</p>
+<p>When focusing on one node, after k-layers, the updated node representation has a limited viewpoint of all neighbors up to k-distance, essentially a subgraph representation. Same is true for edge representations.</p>
+<p>So a GCN is collecting all possible subgraphs of size k and learning vector representations from the vantage point of one node or edge. The number of possible subgraphs can grow combinatorially, so enumerating these subgraphs from the beginning vs building them dynamically as in a GCN, might be prohibitive.</p>
+<figure><img src='images/arch_subgraphs.png'></img>
+<figcaption>
+</figcaption></figure>
+
+<h3 id="edges-and-the-graph-dual">Edges and the Graph Dual</h3>
+<p>One thing to note is that edge predictions and node predictions, while seemingly different, often reduce to the same problem: an edge prediction task on a graph $G$ can be phrased as a node-level prediction on $G$’s dual.</p>
+<p>To obtain $G$’s dual, we can convert nodes to edges (and edges to nodes). A graph and its dual contain the same information, just expressed in a different way. Sometimes this property makes solving problems easier in one representation than another, like frequencies in Fourier space.  In short, to solve an edge classification problem on $G$, we can think about doing graph convolutions on $G$’s dual (which is the same as learning edge representations on $G$), this idea was developed with Dual-Primal Graph Convolutional Networks <a href="https://paperpile.com/c/eglPYY/04Bo">(Monti et al. 2018)</a>.
+[TODO: Image sketch of a graph and its dual]</p>
+<h3 id="graph-convolutions-and-image-convolutions">Graph convolutions and image convolutions</h3>
+<p>We’ve talked a lot about graph convolutions, and of course this raises the question, what is the parallel to image convolutions? </p>
+<p>In an image convolution, each element of the image is updated with its local neighbors, weighted by a kernel. For graphs, each node is updated with its local neighbors as well, but the story is similar but a bit more complex. Where image elements have a constant number of neighbors (e.g., for a kernel with radius one each element has nine neighbors), each graph node might have any number of neighbors.  </p>
+<p>We need some sort of function to aggregate a variable amount of information. This is implemented as a matrix multiply, but we can also express the same operation as message passing. Since this operation is one of the most important building blocks of these models, let’s dig deeper into what sort of properties we want in aggregation operations, and which types of operations have these sorts of properties.</p>
+<p>Additionally, we can consider lookup operations that are not focused on 1-first degree neighbors: we could consider n-degree neighbors, which might allow our network to look farther aways in less steps. </p>
+<h3 id="graph-attention-networks">Graph Attention Networks</h3>
+<p>Another way of communicating information between graph attributes is via attention <a href="https://paperpile.com/c/eglPYY/HTlk">(Vaswani et al. 2017)</a>. For example when we consider the sum-aggregation of a node and its 1-degree neighboring nodes we could also consider using a weighted sum, the challenge then is to associate weights in a permutation invariant fashion. One approach is to consider a scalar scoring function that assigns weights based on pairs of nodes ( f(node_i, node_j)). In this case, the scoring function can be interpreted as a function that measures how relevant a neighboring node is in relation to the center node. Weights can be normalized, for example with a softmax function to focus most of the weight on a neighbor most relevant for a node in relation to a task. This concept is the basis of Graph Attention Networks <a href="https://paperpile.com/c/eglPYY/BVPV">(Veličković et al. 2017)</a> and Set Transformers <a href="https://paperpile.com/c/eglPYY/ak2m">(Lee et al. 2018)</a>. Permutation invariance is preserved because scoring works on pairs of nodes. A common scoring function is the inner product and nodes are often transformed before scoring into query and key vectors via a linear map to increase expressivity of the scoring mechanism. Additionally for interpretability, the scoring weights can be used as a measure of importance of an edge in relation to a task. 
+[TODO: Image sketch of a graph attention]</p>
+<h3 id="graph-explanations-and-attributions">Graph explanations and attributions</h3>
+<p>When deploying GNN in the wild we might care about model interpretability for building credibility, debugging or scientific discovery. The graph concepts that we care to explain vary from context to context, for example with molecules we might care about the presence of absence of particular subgraphs <a href="https://paperpile.com/c/eglPYY/KMXS">(McCloskey et al. 2018)</a> while in a citation network we might care about the degree of connectedness of an article. Due to the variety of graph concepts, there are many ways to build explanations. GNNExplainer <a href="https://paperpile.com/c/eglPYY/n56s">(Ying et al. 2019)</a> cast this problem as extracting the most relevant subgraph that is important for a task. Attribution techniques <a href="https://paperpile.com/c/eglPYY/4QHF">(Pope et al. 2019)</a> assign ranked importance values to parts of a graph that are relevant for a task. Because graphs are often generated synthetically, either via rules or algorithmically, GNN also serves as a testbed for evaluating attribution techniques (add self-citation).</p>
+<p>[TODO: Image sketch of a graph explanations and attributions]</p>
+<h3 id="generative-modelling">Generative modelling</h3>
+<p>Besides learning predictive models on graphs, we might also care about learning a generative model for graphs. With a generative model we can generate new graphs by sampling from a learnt distribution or by completing a graph given a starting point. Additionally learning a graph-centered representation might also be useful for downstream tasks. A relevant application is in the design of new drugs, where novel molecular graphs with specific properties are desired as candidates to treat a disease.</p>
+<p>A key challenge with graph generative models lies in modelling the topology of a graph, which can vary dramatically in size and has $N_{nodes}^2$ terms. One solution lies in modelling the adjacency matrix directly like an image with an autoencoder framework <a href="https://paperpile.com/c/eglPYY/S0hZ">(Kipf and Welling 2016)</a>. The prediction of the presence or absence of an edge is treated as a binary classification task. The $N_{nodes}^2$ term can be avoided by only predicting known edges and a subset of the edges that are not present. The graphVAE learns to model positive patterns of connectivity and some patterns of non-connectivity in the adjacency matrix.</p>
+<p>Another approach lies in building a graph sequentially, by starting with a graph and applying discrete actions such as addition or subtraction of nodes and edges iteratively. To avoid estimating a gradient for discrete actions we can use a policy gradient. This has been done via an auto-regressive model, such a RNN <a href="https://paperpile.com/c/eglPYY/X6YP+ZLQi">(You et al. 2018; Liao et al. 2019)</a>, or in a reinforcement learning scenario <a href="https://paperpile.com/c/eglPYY/yWlT">(Zhou et al. 2019)</a>. Furthermore, sometimes graphs can be modeled as just sequences with grammar elements <a href="https://paperpile.com/c/eglPYY/jtE5+mnDx">(Krenn et al. 2019; Goyal et al. 2020)</a>. </p>
+<p>[TODO: Image sketch of a graph generation]</p>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>Graphs are a powerful and rich structured data type that have strengths and challenges that are very different from those of images and text. In this article, we’ve outlined some of the milestones that researchers have come up with in building neural network based models that process graphs. We’ve walked through some of the important design choices that must be made when using these architectures, and hopefully the GNN playground can give an intuition on what the empirical results of these design choices are. The success of GNNs in recent years creates a great opportunity for a wide range of new problems, and we are excited to see what the field will bring. 
+</d-article></p>
+ <d-appendix>
+
+<h3 id="acknowledgments">Acknowledgments</h3>
+<p><strong>Note:</strong> These parts will be updated, it requires some extra work that cannot be undone (in a gdoc).</p>
+<p>We are deeply grateful to…</p>
+<h3 id="author-contributions">Author Contributions</h3>
+<p> Many of our diagrams are based on…</p>
+<p><d-footnote-list></d-footnote-list></p>
+<p><d-citation-list></d-citation-list></p>
+</d-appendix>
+
+
+</body>
+
+<p><d-bibliography src="bibliography.bib"></d-bibliography></p>
+<script src="./index.ts"></script>

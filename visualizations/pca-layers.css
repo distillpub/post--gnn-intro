@@ -1,0 +1,57 @@
+.layer-container{
+  margin: 10px;
+  font-family: monospace;
+}
+.layer-container div {
+  display: inline-block;
+}
+
+.layer-box{
+  text-align: center;
+  border: 1px solid #999;
+  padding: 2px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.layer-box.active{
+  background: rgb(251, 242, 181);
+}
+
+.layer-box:hover{
+  border-color: #000;
+}
+
+.chart-yellow-bg{
+  background: rgb(255, 254, 247);
+  outline: 1px solid #ccc;
+  margin: 1px;
+}
+
+svg{
+  overflow: visible;
+}
+
+
+#pca-layer > div{
+  display: inline-block;
+  width: 49%;
+}
+
+
+circle.active{
+  stroke-width: 2;
+}
+
+.graph-link.active{
+  stroke: #000;
+}
+
+.scatter-link.active{
+  stroke: #000;
+}
+
+#pca-layer circle{
+  transition: all 0s linear;
+}

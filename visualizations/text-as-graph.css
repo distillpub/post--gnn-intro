@@ -1,0 +1,15 @@
+#text-as-graph{
+  width: 100%;
+}
+
+#text-as-graph input{
+  font-family: monospace;
+  width: 900px;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0);
+  border: 0px;
+}
+
+#text-as-graph input:focus{
+  outline: none;
+}

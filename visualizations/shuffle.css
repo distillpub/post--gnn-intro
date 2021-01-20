@@ -1,0 +1,30 @@
+#shuffle-diagram {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 20px 0px;
+}
+
+#svgs-holder {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#shuffle-diagram svg {
+    width: 220px;
+    height: 220px;
+}
+
+#shuffle-button {
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+#shuffle-button:hover {
+    background: #ddd;
+}

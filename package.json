@@ -1,0 +1,52 @@
+{
+  "name": "gnn-distill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "2.0.0",
+    "add": "^2.0.6",
+    "d3": "^5.9.7",
+    "d3-jetpack": "^2.0.20",
+    "d3-swoopy-drag": "^0.0.3",
+    "doc2txt": "^0.0.3",
+    "graph": "^0.2.0",
+    "marked": "^1.1.0",
+    "ml-pca": "^4.0.1",
+    "seedrandom": "2.4.3",
+    "tfjs": "^0.6.0",
+    "underscore": "^1.10.2",
+    "yarn": "^1.17.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "~6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "clang-format": "~1.2.2",
+    "cross-env": "~5.1.6",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-static-files-copy": "^2.3.1",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.0.3"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development parcel index.html --no-hmr --out-dir=./static",
+    "start-hmr": "cross-env NODE_ENV=development parcel index.html --out-dir=./static",
+    "build": "cross-env NODE_ENV=production parcel build index.html --no-minify --public-url ./ --out-dir=./static",
+    "clean": "rm -r static",
+    "pub": "bin/deploy.sh",
+    "deploy": "../gnn-distill-internal/bin/deploy.sh"
+  },
+  "staticFiles": {
+    "staticPath": "data",
+    "watcherGlob": "**"
+  },
+  "author": "",
+  "license": "ISC"
+}

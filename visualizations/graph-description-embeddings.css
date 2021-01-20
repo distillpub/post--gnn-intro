@@ -1,0 +1,14 @@
+#graph-description-embeddings {
+  display: flex;
+  height: 250px;
+}
+.lines {
+  position: relative;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.lines.selected{
+  background: #efefef;
+  border-radius: 10px;
+}
