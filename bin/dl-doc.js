@@ -28,6 +28,9 @@ async function main(){
   }
   var docstr = await doc2txt('1709_COGJ9IFjoZsBVdQSnUJaetJgwGTkydrUWrS_c20', opts)
   var htmlstr = marked(docstr)
+    .replace('<p><d-footnote-list></d-footnote-list></p>', '<d-footnote-list></d-footnote-list>')
+    .replace('<p><d-citation-list></d-citation-list>', '<d-citation-list></d-citation-list>')
+
 
   var path = __dirname + '/../index.html'
 
