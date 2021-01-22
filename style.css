@@ -29,7 +29,7 @@
 }
 
 #image-as-graph text{
-  /*pointer-events: none;*/
+  pointer-events: none;
 }
 
 #image-as-graph .graph text.active{
