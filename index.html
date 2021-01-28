@@ -4,6 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://distill.pub/template.v2.js"></script>
 
+<!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+<!-- Import vega-embed -->
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@v6"></script>
+
+
 <!-- Mathjax -->
 <script async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/x-mathjax-config">
@@ -199,7 +206,7 @@ This refers to the way text is represented in RNNs; other models, such as Transf
 <p>In a graph-level task, we predict a single property for a whole graph. For a node-level task, we predict some property for each node in a graph. For an edge-level task, we want to predict the property or presence of edges in a graph.</p>
 <p>For the three levels of prediction problems described above (graph-level, node-level, and edge-level), we will show that all of the following problems can be solved with a single model class, the GNN. But first, let’s take a tour through the three classes of graph prediction problems in more detail, and provide concrete examples of each.</p>
 <aside>
-There are other related tasks that are areas of active research. For instance, we might want to <a href=”#generative-modelling”>generate graphs</a>, or <a href=”#graph-explanations-and-attributions”>explain predictions on a graph<a>. More topics can be found in the <a href=”#into-the-weeds”>Into the weeds section </a>.
+There are other related tasks that are areas of active research. For instance, we might want to <a href=”#generative-modelling”>generate graphs</a>, or <a href=”#graph-explanations-and-attributions”>explain predictions on a graph</a>. More topics can be found in the <a href=”#into-the-weeds”>Into the weeds section </a>.
 </aside>
 
 <h3 id="graph-level">Graph-level</h3>
@@ -414,6 +421,18 @@ A perfect model would visibility separate labeled data, but since we are reducin
 <figure class='fullscreen'><div id='playground'></div>
 <figcaption>Edit the molecule to see how the prediction changes, or change the model params to load a different model. Select a different molecule in the scatter plot.</figcaption></figure>
 
+
+
+<figure>
+<div id="vis"></div>
+<script type="text/javascript">
+  var spec = "model_performance.json";
+  vegaEmbed('#vis', spec).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+</script>
+<figcaption>Scatterplot of a hyperparameter sweep of several GNN architectures. Hover over a point to see the GNN architecture parameters.</figcaption>
+</figure>
 
 <h2 id="into-the-weeds">Into the Weeds</h2>
 <h3 id="other-types-of-graphs-multigraphs-hypergraphs-hypernodes">Other types of graphs (multigraphs, hypergraphs, hypernodes)</h3>
