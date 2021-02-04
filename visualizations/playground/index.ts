@@ -87,7 +87,7 @@ export class Playground {
             <div class='model-param'> 
               <div>
                 <input type="checkbox" id="node-emb-checkbox" class='param' checked>
-                <label for="node-emb-checkbox">Node embeddings</label>
+                <label for="node-emb-checkbox">Node embedding size</label>
               </div>
               <select id='node-emb-select' class='param'>
                 <option value="12">25</option>
@@ -99,7 +99,7 @@ export class Playground {
             <div class='model-param'> 
               <div>
                 <input type="checkbox" id="edge-emb-checkbox" class='param' checked>
-                <label for="edge-emb-checkbox">Edge embeddings</label>
+                <label for="edge-emb-checkbox">Edge embedding size</label>
               </div>
               <select id='edge-emb-select' class='param'>
                 <option value="5">5</option>
@@ -111,7 +111,7 @@ export class Playground {
             <div class='model-param'> 
               <div>
                 <input type="checkbox" id="global-emb-checkbox" checked class='param'>
-                <label for="global-emb-checkbox">Global embeddings</label>
+                <label for="global-emb-checkbox">Global embedding size</label>
               </div>
               <select id='global-emb-select' class='param'>
                 <option value="25">25</option>

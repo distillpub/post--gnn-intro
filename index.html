@@ -273,13 +273,13 @@ All of these adjacency matrices represent the same graph. Click on an edge to re
 <figure class='fullscreen'>
 <div id='graph-to-tensor'></div>
 <figcaption>
-Hove and click over different edge attributes to change their value. On one side we have a small graph and on the other the information of the graph in a tensor representation.
+Hover and click on the edges, nodes, and global graph marker to view and change attribute representations. On one side we have a small graph and on the other the information of the graph in a tensor representation.
 </figcaption></figure>
 
 <h2 id="graph-neural-networks">Graph Neural Networks</h2>
 <p>Now that we have all of a graph’s description in a matrix format that is permutation invariant, we will describe using graph neural networks (GNNs) to solve graph prediction tasks. <strong>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).</strong> We’re going to build GNNs using the “message passing neural network” framework proposed by Gilmer et al.<d-cite key="Gilmer2017-no"></d-cite> using the architecture Graph Nets schematics introduced by Battaglia et al.<d-cite key="Battaglia2018-pi"></d-cite>  GNNs adopt a “graph-in, graph-out” architecture meaning that these model types accept a graph as input, with information loaded into its nodes, edges and global-context, and progressively transform these embeddings, without changing the connectivity of the input graph. </p>
 <h3 id="the-simplest-gnn">The simplest GNN</h3>
-<p>With our numerical representation of graphs that <a href="#graph-to-tensor">we’ve constructed above</a>, we are now ready to build a GNN. We will start with the simplest GNN architecture, one where we learn new embeddings for all graph attributes (nodes, edges, global), but where we do not yet use the connectivity of the graph.</p>
+<p>With the numerical representation of graphs that <a href="#graph-to-tensor">we’ve constructed above</a>, we are now ready to build a GNN. We will start with the simplest GNN architecture, one where we learn new embeddings for all graph attributes (nodes, edges, global), but where we do not yet use the connectivity of the graph.</p>
 <p>This GNN uses a separate multilayer perceptron (MLP) (or your favorite differentiable model) on each component of a graph; we call this a GNN layer. For each node vector, we apply the MLP and get back a learned node-vector. We do the same for each edge, learning a per-edge embedding, and also for the global-context vector, learning a single embedding for the entire graph.</p>
 <aside>
 You could also call it a GNN block. Because it contains multiple operations/layers (like a ResNet block).

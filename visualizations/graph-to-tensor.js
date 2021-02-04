@@ -255,6 +255,8 @@ export function graphToTensor() {
   drawGraph()
   drawTensor()
 
+  sel.on('click', () => d3.event.target == sel.select('svg').node() && incClick(globalVal));
+
   sel.selectAll('.link, .node, .num, .pair, .global')
     .on('click', incClick)
     .on('mouseover', setHover)
