@@ -48,6 +48,5 @@
     "staticPath": "data",
     "watcherGlob": "**"
   },
-  "author": "",
-  "license": "ISC"
+  "author": ""
 }
