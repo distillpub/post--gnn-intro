@@ -122,7 +122,7 @@ Three types of attributes we might find in a graph, hover over to highlight each
 </figcaption></figure>
 
 
-<p>To further describe each node, edge or the entire graph, we can store information in each of these pieces of the graph to further describe them. </p>
+<p>To further describe each node, edge or the entire graph, we can store information in each of these pieces of the graph. </p>
 <figure><div id='graph-description-embeddings'></div>
 <figcaption>
 Information in the form of scalars or embeddings can be stored at each graph node (left) or edge (right).
@@ -261,7 +261,7 @@ Two adjacency matrices representing the same graph.
 </figcaption>
 </figure>
 
-<p>The example below shows every adjacency matrix that can describe this small graph of 4 nodes. This is already a significant number of adjacency matrices– for larger examples like Othello, the number is untenable.</p>
+<p>The example below shows every adjacency matrix that can describe this small graph of 4 nodes. This is already a significant number of adjacency matrices–for larger examples like Othello, the number is untenable.</p>
 <figure class='fullscreen'><div id='shuffle-sm'></div>
 <figcaption>
 All of these adjacency matrices represent the same graph. Click on an edge to remove it on a “virtual edge” to add it and the matrices will update accordingly.
@@ -277,9 +277,13 @@ Hover and click on the edges, nodes, and global graph marker to view and change 
 </figcaption></figure>
 
 <h2 id="graph-neural-networks">Graph Neural Networks</h2>
-<p>Now that we have all of a graph’s description in a matrix format that is permutation invariant, we will describe using graph neural networks (GNNs) to solve graph prediction tasks. <strong>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).</strong> We’re going to build GNNs using the “message passing neural network” framework proposed by Gilmer et al.<d-cite key="Gilmer2017-no"></d-cite> using the architecture Graph Nets schematics introduced by Battaglia et al.<d-cite key="Battaglia2018-pi"></d-cite>  GNNs adopt a “graph-in, graph-out” architecture meaning that these model types accept a graph as input, with information loaded into its nodes, edges and global-context, and progressively transform these embeddings, without changing the connectivity of the input graph. </p>
+<p>Now that we have all of a graph’s description in a matrix format that is permutation invariant, we will describe using graph neural networks (GNNs) to solve graph prediction tasks. <strong>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).</strong> We’re going to build GNNs using the “message passing neural network” framework proposed by Gilmer et al.<d-cite key="Gilmer2017-no"></d-cite> using the Graph Nets architecture schematics introduced by Battaglia et al.<d-cite key="Battaglia2018-pi"></d-cite>  GNNs adopt a “graph-in, graph-out” architecture meaning that these model types accept a graph as input, with information loaded into its nodes, edges and global-context, and progressively transform these embeddings, without changing the connectivity of the input graph. </p>
 <h3 id="the-simplest-gnn">The simplest GNN</h3>
 <p>With the numerical representation of graphs that <a href="#graph-to-tensor">we’ve constructed above</a>, we are now ready to build a GNN. We will start with the simplest GNN architecture, one where we learn new embeddings for all graph attributes (nodes, edges, global), but where we do not yet use the connectivity of the graph.</p>
+<aside>
+For simplicity, the previous diagrams used scalars to represent graph attributes; in practice feature vectors, or embeddings, are much more useful.   
+</aside>
+
 <p>This GNN uses a separate multilayer perceptron (MLP) (or your favorite differentiable model) on each component of a graph; we call this a GNN layer. For each node vector, we apply the MLP and get back a learned node-vector. We do the same for each edge, learning a per-edge embedding, and also for the global-context vector, learning a single embedding for the entire graph.</p>
 <aside>
 You could also call it a GNN block. Because it contains multiple operations/layers (like a ResNet block).
@@ -379,7 +383,7 @@ When we want to make a prediction on nodes, but our dataset only has edge inform
 Architecture schematic for Message Passing layer. The first step "prepares" a message composed of information from an edge and it's connected nodes and then "passes" the message to the node.
 </figcaption></figure>
 
-<p>Which graph attributes we update and in which order we update them is one design design behind GNNs. We could whether to update node embeddings before edge embeddings, or the other way around. This is an open area of research with a variety of solutions– for example we could update in a ‘weave’ fashion<d-cite key="Kearnes2016-rl"></d-cite> where we have four updated representations that get combined into new node and edge representations: node to node (linear), edge to edge (linear), node to edge (edge layer), edge to node (node layer).</p>
+<p>Which graph attributes we update and in which order we update them is one design decision behind GNNs. We could whether to update node embeddings before edge embeddings, or the other way around. This is an open area of research with a variety of solutions– for example we could update in a ‘weave’ fashion<d-cite key="Kearnes2016-rl"></d-cite> where we have four updated representations that get combined into new node and edge representations: node to node (linear), edge to edge (linear), node to edge (edge layer), edge to node (node layer).</p>
 <figure><img src='images/arch_weave.png'></img>
 <figcaption>
 Some of the different ways we might combine edge and node representation in a GNN layer.
@@ -400,11 +404,11 @@ Some of the different ways we might combine edge and node representation in a GN
 <h2 id="gnn-playground">GNN playground</h2>
 <p>We’ve described a wide range of GNN components here, but how do they actually differ in practice? This GNN playground allows you to see how these different components and architectures contribute to a GNN’s ability to learn a real task. </p>
 <p>Our playground shows a graph-level prediction task with small molecular graphs. We use the the Leffingwell Odor Dataset<d-cite key="Sanchez-Lengeling2020-qq"></d-cite><d-cite key="Sanchez-Lengeling2019-vs"></d-cite>, which is composed of molecules with associated odor percepts (labels). Predicting the relation of a molecular structure (graph) to its smell is a 80+ year-old problem straddling chemistry, physics, neuroscience, and machine learning.</p>
-<p>To simplify the problem,  we consider only a single binary label per molecule, classifying if a molecular graph smells “pungent” or not, as labeled by a professional perfumer. We say a molecule has a “pungent” scent if it has a strong, striking smell. For example, garlic and mustard, which might contain the molecule ‘allyl alcohol’ have this quality. The molecule ‘piperitone’, often used for peppermint-flavored candy, is also described as having a pungent smell.</p>
+<p>To simplify the problem,  we consider only a single binary label per molecule, classifying if a molecular graph smells “pungent” or not, as labeled by a professional perfumer. We say a molecule has a “pungent” scent if it has a strong, striking smell. For example, garlic and mustard, which might contain the molecule <em>allyl alcohol</em> have this quality. The molecule <em>piperitone</em>, often used for peppermint-flavored candy, is also described as having a pungent smell.</p>
 <p>We represent each molecule as a graph, where atoms are nodes containing a one-hot encoding for its atomic identity (Carbon, Nitrogen, Oxygen, Fluorine) and bonds are edges containing a one-hot encoding its bond type (single, double, triple or aromatic). </p>
 <p>Our general modeling template for this problem will be built up using sequential GNN layers, followed by a linear model with a sigmoid activation for classification. The design space for our GNN has many levers that can customize the model:</p>
 <ol>
-<li><p>The number of GNN layers, also called the ‘depth’.</p>
+<li><p>The number of GNN layers, also called the <em>depth</em>.</p>
 </li>
 <li><p>The dimensionality of each attribute when updated. The update function is a 1-layer MLP with relu activation function and a layer norm for normalization of activations. </p>
 </li>
