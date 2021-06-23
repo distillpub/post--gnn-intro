@@ -135,16 +135,17 @@ export class pcaLayers {
       .at({
         fill: d => this.color(d.pred),
         stroke: d => this.color(d.label),
-        'stroke-width': 3,
+        'stroke-width': 1.5,
+        fillOpacity: .7,
       })
       .on('click', (d, i) => {
         this.selIdx = i;
         this.clickCallback(this.selIdx);
         this.updateNodes(250);
       })
-      .on('mouseover', function (d) {d3.select(this).attr('opacity', 1)})
+      .on('mouseover', function (d) {d3.select(this).at({fillOpacity: 1}) })
       .on('mouseout', function (d, i) {
-        d3.select(this).attr('opacity', that.selIdx == i ? 1 : 0.75)
+        d3.select(this).at({fillOpacity: that.selIdx == i ? 1 : 0.7})
       })
   }
 
