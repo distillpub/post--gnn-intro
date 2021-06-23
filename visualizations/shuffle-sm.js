@@ -90,7 +90,9 @@ export function shuffleSm(){
 
     renderFns.push(() => {
       linkSel.at({
-        fill: d => d.hover ? '#315b7e' : linkColors[d.v], 
+        fill: d => linkColors[d.v], 
+        stroke: d => d.hover ? '#aaa' : '',
+        strokeWidth: d => d.hover ? 3 : 0,
       })
     })
   }
@@ -127,7 +129,7 @@ export function shuffleSm(){
     var linkBgSel = g.appendMany('path.link', links.filter(d => d.a.i > d.b.i))
       .at({
         d: d => d.pathStr,
-        strokeWidth: 10,
+        strokeWidth: 15,
         fill: 'none',
       })
 
@@ -150,7 +152,7 @@ export function shuffleSm(){
       nodeSel.at({
         fill: d => '#fff', 
         stroke: d => d.hover ? '#000' : strokeColors[d.v],
-        'stroke-width': d => d.hover ? '3px' : '1px',
+        strokeWidth: d => d.hover ? '3px' : '1px',
       })
 
       linkSel.at({
@@ -159,7 +161,7 @@ export function shuffleSm(){
       })
 
       linkBgSel.at({
-        stroke: d => d.hover ? '#315b7e' : 'rgba(0,0,0,0)',
+        stroke: d => d.hover ? '#ddd' : 'rgba(0,0,0,0)',
       })
     })
 

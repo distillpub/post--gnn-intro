@@ -1,3 +1,7 @@
+html{
+  min-width: 1200px;
+}
+
 .teaser {
   grid-column: text;
   width: 100%;
@@ -181,4 +185,81 @@ h1{
 }
 
 
+
+
+/* Override distill styles - no mobile support */
+
+/*
+ * Copyright 2018 The Distill Template Authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@media(min-width: 1px) {
+  aside {
+    grid-column: gutter;
+  }
+
+  .side {
+    grid-column: gutter;
+  }
+}
+@media(min-width: 1px) {
+  d-title {
+    padding: 4rem 0 1.5rem;
+  }
+}
+@media(min-width: 1px) {
+  d-title h1 {
+    font-size: 50px;
+  }
+}
+
+@media(min-width: 1px) {
+  d-byline .byline {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media(min-width: 1px) {
+  d-byline .authors-affiliations {
+    margin-bottom: 0;
+  }
+}
+
+@media(min-width: 1px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media(min-width: 1px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
 
