@@ -20,7 +20,7 @@
     "seedrandom": "2.4.3",
     "tfjs": "^0.6.0",
     "underscore": "^1.10.2",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.10"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

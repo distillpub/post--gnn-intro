@@ -22,8 +22,9 @@ const padding = 30
 const wordSpacing = 30
 const fontSize = 30
 const charWidth = calcCharWidth();
-const blue = d3.color('steelblue');
-const blueDark = blue.darker(1);
+const steelblue = d3.color('steelblue')
+const blue = steelblue.darker(-.5);
+const blueDark =steelblue.darker(2);
 
 export class TextAsGraph {
 

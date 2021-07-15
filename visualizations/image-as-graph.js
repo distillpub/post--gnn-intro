@@ -62,8 +62,9 @@ function fontColor(d) {
   return d.isOn ? '#fff' : '#777';
 }
 
-var dBlue = 'steelblue'
-var lBlue = d3.color(dBlue).darker(1);
+var blue = 'steelblue'
+var dBlue = d3.color(blue).darker(-.5);
+var lBlue = d3.color(blue).darker(2);
 
 export function imageAsGraph() {
 
@@ -189,7 +190,7 @@ export function imageAsGraph() {
     })
 
   var fLinkSel = f.svg.append('g').appendMany('path.link', links)
-    .at({stroke: 'steelblue',})
+    .at({stroke: dBlue,})
     .on('mouseover', updateActivePair)
 
   var fNodeSel = f.svg.appendMany('g', pixels)

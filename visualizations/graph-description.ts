@@ -108,9 +108,9 @@ export class GraphDescription {
       div.on('mouseout', () => this.unhighlightAll()));
     }
 
-    makeLine('U', 'Global (or master node) attributes', 'e.g., number of nodes, longest path', () => this.highlightGlobal())
     makeLine('V', 'Vertex (or node) attributes', 'e.g., node identity, number of neighbors', () => this.highlightNodes())
     makeLine('E', 'Edge (or link) attributes and directions', 'e.g., edge identity, edge weight', () => this.highlightEdges())
+    makeLine('U', 'Global (or master node) attributes', 'e.g., number of nodes, longest path', () => this.highlightGlobal())
   }
   highlightEdges() {
     this.parent.select('#E').classed('selected', true);

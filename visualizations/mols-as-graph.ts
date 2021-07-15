@@ -18,8 +18,10 @@
 
 import * as d3 from 'd3';
 
-const blue = d3.color('steelblue');
-const blueDark = blue.darker(1);
+const steelblue = d3.color('steelblue')
+const blue = steelblue.darker(-.5);
+const blueDark =steelblue.darker(2);
+
 export class XsAsGraphs {
   parent = d3.select('#mols-as-graph');
   names = ['caffeine', 'citronellal', 'othello', 'karate']

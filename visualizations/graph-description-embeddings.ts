@@ -148,9 +148,9 @@ export class GraphDescriptionEmbeddings {
         .attr('stroke', 'white');
     }
 
-    makeLine('Global (or master node) embedding', this.global[0], 'g')
     makeLine('Vertex (or node) embedding', this.nodes[this.selectedNodeIdx], 'n')
     makeLine('Edge (or link) attributes and embedding', this.links[this.selectedEdgeIdx], 'l')
+    makeLine('Global (or master node) embedding', this.global[0], 'g')
 
     this.parent.selectAll('circle')
       .style("stroke-width", (d, i) => this.selectedNodeIdx == i ? 6 : 1)
