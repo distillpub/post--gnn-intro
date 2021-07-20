@@ -1101,3 +1101,218 @@
   note         = "Accessed: 2021-7-19"
 }
 
+
+@ARTICLE{Eksombatchai2017-il,
+  title         = "Pixie: A System for Recommending 3+ Billion Items to 200+
+                   Million Users in {Real-Time}",
+  author        = "Eksombatchai, Chantat and Jindal, Pranav and Liu, Jerry
+                   Zitao and Liu, Yuchen and Sharma, Rahul and Sugnet, Charles
+                   and Ulrich, Mark and Leskovec, Jure",
+  abstract      = "User experience in modern content discovery applications
+                   critically depends on high-quality personalized
+                   recommendations. However, building systems that provide such
+                   recommendations presents a major challenge due to a massive
+                   pool of items, a large number of users, and requirements for
+                   recommendations to be responsive to user actions and
+                   generated on demand in real-time. Here we present Pixie, a
+                   scalable graph-based real-time recommender system that we
+                   developed and deployed at Pinterest. Given a set of
+                   user-specific pins as a query, Pixie selects in real-time
+                   from billions of possible pins those that are most related
+                   to the query. To generate recommendations, we develop Pixie
+                   Random Walk algorithm that utilizes the Pinterest object
+                   graph of 3 billion nodes and 17 billion edges. Experiments
+                   show that recommendations provided by Pixie lead up to 50\%
+                   higher user engagement when compared to the previous
+                   Hadoop-based production system. Furthermore, we develop a
+                   graph pruning strategy at that leads to an additional 58\%
+                   improvement in recommendations. Last, we discuss system
+                   aspects of Pixie, where a single server executes 1,200
+                   recommendation requests per second with 60 millisecond
+                   latency. Today, systems backed by Pixie contribute to more
+                   than 80\% of all user engagement on Pinterest.",
+  month         =  nov,
+  year          =  2017,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.IR",
+  eprint        = "1711.07601"
+}
+
+@MISC{undated-sy,
+  title        = "Traffic prediction with advanced Graph Neural Networks",
+  author       = "*, Oliver Lange and Perez, Luis",
+  abstract     = "Working with our partners at Google Maps, we used advanced
+                  machine learning techniques including Graph Neural Networks,
+                  to improve the accuracy of real time ETAs by up to 50\%.",
+  howpublished = "\url{https://deepmind.com/blog/article/traffic-prediction-with-advanced-graph-neural-networks}",
+  note         = "Accessed: 2021-7-19"
+}
+
+@ARTICLE{Monti2019-tf,
+  title         = "Fake News Detection on Social Media using Geometric Deep
+                   Learning",
+  author        = "Monti, Federico and Frasca, Fabrizio and Eynard, Davide and
+                   Mannion, Damon and Bronstein, Michael M",
+  abstract      = "Social media are nowadays one of the main news sources for
+                   millions of people around the globe due to their low cost,
+                   easy access and rapid dissemination. This however comes at
+                   the cost of dubious trustworthiness and significant risk of
+                   exposure to 'fake news', intentionally written to mislead
+                   the readers. Automatically detecting fake news poses
+                   challenges that defy existing content-based analysis
+                   approaches. One of the main reasons is that often the
+                   interpretation of the news requires the knowledge of
+                   political or social context or 'common sense', which current
+                   NLP algorithms are still missing. Recent studies have shown
+                   that fake and real news spread differently on social media,
+                   forming propagation patterns that could be harnessed for the
+                   automatic fake news detection. Propagation-based approaches
+                   have multiple advantages compared to their content-based
+                   counterparts, among which is language independence and
+                   better resilience to adversarial attacks. In this paper we
+                   show a novel automatic fake news detection model based on
+                   geometric deep learning. The underlying core algorithms are
+                   a generalization of classical CNNs to graphs, allowing the
+                   fusion of heterogeneous data such as content, user profile
+                   and activity, social graph, and news propagation. Our model
+                   was trained and tested on news stories, verified by
+                   professional fact-checking organizations, that were spread
+                   on Twitter. Our experiments indicate that social network
+                   structure and propagation are important features allowing
+                   highly accurate (92.7\% ROC AUC) fake news detection.
+                   Second, we observe that fake news can be reliably detected
+                   at an early stage, after just a few hours of propagation.
+                   Third, we test the aging of our model on training and
+                   testing data separated in time. Our results point to the
+                   promise of propagation-based approaches for fake news
+                   detection as an alternative or complementary strategy to
+                   content-based approaches.",
+  month         =  feb,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.SI",
+  eprint        = "1902.06673"
+}
+
+@ARTICLE{Sanchez-Gonzalez2020-yo,
+  title         = "Learning to simulate complex physics with graph networks",
+  author        = "Sanchez-Gonzalez, Alvaro and Godwin, Jonathan and Pfaff,
+                   Tobias and Ying, Rex and Leskovec, Jure and Battaglia, Peter
+                   W",
+  abstract      = "Here we present a machine learning framework and model
+                   implementation that can learn to simulate a wide variety of
+                   challenging physical domains, involving fluids, rigid
+                   solids, and deformable materials interacting with one
+                   another. Our framework---which we term ``Graph Network-based
+                   Simulators'' (GNS)---represents the state of a physical
+                   system with particles, expressed as nodes in a graph, and
+                   computes dynamics via learned message-passing. Our results
+                   show that our model can generalize from single-timestep
+                   predictions with thousands of particles during training, to
+                   different initial conditions, thousands of timesteps, and at
+                   least an order of magnitude more particles at test time. Our
+                   model was robust to hyperparameter choices across various
+                   evaluation metrics: the main determinants of long-term
+                   performance were the number of message-passing steps, and
+                   mitigating the accumulation of error by corrupting the
+                   training data with noise. Our GNS framework advances the
+                   state-of-the-art in learned physical simulation, and holds
+                   promise for solving a wide range of complex forward and
+                   inverse problems.",
+  month         =  feb,
+  year          =  2020,
+  copyright     = "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2002.09405"
+}
+
+@ARTICLE{Stokes2020-az,
+  title    = "A Deep Learning Approach to Antibiotic Discovery",
+  author   = "Stokes, Jonathan M and Yang, Kevin and Swanson, Kyle and Jin,
+              Wengong and Cubillos-Ruiz, Andres and Donghia, Nina M and
+              MacNair, Craig R and French, Shawn and Carfrae, Lindsey A and
+              Bloom-Ackermann, Zohar and Tran, Victoria M and Chiappino-Pepe,
+              Anush and Badran, Ahmed H and Andrews, Ian W and Chory, Emma J
+              and Church, George M and Brown, Eric D and Jaakkola, Tommi S and
+              Barzilay, Regina and Collins, James J",
+  journal  = "Cell",
+  volume   =  181,
+  number   =  2,
+  pages    = "475--483",
+  month    =  apr,
+  year     =  2020,
+  language = "en"
+}
+
+@ARTICLE{Dwivedi2020-xm,
+  title         = "Benchmarking Graph Neural Networks",
+  author        = "Dwivedi, Vijay Prakash and Joshi, Chaitanya K and Laurent,
+                   Thomas and Bengio, Yoshua and Bresson, Xavier",
+  abstract      = "Graph neural networks (GNNs) have become the standard
+                   toolkit for analyzing and learning from data on graphs. As
+                   the field grows, it becomes critical to identify key
+                   architectures and validate new ideas that generalize to
+                   larger, more complex datasets. Unfortunately, it has been
+                   increasingly difficult to gauge the effectiveness of new
+                   models in the absence of a standardized benchmark with
+                   consistent experimental settings. In this paper, we
+                   introduce a reproducible GNN benchmarking framework, with
+                   the facility for researchers to add new models conveniently
+                   for arbitrary datasets. We demonstrate the usefulness of our
+                   framework by presenting a principled investigation into the
+                   recent Weisfeiler-Lehman GNNs (WL-GNNs) compared to message
+                   passing-based graph convolutional networks (GCNs) for a
+                   variety of graph tasks, i.e. graph regression/classification
+                   and node/link prediction, with medium-scale datasets.",
+  month         =  mar,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2003.00982"
+}
+
+@ARTICLE{You2020-vk,
+  title         = "Design Space for Graph Neural Networks",
+  author        = "You, Jiaxuan and Ying, Rex and Leskovec, Jure",
+  abstract      = "The rapid evolution of Graph Neural Networks (GNNs) has led
+                   to a growing number of new architectures as well as novel
+                   applications. However, current research focuses on proposing
+                   and evaluating specific architectural designs of GNNs, as
+                   opposed to studying the more general design space of GNNs
+                   that consists of a Cartesian product of different design
+                   dimensions, such as the number of layers or the type of the
+                   aggregation function. Additionally, GNN designs are often
+                   specialized to a single task, yet few efforts have been made
+                   to understand how to quickly find the best GNN design for a
+                   novel task or a novel dataset. Here we define and
+                   systematically study the architectural design space for GNNs
+                   which consists of 315,000 different designs over 32
+                   different predictive tasks. Our approach features three key
+                   innovations: (1) A general GNN design space; (2) a GNN task
+                   space with a similarity metric, so that for a given novel
+                   task/dataset, we can quickly identify/transfer the best
+                   performing architecture; (3) an efficient and effective
+                   design space evaluation method which allows insights to be
+                   distilled from a huge number of model-task combinations. Our
+                   key results include: (1) A comprehensive set of guidelines
+                   for designing well-performing GNNs; (2) while best GNN
+                   designs for different tasks vary significantly, the GNN task
+                   space allows for transferring the best designs across
+                   different tasks; (3) models discovered using our design
+                   space achieve state-of-the-art performance. Overall, our
+                   work offers a principled and scalable approach to transition
+                   from studying individual GNN designs for specific tasks, to
+                   systematically studying the GNN design space and the task
+                   space. Finally, we release GraphGym, a powerful platform for
+                   exploring different GNN designs and tasks. GraphGym features
+                   modularized GNN implementation, standardized GNN evaluation,
+                   and reproducible and scalable experiment management.",
+  month         =  nov,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2011.08843"
+}
+
+
