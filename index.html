@@ -39,15 +39,15 @@
   "title": "A Gentle Introduction to Graph Neural Networks",
   "description": "Neural networks have been adapted to leverage the structure and properties of graphs. We explore the components needed for building a graph neural network - and motivate the design choices behind them.",
   "authors": [
-    {
-      "author": "Emily Reif",
+{
+      "author": "Benjamin Sanchez-Lengeling",
       "affiliations": [{
         "name": "Google Research",
         "affiliationURL": "https://research.google/teams/brain/"
       }]
     },
     {
-      "author": "Benjamin Sanchez-Lengeling",
+      "author": "Emily Reif",
       "affiliations": [{
         "name": "Google Research",
         "affiliationURL": "https://research.google/teams/brain/"
@@ -272,15 +272,15 @@ All of these adjacency matrices represent the same graph. Click on an edge to re
 <aside>
 Another way of stating this is with Big-O notation, it is preferable to have $O(n_{edges})$, rather than $O(n_{nodes}^2)$.
 </aside>
-To make this notion concrete, we can see how information in different graphs might be represented under this specification:
 
+<p>To make this notion concrete, we can see how information in different graphs might be represented under this specification:</p>
 <figure class='fullscreen'>
 <div id='graph-to-tensor'></div>
 <figcaption>
 Hover and click on the edges, nodes, and global graph marker to view and change attribute representations. On one side we have a small graph and on the other the information of the graph in a tensor representation.
 </figcaption></figure>
 
-<p>It should be noted that the figure uses scalar values per node/edge/global, but most practical tensor representations have vectors per graph attribute. Instead of a node tensor of size [$n_{nodes}$] we will be dealing with node tensors of size [$n_{nodes}$, $nodedim$]. Same for the other graph attributes.</p>
+<p>It should be noted that the figure uses scalar values per node/edge/global, but most practical tensor representations have vectors per graph attribute. Instead of a node tensor of size [$n_{nodes}$] we will be dealing with node tensors of size [$n_{nodes}$, $nodes_{dim}$]. Same for the other graph attributes.</p>
 <h2 id="graph-neural-networks">Graph Neural Networks</h2>
 <p>Now that the  graph’s description is in a matrix format that is permutation invariant, we will describe using graph neural networks (GNNs) to solve graph prediction tasks. <strong>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (permutation invariances).</strong> We’re going to build GNNs using the “message passing neural network” framework proposed by Gilmer et al.<d-cite key="Gilmer2017-no"></d-cite> using the Graph Nets architecture schematics introduced by Battaglia et al.<d-cite key="Battaglia2018-pi"></d-cite>  GNNs adopt a “graph-in, graph-out” architecture meaning that these model types accept a graph as input, with information loaded into its nodes, edges and global-context, and progressively transform these embeddings, without changing the connectivity of the input graph. </p>
 <h3 id="the-simplest-gnn">The simplest GNN</h3>
@@ -414,9 +414,9 @@ Unfortunately for large graphs, this quickly becomes computationally expensive (
 <figcaption>Schematic of a Graph Nets architecture leveraging global representations.
 </figcaption></figure>
 
-<p>In this view all graph attributes have learned representations, so we can leverage them during pooling by conditioning the information of our attribute of interest with respect to the rest. For example, for one node we can pool neighboring nodes, neighboring edges and the global information. To condition the new node embedding on all these possible sources of information, we can simply concatenate them. Additionally we may also map them to the same space via a linear map and add them or apply a feature-wise modulation layer<d-cite key="Dumoulin2018-tb"></d-cite>.</p>
+<p>In this view all graph attributes have learned representations, so we can leverage them during pooling by conditioning the information of our attribute of interest with respect to the rest. For example, for one node we can pool neighboring nodes, neighboring edges and the global information. To condition the new node embedding on all these possible sources of information, we can simply concatenate them. Additionally we may also map them to the same space via a linear map and add them or apply a feature-wise modulation layer<d-cite key="Dumoulin2018-tb"></d-cite>, which can be considered a type of featurize-wise attention mechanism.</p>
 <figure><img src='images/graph_conditioning.png'></img>
-<figcaption>Schematic conditioning the information of one node based on three other embeddings (adjacent nodes, adjacent edges, global). This step corresponds to the node operations in the Graph Nets Layer.
+<figcaption>Schematic for conditioning the information of one node based on three other embeddings (adjacent nodes, adjacent edges, global). This step corresponds to the node operations in the Graph Nets Layer. 
 </figcaption></figure>
 
 <h2 id="gnn-playground">GNN playground</h2>
@@ -428,11 +428,11 @@ Unfortunately for large graphs, this quickly becomes computationally expensive (
 <ol>
 <li><p>The number of GNN layers, also called the <em>depth</em>.</p>
 </li>
-<li><p>The dimensionality of each attribute when updated. The update function is a 1-layer MLP with relu activation function and a layer norm for normalization of activations. </p>
-</li>
-<li><p>Toggling (on or off) if we are passing messages between each of: nodes, edges and global representation. A baseline model would be a graph-independent GNN (all message-passing off) which aggregates all data at the end into a single global attribute. Toggling on all message-passing functions yields a GraphNets architecture.</p>
+<li><p>The dimensionality of each attribute when updated. The update function is a 1-layer MLP with a relu activation function and a layer norm for normalization of activations. </p>
 </li>
 <li><p>The aggregation function used in pooling: max, mean or sum.</p>
+</li>
+<li><p>The graph attributes that get updated, or styles of message passing: nodes, edges and global representation. We control these via boolean toggles (on or off). A baseline model would be a graph-independent GNN (all message-passing off) which aggregates all data at the end into a single global attribute. Toggling on all message-passing functions yields a GraphNets architecture.</p>
 </li>
 </ol>
 <p>To better understand how a GNN is learning a task-optimized representation of a graph, we also look at the penultimate layer activations of the GNN. These ‘graph embeddings’ are the outputs of the GNN model right before prediction.  Since we are using a generalized linear model for prediction, a linear mapping is enough to allow us to see how we are learning representations around the decision boundary. </p>
@@ -516,6 +516,7 @@ A perfect model would visibility separate labeled data, but since we are reducin
 
 <p>Overall we see that the more graph attributes are communicating, the better the performance of the average model. Our task is centered on global representations, so explicitly learning this attribute also tends to improve performance. Our node representations also seem to be more useful than edge representations, which makes sense since more information is loaded in these attributes.</p>
 <h2 id="into-the-weeds">Into the Weeds</h2>
+<p>Following we have a few sections of a myriad of graph-related topics that are relevant for GNNs.</p>
 <h3 id="other-types-of-graphs-multigraphs-hypergraphs-hypernodes">Other types of graphs (multigraphs, hypergraphs, hypernodes)</h3>
 <p>While we only described graphs with vectorized information for each attribute, graph structures are more flexible and can accommodate other types of information. Fortunately, the message passing framework is flexible enough that often adapting GNNs to more complex graph structures is about defining how information is passed and updated by new graph attributes. </p>
 <p>For example, we can consider multi-edge graphs or <em>multigraphs</em><d-cite key="Harary1969-qo"></d-cite>, where a pair of nodes can share multiple types of edges, this happens when we want to model the interactions between nodes differently based on their type. For example with a social network, we can specify edge types based on the type of relationships (acquaintance, friend, family). A GNN can be adapted by having different types of message passing steps for each edge type. 
@@ -561,11 +562,10 @@ No pooling type can always distinguish between graph pairs such as max pooling o
 <!--[TODO: Image sketch of a graph and its dual]-->
 
 
-<h3 id="graph-convolutions-and-image-convolutions">Graph convolutions and image convolutions</h3>
+<h3 id="graph-convolutions-as-a-matrix-multiplication-graph-traversal-as-a-matrix-multiplication">Graph convolutions as a Matrix Multiplication, Graph traversal as a Matrix Multiplication</h3>
 <p>We’ve talked a lot about graph convolutions, and of course this raises the question, what is the parallel to image convolutions? </p>
 <p>In an image convolution, each element of the image is updated using information from its neighbors, weighted by a kernel. For graphs, each node is updated by its  neighbors as well, but in a more complex fashion. Whereas image elements have a constant number of neighbors (e.g., for a kernel with radius one each element has nine neighbors), each graph node can have any number of neighbors.  </p>
 <p>We need a function to aggregate a variable amount of information. This is implemented as a matrix multiply, but we can also express the same operation as message passing. Since this operation is one of the most important building blocks of these models, let’s dig deeper into what sort of properties we want in aggregation operations, and which types of operations have these sorts of properties.</p>
-<p>Additionally, we can consider lookup operations that are not focused on 1-first degree neighbors: we could consider n-degree neighbors, which might allow our network to look farther aways in less steps. </p>
 <h3 id="graph-attention-networks">Graph Attention Networks</h3>
 <p>Another way of communicating information between graph attributes is via attention.<d-cite key="Vaswani2017-as"></d-cite> For example, when we consider the sum-aggregation of a node and its 1-degree neighboring nodes we could also consider using a weighted sum.The challenge then is to associate weights in a permutation invariant fashion. One approach is to consider a scalar scoring function that assigns weights based on pairs of nodes ( $f(node_i, node_j)$). In this case, the scoring function can be interpreted as a function that measures how relevant a neighboring node is in relation to the center node. Weights can be normalized, for example with a softmax function to focus most of the weight on a neighbor most relevant for a node in relation to a task. This concept is the basis of Graph Attention Networks (GAT) <d-cite key="Velickovic2017-hf"></d-cite> and Set Transformers<d-cite key="Lee2018-ti"></d-cite>. Permutation invariance is preserved, because scoring works on pairs of nodes. A common scoring function is the inner product and nodes are often transformed before scoring into query and key vectors via a linear map to increase the expressivity of the scoring mechanism. Additionally for interpretability, the scoring weights can be used as a measure of the importance of an edge in relation to a task. </p>
 <p>Additionally, transformers can be viewed as GNNs with an attention mechanism <d-cite key="Joshi2020-ze"></d-cite>. Under this view, the transformer models several elements (i.g. character tokens) as nodes in a fully connected graph and the attention mechanism is assigning edge embeddings to each node-pair which are used to compute attention weights. The difference lies in the assumed pattern of connectivity between entities, a GNN is assuming a sparse pattern and the Transformer is modelling all connections.</p>

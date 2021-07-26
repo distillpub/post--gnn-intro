@@ -31,6 +31,7 @@ export class Table {
       
         <div class='row header'>
           <div> Dataset </div>
+          <div> Domain </div>
           <div> graphs </div>
           <div> nodes </div>
           <div> edges </div>
@@ -41,6 +42,7 @@ export class Table {
 
         <div class='row'>
           <div> karate club</div>
+          <div> Social network </div>
           <div> 1 </div>
           <div> 34 </div>
           <div> 78 </div>
@@ -51,6 +53,7 @@ export class Table {
 
         <div class='row'>
           <div> qm9 </div>
+          <div> Small molecules </div>
           <div> 134k </div>
           <div> ≤ 9 </div>
           <div> ≤26 </div>
@@ -60,7 +63,8 @@ export class Table {
         </div>
 
         <div class='row'>
-          <div> cora citation </div>
+          <div> Cora </div>
+          <div> Citation network </div>
           <div> 1 </div>
           <div> 23,166 </div>
           <div> 91,500 </div>
@@ -71,6 +75,7 @@ export class Table {
 
         <div class='row'>
           <div> Wikipedia links, English </div>
+          <div> Knowledge graph </div>
           <div> 1 </div>
           <div> 12M </div>
           <div> 378M </div>
