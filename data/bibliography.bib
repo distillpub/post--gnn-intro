@@ -1316,3 +1316,393 @@
 }
 
 
+
+@ARTICLE{Zhong2020-mv,
+  title         = "Hierarchical {Message-Passing} Graph Neural Networks",
+  author        = "Zhong, Zhiqiang and Li, Cheng-Te and Pang, Jun",
+  abstract      = "Graph Neural Networks (GNNs) have become a promising
+                   approach to machine learning with graphs. Since existing GNN
+                   models are based on flat message-passing mechanisms, two
+                   limitations need to be tackled. One is costly in encoding
+                   global information on the graph topology. The other is
+                   failing to model meso- and macro-level semantics hidden in
+                   the graph, such as the knowledge of institutes and research
+                   areas in an academic collaboration network. To deal with
+                   these two issues, we propose a novel Hierarchical
+                   Message-Passing Graph Neural Networks framework. The main
+                   idea is to generate a hierarchical structure that
+                   re-organises all nodes in a graph into multi-level clusters,
+                   along with intra- and inter-level edge connections. The
+                   derived hierarchy not only creates shortcuts connecting
+                   far-away nodes so that global information can be efficiently
+                   accessed via message passing but also incorporates meso- and
+                   macro-level semantics into the learning of node embedding.
+                   We present the first model to implement this hierarchical
+                   message-passing mechanism, termed Hierarchical
+                   Community-aware Graph Neural Network (HC-GNN), based on
+                   hierarchical communities detected from the graph.
+                   Experiments conducted on eight datasets under transductive,
+                   inductive, and few-shot settings exhibit that HC-GNN can
+                   outperform state-of-the-art GNN models in network analysis
+                   tasks, including node classification, link prediction, and
+                   community detection.",
+  month         =  sep,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2009.03717"
+}
+
+@ARTICLE{Yadati2018-de,
+  title         = "{HyperGCN}: A New Method of Training Graph Convolutional
+                   Networks on Hypergraphs",
+  author        = "Yadati, Naganand and Nimishakavi, Madhav and Yadav, Prateek
+                   and Nitin, Vikram and Louis, Anand and Talukdar, Partha",
+  abstract      = "In many real-world network datasets such as co-authorship,
+                   co-citation, email communication, etc., relationships are
+                   complex and go beyond pairwise. Hypergraphs provide a
+                   flexible and natural modeling tool to model such complex
+                   relationships. The obvious existence of such complex
+                   relationships in many real-world networks naturaly motivates
+                   the problem of learning with hypergraphs. A popular learning
+                   paradigm is hypergraph-based semi-supervised learning (SSL)
+                   where the goal is to assign labels to initially unlabeled
+                   vertices in a hypergraph. Motivated by the fact that a graph
+                   convolutional network (GCN) has been effective for
+                   graph-based SSL, we propose HyperGCN, a novel GCN for SSL on
+                   attributed hypergraphs. Additionally, we show how HyperGCN
+                   can be used as a learning-based approach for combinatorial
+                   optimisation on NP-hard hypergraph problems. We demonstrate
+                   HyperGCN's effectiveness through detailed experimentation on
+                   real-world hypergraphs.",
+  month         =  sep,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1809.02589"
+}
+
+
+@ARTICLE{Stocker2020-tr,
+  title    = "Machine learning in chemical reaction space",
+  author   = "Stocker, Sina and Cs{\'a}nyi, G{\'a}bor and Reuter, Karsten and
+              Margraf, Johannes T",
+  abstract = "Chemical compound space refers to the vast set of all possible
+              chemical compounds, estimated to contain 1060 molecules. While
+              intractable as a whole, modern machine learning (ML) is
+              increasingly capable of accurately predicting molecular
+              properties in important subsets. Here, we therefore engage in the
+              ML-driven study of even larger reaction space. Central to
+              chemistry as a science of transformations, this space contains
+              all possible chemical reactions. As an important basis for
+              'reactive' ML, we establish a first-principles database (Rad-6)
+              containing closed and open-shell organic molecules, along with an
+              associated database of chemical reaction energies (Rad-6-RE). We
+              show that the special topology of reaction spaces, with central
+              hub molecules involved in multiple reactions, requires a
+              modification of existing compound space ML-concepts. Showcased by
+              the application to methane combustion, we demonstrate that the
+              learned reaction energies offer a non-empirical route to
+              rationally extract reduced reaction networks for detailed
+              microkinetic analyses.",
+  journal  = "Nat. Commun.",
+  volume   =  11,
+  number   =  1,
+  pages    = "5505",
+  month    =  oct,
+  year     =  2020,
+  language = "en"
+}
+
+
+@ARTICLE{Chiang2019-yh,
+  title         = "{Cluster-GCN}: An Efficient Algorithm for Training Deep and
+                   Large Graph Convolutional Networks",
+  author        = "Chiang, Wei-Lin and Liu, Xuanqing and Si, Si and Li, Yang
+                   and Bengio, Samy and Hsieh, Cho-Jui",
+  abstract      = "Graph convolutional network (GCN) has been successfully
+                   applied to many graph-based applications; however, training
+                   a large-scale GCN remains challenging. Current SGD-based
+                   algorithms suffer from either a high computational cost that
+                   exponentially grows with number of GCN layers, or a large
+                   space requirement for keeping the entire graph and the
+                   embedding of each node in memory. In this paper, we propose
+                   Cluster-GCN, a novel GCN algorithm that is suitable for
+                   SGD-based training by exploiting the graph clustering
+                   structure. Cluster-GCN works as the following: at each step,
+                   it samples a block of nodes that associate with a dense
+                   subgraph identified by a graph clustering algorithm, and
+                   restricts the neighborhood search within this subgraph. This
+                   simple but effective strategy leads to significantly
+                   improved memory and computational efficiency while being
+                   able to achieve comparable test accuracy with previous
+                   algorithms. To test the scalability of our algorithm, we
+                   create a new Amazon2M data with 2 million nodes and 61
+                   million edges which is more than 5 times larger than the
+                   previous largest publicly available dataset (Reddit). For
+                   training a 3-layer GCN on this data, Cluster-GCN is faster
+                   than the previous state-of-the-art VR-GCN (1523 seconds vs
+                   1961 seconds) and using much less memory (2.2GB vs 11.2GB).
+                   Furthermore, for training 4 layer GCN on this data, our
+                   algorithm can finish in around 36 minutes while all the
+                   existing GCN training algorithms fail to train due to the
+                   out-of-memory issue. Furthermore, Cluster-GCN allows us to
+                   train much deeper GCN without much time and memory overhead,
+                   which leads to improved prediction accuracy---using a
+                   5-layer Cluster-GCN, we achieve state-of-the-art test F1
+                   score 99.36 on the PPI dataset, while the previous best
+                   result was 98.71 by [16]. Our codes are publicly available
+                   at
+                   https://github.com/google-research/google-research/tree/master/cluster\_gcn.",
+  month         =  may,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1905.07953"
+}
+
+@ARTICLE{Zeng2019-eh,
+  title         = "{GraphSAINT}: Graph Sampling Based Inductive Learning Method",
+  author        = "Zeng, Hanqing and Zhou, Hongkuan and Srivastava, Ajitesh and
+                   Kannan, Rajgopal and Prasanna, Viktor",
+  abstract      = "Graph Convolutional Networks (GCNs) are powerful models for
+                   learning representations of attributed graphs. To scale GCNs
+                   to large graphs, state-of-the-art methods use various layer
+                   sampling techniques to alleviate the ``neighbor explosion''
+                   problem during minibatch training. We propose GraphSAINT, a
+                   graph sampling based inductive learning method that improves
+                   training efficiency and accuracy in a fundamentally
+                   different way. By changing perspective, GraphSAINT
+                   constructs minibatches by sampling the training graph,
+                   rather than the nodes or edges across GCN layers. Each
+                   iteration, a complete GCN is built from the properly sampled
+                   subgraph. Thus, we ensure fixed number of well-connected
+                   nodes in all layers. We further propose normalization
+                   technique to eliminate bias, and sampling algorithms for
+                   variance reduction. Importantly, we can decouple the
+                   sampling from the forward and backward propagation, and
+                   extend GraphSAINT with many architecture variants (e.g.,
+                   graph attention, jumping connection). GraphSAINT
+                   demonstrates superior performance in both accuracy and
+                   training time on five large graphs, and achieves new
+                   state-of-the-art F1 scores for PPI (0.995) and Reddit
+                   (0.970).",
+  month         =  jul,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1907.04931"
+}
+
+
+@ARTICLE{Markowitz2021-rn,
+  title         = "Graph Traversal with Tensor Functionals: A {Meta-Algorithm}
+                   for Scalable Learning",
+  author        = "Markowitz, Elan and Balasubramanian, Keshav and Mirtaheri,
+                   Mehrnoosh and Abu-El-Haija, Sami and Perozzi, Bryan and Ver
+                   Steeg, Greg and Galstyan, Aram",
+  abstract      = "Graph Representation Learning (GRL) methods have impacted
+                   fields from chemistry to social science. However, their
+                   algorithmic implementations are specialized to specific
+                   use-cases e.g.message passing methods are run differently
+                   from node embedding ones. Despite their apparent
+                   differences, all these methods utilize the graph structure,
+                   and therefore, their learning can be approximated with
+                   stochastic graph traversals. We propose Graph Traversal via
+                   Tensor Functionals(GTTF), a unifying meta-algorithm
+                   framework for easing the implementation of diverse graph
+                   algorithms and enabling transparent and efficient scaling to
+                   large graphs. GTTF is founded upon a data structure (stored
+                   as a sparse tensor) and a stochastic graph traversal
+                   algorithm (described using tensor operations). The algorithm
+                   is a functional that accept two functions, and can be
+                   specialized to obtain a variety of GRL models and
+                   objectives, simply by changing those two functions. We show
+                   for a wide class of methods, our algorithm learns in an
+                   unbiased fashion and, in expectation, approximates the
+                   learning as if the specialized implementations were run
+                   directly. With these capabilities, we scale otherwise
+                   non-scalable methods to set state-of-the-art on large graph
+                   datasets while being more efficient than existing GRL
+                   libraries - with only a handful of lines of code for each
+                   method specialization. GTTF and its various GRL
+                   implementations are on: https://github.com/isi-usc-edu/gttf.",
+  month         =  feb,
+  year          =  2021,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2102.04350"
+}
+
+@ARTICLE{Du2019-hr,
+  title         = "Graph Neural Tangent Kernel: Fusing Graph Neural Networks
+                   with Graph Kernels",
+  author        = "Du, Simon S and Hou, Kangcheng and P{\'o}czos, Barnab{\'a}s
+                   and Salakhutdinov, Ruslan and Wang, Ruosong and Xu, Keyulu",
+  abstract      = "While graph kernels (GKs) are easy to train and enjoy
+                   provable theoretical guarantees, their practical
+                   performances are limited by their expressive power, as the
+                   kernel function often depends on hand-crafted combinatorial
+                   features of graphs. Compared to graph kernels, graph neural
+                   networks (GNNs) usually achieve better practical
+                   performance, as GNNs use multi-layer architectures and
+                   non-linear activation functions to extract high-order
+                   information of graphs as features. However, due to the large
+                   number of hyper-parameters and the non-convex nature of the
+                   training procedure, GNNs are harder to train. Theoretical
+                   guarantees of GNNs are also not well-understood.
+                   Furthermore, the expressive power of GNNs scales with the
+                   number of parameters, and thus it is hard to exploit the
+                   full power of GNNs when computing resources are limited. The
+                   current paper presents a new class of graph kernels, Graph
+                   Neural Tangent Kernels (GNTKs), which correspond to
+                   infinitely wide multi-layer GNNs trained by gradient
+                   descent. GNTKs enjoy the full expressive power of GNNs and
+                   inherit advantages of GKs. Theoretically, we show GNTKs
+                   provably learn a class of smooth functions on graphs.
+                   Empirically, we test GNTKs on graph classification datasets
+                   and show they achieve strong performance.",
+  month         =  may,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1905.13192"
+}
+
+@ARTICLE{Xu2018-hq,
+  title         = "Representation Learning on Graphs with Jumping Knowledge
+                   Networks",
+  author        = "Xu, Keyulu and Li, Chengtao and Tian, Yonglong and Sonobe,
+                   Tomohiro and Kawarabayashi, Ken-Ichi and Jegelka, Stefanie",
+  abstract      = "Recent deep learning approaches for representation learning
+                   on graphs follow a neighborhood aggregation procedure. We
+                   analyze some important properties of these models, and
+                   propose a strategy to overcome those. In particular, the
+                   range of ``neighboring'' nodes that a node's representation
+                   draws from strongly depends on the graph structure,
+                   analogous to the spread of a random walk. To adapt to local
+                   neighborhood properties and tasks, we explore an
+                   architecture -- jumping knowledge (JK) networks -- that
+                   flexibly leverages, for each node, different neighborhood
+                   ranges to enable better structure-aware representation. In a
+                   number of experiments on social, bioinformatics and citation
+                   networks, we demonstrate that our model achieves
+                   state-of-the-art performance. Furthermore, combining the JK
+                   framework with models like Graph Convolutional Networks,
+                   GraphSAGE and Graph Attention Networks consistently improves
+                   those models' performance.",
+  month         =  jun,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1806.03536"
+}
+
+@ARTICLE{Velickovic2019-io,
+  title         = "Neural Execution of Graph Algorithms",
+  author        = "Veli{\v c}kovi{\'c}, Petar and Ying, Rex and Padovano,
+                   Matilde and Hadsell, Raia and Blundell, Charles",
+  abstract      = "Graph Neural Networks (GNNs) are a powerful representational
+                   tool for solving problems on graph-structured inputs. In
+                   almost all cases so far, however, they have been applied to
+                   directly recovering a final solution from raw inputs,
+                   without explicit guidance on how to structure their
+                   problem-solving. Here, instead, we focus on learning in the
+                   space of algorithms: we train several state-of-the-art GNN
+                   architectures to imitate individual steps of classical graph
+                   algorithms, parallel (breadth-first search, Bellman-Ford) as
+                   well as sequential (Prim's algorithm). As graph algorithms
+                   usually rely on making discrete decisions within
+                   neighbourhoods, we hypothesise that maximisation-based
+                   message passing neural networks are best-suited for such
+                   objectives, and validate this claim empirically. We also
+                   demonstrate how learning in the space of algorithms can
+                   yield new opportunities for positive transfer between
+                   tasks---showing how learning a shortest-path algorithm can
+                   be substantially improved when simultaneously learning a
+                   reachability algorithm.",
+  month         =  oct,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "stat.ML",
+  eprint        = "1910.10593"
+}
+
+
+@MISC{noauthor_undated-qq,
+  author    = "Tai-Danae Bradley",
+  title        = "Viewing matrices \& probability as graphs",
+  howpublished = "\url{https://www.math3ma.com/blog/matrices-probability-graphs}",
+
+}
+
+
+@BOOK{Bapat2014-fk,
+  title     = "Graphs and Matrices",
+  author    = "Bapat, Ravindra B",
+  abstract  = "This new edition illustrates the power of linear algebra in the
+               study of graphs. The emphasis on matrix techniques is greater
+               than in other texts on algebraic graph theory. Important
+               matrices associated with graphs (for example, incidence,
+               adjacency and Laplacian matrices) are treated in
+               detail.Presenting a useful overview of selected topics in
+               algebraic graph theory, early chapters of the text focus on
+               regular graphs, algebraic connectivity, the distance matrix of a
+               tree, and its generalized version for arbitrary graphs, known as
+               the resistance matrix. Coverage of later topics include
+               Laplacian eigenvalues of threshold graphs, the positive definite
+               completion problem and matrix games based on a graph.Such an
+               extensive coverage of the subject area provides a welcome prompt
+               for further exploration. The inclusion of exercises enables
+               practical learning throughout the book.In the new edition, a new
+               chapter is added on the line graph of a tree, while some results
+               in Chapter 6 on Perron-Frobenius theory are reorganized.Whilst
+               this book will be invaluable to students and researchers in
+               graph theory and combinatorial matrix theory, it will also
+               benefit readers in the sciences and engineering.",
+  publisher = "Springer",
+  month     =  sep,
+  year      =  2014,
+  language  = "en"
+}
+
+
+@BOOK{Bollobas2013-uk,
+  title     = "Modern Graph Theory",
+  author    = "Bollobas, Bela",
+  abstract  = "The time has now come when graph theory should be part of the
+               education of every serious student of mathematics and computer
+               science, both for its own sake and to enhance the appreciation
+               of mathematics as a whole. This book is an in-depth account of
+               graph theory, written with such a student in mind; it reflects
+               the current state of the subject and emphasizes connections with
+               other branches of pure mathematics. The volume grew out of the
+               author's earlier book, Graph Theory -- An Introductory Course,
+               but its length is well over twice that of its predecessor,
+               allowing it to reveal many exciting new developments in the
+               subject. Recognizing that graph theory is one of several courses
+               competing for the attention of a student, the book contains
+               extensive descriptive passages designed to convey the flavor of
+               the subject and to arouse interest. In addition to a modern
+               treatment of the classical areas of graph theory such as
+               coloring, matching, extremal theory, and algebraic graph theory,
+               the book presents a detailed account of newer topics, including
+               Szemer\textbackslash'edi's Regularity Lemma and its use,
+               Shelah's extension of the Hales-Jewett Theorem, the precise
+               nature of the phase transition in a random graph process, the
+               connection between electrical networks and random walks on
+               graphs, and the Tutte polynomial and its cousins in knot theory.
+               In no other branch of mathematics is it as vital to tackle and
+               solve challenging exercises in order to master the subject. To
+               this end, the book contains an unusually large number of well
+               thought-out exercises: over 600 in total. Although some are
+               straightforward, most of them are substantial, and others will
+               stretch even the most able reader.",
+  publisher = "Springer Science \& Business Media",
+  month     =  dec,
+  year      =  2013,
+  language  = "en"
+}
+
+
+
