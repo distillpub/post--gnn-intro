@@ -34,10 +34,11 @@
 <link rel="stylesheet" href="visualizations/graph-description.css">
 <link rel="stylesheet" href="visualizations/graph-description-embeddings.css">
 
+
 <script id="distill-front-matter" type="text/json">
 {
   "title": "A Gentle Introduction to Graph Neural Networks",
-  "description": "Neural networks have been adapted to leverage the structure and properties of graphs. We explore the components needed for building a graph neural network — and motivate the design choices behind them.",
+  "description": "What components are needed for building learning algorithms that leverage the structure and properties of graphs?",
   "authors": [
 {
       "author": "Benjamin Sanchez-Lengeling",
@@ -519,8 +520,8 @@ A perfect model would visibility separate labeled data, but since we are reducin
 <p>Up until now, our GNN is based on a neighborhood-based pooling operation. There are some graph concepts that are harder to express in this way, for example a linear graph path (a connected chain of nodes). Designing new mechanisms in which graph information can be extracted, executed and propagated in a GNN is one current research area <d-cite key="Markowitz2021-rn"></d-cite>, <d-cite key="Du2019-hr"></d-cite>, <d-cite key="Xu2018-hq"></d-cite>, <d-cite key="Velickovic2019-io"></d-cite>.</p>
 <p>One of the frontiers of GNN research is not making new models and architectures, but “how to construct  graphs”, to be more precise, imbuing graphs with additional structure or relations that can be leveraged. As we loosely saw, the more graph attributes are communicating the more we tend to have better models. In this particular case, we could consider making molecular graphs more feature rich, by adding additional spatial relationships between nodes, adding edges that are not bonds, or explicit learnable relationships between subgraphs.</p>
 <aside>See more in <a href="#Other-types-of-graphs ">Other types of graphs</a>.</aside>
-## Into the Weeds
 
+<h2 id="into-the-weeds">Into the Weeds</h2>
 <p>Next, we have a few sections on a myriad of graph-related topics that are relevant for GNNs.</p>
 <h3 id="other-types-of-graphs-multigraphs-hypergraphs-hypernodes-hierarchical-graphs">Other types of graphs (multigraphs, hypergraphs, hypernodes, hierarchical graphs)</h3>
 <p>While we only described graphs with vectorized information for each attribute, graph structures are more flexible and can accommodate other types of information. Fortunately, the message passing framework is flexible enough that often adapting GNNs to more complex graph structures is about defining how information is passed and updated by new graph attributes. </p>
