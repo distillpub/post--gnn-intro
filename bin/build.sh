@@ -24,4 +24,4 @@ cd "$parent_path"
 cd ..
 
 cp images/share.png public/share.png
-cp images/thumbnail.png public/thumbnail.png
+cp images/thumbnail.jpg public/thumbnail.jpg

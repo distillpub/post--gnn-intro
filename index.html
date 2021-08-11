@@ -114,8 +114,7 @@ Hover over a node in the diagram below to see how it accumulates information fro
 
 <d-article>
 
-<p><em>This article is one of two Distill publications about graph neural networks.</em> <em>Take a look at</em> <a href="https://drafts.distill.pub/distillpub/exploring-graph-nns/"><em>Understanding Convolutions on Graphs</em></a> *to understand how convolutions over images generalize naturally to convolutions over graphs.
-*</p>
+<p><em>This article is one of two Distill publications about graph neural networks. Take a look at <a href="https://drafts.distill.pub/distillpub/exploring-graph-nns/">Understanding Convolutions on Graphs</a> to understand how convolutions over images generalize naturally to convolutions over graphs.</em></p>
 <p>Graphs are all around us; real world objects are often defined in terms of their connections to other things. A set of objects, and the connections between them, are naturally expressed as a <em>graph</em>. Researchers have developed neural networks that operate on graph data (called graph neural networks, or GNNs) for over a decade<d-cite key='Scarselli2009-ku'></d-cite>. Recent developments have increased their capabilities and expressive power. We are starting to see practical applications in areas such as antibacterial discovery <d-cite key="Stokes2020-az"></d-cite>, physics simulations  <d-cite key="Sanchez-Gonzalez2020-yo"></d-cite>, fake news detection <d-cite key="Monti2019-tf"></d-cite>, traffic prediction <d-cite key="undated-sy"></d-cite> and recommendation systems <d-cite key="Eksombatchai2017-il"></d-cite>.</p>
 <p>This article explores and explains modern graph neural networks. We divide this work into four parts. First, we look at what kind of data is most naturally phrased as a graph, and some common examples. Second, we explore what makes graphs different from other types of data, and some of the specialized choices we have to make when using graphs. Third, we build a modern GNN, walking through each of the parts of the model, starting with historic modeling innovations in the field. We move gradually from a bare-bones implementation to a state-of-the-art GNN model. Fourth and finally, we provide a GNN playground where you can play around with a real-word task and dataset to build a stronger intuition of how each component of a GNN model contributes to the predictions it makes.</p>
 <p>To start, let’s establish what a graph is. A graph represents the relations (<em>edges</em>) between a collection of entities (<em>nodes</em>). </p>
@@ -599,8 +598,8 @@ Let the matrix be $B=AX$, we can observe that any entry $B_{ij}$ can be expresse
  <d-appendix>
 
 <h3 id="acknowledgments">Acknowledgments</h3>
-<p>We are deeply grateful to Andy Coenen, Brian Lee, Chaitanya K. Joshi, Ed Chi, Humza Iqbal, Fernanda Viegas, Jasper Snoek, Jennifer Wei, Martin Wattenberg, Patricia Robinson, Wesley Qian andYiliu Wang for their helpful feedback and suggestions, and to Michael Terry for his code reviews. </p>
-<p>Many of our GNN architecture diagrams are based on the Graph Nets<d-cite key="Battaglia2018-pi"></d-cite>.</p>
+<p>We are deeply grateful to Andy Coenen, Brian Lee, Chaitanya K. Joshi, Ed Chi, Humza Iqbal, Fernanda Viegas, Jasper Snoek, Jennifer Wei, Martin Wattenberg, Patricia Robinson, Wesley Qian and Yiliu Wang for their helpful feedback and suggestions, and to Michael Terry for his code reviews. </p>
+<p>Many of our GNN architecture diagrams are based on the Graph Nets diagram <d-cite key="Battaglia2018-pi"></d-cite>.</p>
 <h3 id="author-contributions">Author Contributions</h3>
 <p>All authors contributed to writing.</p>
 <p>Adam Pearce and Emily Reif made the interactive diagrams and set up the figure aesthetics. 
