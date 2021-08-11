@@ -46,4 +46,5 @@ async function main(){
 
 
 }
-main().catch(console.error)
+console.log(`Unliked from doc - directly edit https://github.com/distillpub/post--gnn-intro/blob/main/index.html instead`)
+// main().catch(console.error)
