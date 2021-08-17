@@ -1,0 +1,275 @@
+{
+  "directed": true,
+  "multigraph": true,
+  "graph": {},
+  "nodes": [
+    {
+      "features": "C",
+      "id": 0
+    },
+    {
+      "features": "N",
+      "id": 1
+    },
+    {
+      "features": "C",
+      "id": 2
+    },
+    {
+      "features": "N",
+      "id": 3
+    },
+    {
+      "features": "C",
+      "id": 4
+    },
+    {
+      "features": "C",
+      "id": 5
+    },
+    {
+      "features": "C",
+      "id": 6
+    },
+    {
+      "features": "O",
+      "id": 7
+    },
+    {
+      "features": "N",
+      "id": 8
+    },
+    {
+      "features": "C",
+      "id": 9
+    },
+    {
+      "features": "O",
+      "id": 10
+    },
+    {
+      "features": "N",
+      "id": 11
+    },
+    {
+      "features": "C",
+      "id": 12
+    },
+    {
+      "features": "C",
+      "id": 13
+    }
+  ],
+  "links": [
+    {
+      "index": 0,
+      "features": "SINGLE",
+      "source": 0,
+      "target": 1,
+      "key": 0
+    },
+    {
+      "index": 1,
+      "features": "SINGLE",
+      "source": 1,
+      "target": 0,
+      "key": 0
+    },
+    {
+      "index": 2,
+      "features": "AROMATIC",
+      "source": 1,
+      "target": 2,
+      "key": 0
+    },
+    {
+      "index": 27,
+      "features": "AROMATIC",
+      "source": 1,
+      "target": 5,
+      "key": 0
+    },
+    {
+      "index": 3,
+      "features": "AROMATIC",
+      "source": 2,
+      "target": 1,
+      "key": 0
+    },
+    {
+      "index": 4,
+      "features": "AROMATIC",
+      "source": 2,
+      "target": 3,
+      "key": 0
+    },
+    {
+      "index": 5,
+      "features": "AROMATIC",
+      "source": 3,
+      "target": 2,
+      "key": 0
+    },
+    {
+      "index": 6,
+      "features": "AROMATIC",
+      "source": 3,
+      "target": 4,
+      "key": 0
+    },
+    {
+      "index": 7,
+      "features": "AROMATIC",
+      "source": 4,
+      "target": 3,
+      "key": 0
+    },
+    {
+      "index": 8,
+      "features": "AROMATIC",
+      "source": 4,
+      "target": 5,
+      "key": 0
+    },
+    {
+      "index": 29,
+      "features": "AROMATIC",
+      "source": 4,
+      "target": 11,
+      "key": 0
+    },
+    {
+      "index": 9,
+      "features": "AROMATIC",
+      "source": 5,
+      "target": 4,
+      "key": 0
+    },
+    {
+      "index": 10,
+      "features": "AROMATIC",
+      "source": 5,
+      "target": 6,
+      "key": 0
+    },
+    {
+      "index": 26,
+      "features": "AROMATIC",
+      "source": 5,
+      "target": 1,
+      "key": 0
+    },
+    {
+      "index": 11,
+      "features": "AROMATIC",
+      "source": 6,
+      "target": 5,
+      "key": 0
+    },
+    {
+      "index": 12,
+      "features": "DOUBLE",
+      "source": 6,
+      "target": 7,
+      "key": 0
+    },
+    {
+      "index": 14,
+      "features": "AROMATIC",
+      "source": 6,
+      "target": 8,
+      "key": 0
+    },
+    {
+      "index": 13,
+      "features": "DOUBLE",
+      "source": 7,
+      "target": 6,
+      "key": 0
+    },
+    {
+      "index": 15,
+      "features": "AROMATIC",
+      "source": 8,
+      "target": 6,
+      "key": 0
+    },
+    {
+      "index": 16,
+      "features": "AROMATIC",
+      "source": 8,
+      "target": 9,
+      "key": 0
+    },
+    {
+      "index": 24,
+      "features": "SINGLE",
+      "source": 8,
+      "target": 13,
+      "key": 0
+    },
+    {
+      "index": 17,
+      "features": "AROMATIC",
+      "source": 9,
+      "target": 8,
+      "key": 0
+    },
+    {
+      "index": 18,
+      "features": "DOUBLE",
+      "source": 9,
+      "target": 10,
+      "key": 0
+    },
+    {
+      "index": 20,
+      "features": "AROMATIC",
+      "source": 9,
+      "target": 11,
+      "key": 0
+    },
+    {
+      "index": 19,
+      "features": "DOUBLE",
+      "source": 10,
+      "target": 9,
+      "key": 0
+    },
+    {
+      "index": 21,
+      "features": "AROMATIC",
+      "source": 11,
+      "target": 9,
+      "key": 0
+    },
+    {
+      "index": 22,
+      "features": "SINGLE",
+      "source": 11,
+      "target": 12,
+      "key": 0
+    },
+    {
+      "index": 28,
+      "features": "AROMATIC",
+      "source": 11,
+      "target": 4,
+      "key": 0
+    },
+    {
+      "index": 23,
+      "features": "SINGLE",
+      "source": 12,
+      "target": 11,
+      "key": 0
+    },
+    {
+      "index": 25,
+      "features": "SINGLE",
+      "source": 13,
+      "target": 8,
+      "key": 0
+    }
+  ]
+}

@@ -1,0 +1,1735 @@
+@ARTICLE{Monti2018-ov,
+  title    = "Dual-Primal Graph Convolutional Networks",
+  author   = "Monti, Federico and Shchur, Oleksandr and Bojchevski, Aleksandar
+              and Litany, Or and G{\"u}nnemann, Stephan and Bronstein, Michael
+              M",
+  abstract = "In recent years, there has been a surge of interest in developing
+              deep learning methods for non-Euclidean structured data such as
+              graphs. In this paper, we propose Dual-Primal Graph CNN, a graph
+              convolutional architecture that alternates convolution-like
+              operations on the graph and its dual. Our approach allows to
+              learn both vertex- and edge features and generalizes the previous
+              graph attention (GAT) model. We provide extensive experimental
+              validation showing state-of-the-art results on a variety of tasks
+              tested on established graph benchmarks, including CORA and
+              Citeseer citation networks as well as MovieLens, Flixter, Douban
+              and Yahoo Music graph-guided recommender systems.",
+  month    =  jun,
+  year     =  2018,
+  eprint   = "1806.00770",
+}
+
+@ARTICLE{Battaglia2018-pi,
+  title         = "Relational inductive biases, deep learning, and graph
+                   networks",
+  author        = "Battaglia, Peter W and Hamrick, Jessica B and Bapst, Victor
+                   and Sanchez-Gonzalez, Alvaro and Zambaldi, Vinicius and
+                   Malinowski, Mateusz and Tacchetti, Andrea and Raposo, David
+                   and Santoro, Adam and Faulkner, Ryan and Gulcehre, Caglar
+                   and Song, Francis and Ballard, Andrew and Gilmer, Justin and
+                   Dahl, George and Vaswani, Ashish and Allen, Kelsey and Nash,
+                   Charles and Langston, Victoria and Dyer, Chris and Heess,
+                   Nicolas and Wierstra, Daan and Kohli, Pushmeet and
+                   Botvinick, Matt and Vinyals, Oriol and Li, Yujia and
+                   Pascanu, Razvan",
+  abstract      = "Artificial intelligence (AI) has undergone a renaissance
+                   recently, making major progress in key domains such as
+                   vision, language, control, and decision-making. This has
+                   been due, in part, to cheap data and cheap compute
+                   resources, which have fit the natural strengths of deep
+                   learning. However, many defining characteristics of human
+                   intelligence, which developed under much different
+                   pressures, remain out of reach for current approaches. In
+                   particular, generalizing beyond one's experiences--a
+                   hallmark of human intelligence from infancy--remains a
+                   formidable challenge for modern AI. The following is part
+                   position paper, part review, and part unification. We argue
+                   that combinatorial generalization must be a top priority for
+                   AI to achieve human-like abilities, and that structured
+                   representations and computations are key to realizing this
+                   objective. Just as biology uses nature and nurture
+                   cooperatively, we reject the false choice between
+                   ``hand-engineering'' and ``end-to-end'' learning, and
+                   instead advocate for an approach which benefits from their
+                   complementary strengths. We explore how using relational
+                   inductive biases within deep learning architectures can
+                   facilitate learning about entities, relations, and rules for
+                   composing them. We present a new building block for the AI
+                   toolkit with a strong relational inductive bias--the graph
+                   network--which generalizes and extends various approaches
+                   for neural networks that operate on graphs, and provides a
+                   straightforward interface for manipulating structured
+                   knowledge and producing structured behaviors. We discuss how
+                   graph networks can support relational reasoning and
+                   combinatorial generalization, laying the foundation for more
+                   sophisticated, interpretable, and flexible patterns of
+                   reasoning. As a companion to this paper, we have released an
+                   open-source software library for building graph networks,
+                   with demonstrations of how to use them in practice.",
+  month         =  jun,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1806.01261",
+}
+
+@ARTICLE{Corso2020-py,
+  title         = "Principal Neighbourhood Aggregation for Graph Nets",
+  author        = "Corso, Gabriele and Cavalleri, Luca and Beaini, Dominique
+                   and Li{\`o}, Pietro and Veli{\v c}kovi{\'c}, Petar",
+  abstract      = "Graph Neural Networks (GNNs) have been shown to be effective
+                   models for different predictive tasks on graph-structured
+                   data. Recent work on their expressive power has focused on
+                   isomorphism tasks and countable feature spaces. We extend
+                   this theoretical framework to include continuous features -
+                   which occur regularly in real-world input domains and within
+                   the hidden layers of GNNs - and we demonstrate the
+                   requirement for multiple aggregation functions in this
+                   context. Accordingly, we propose Principal Neighbourhood
+                   Aggregation (PNA), a novel architecture combining multiple
+                   aggregators with degree-scalers (which generalize the sum
+                   aggregator). Finally, we compare the capacity of different
+                   models to capture and exploit the graph structure via a
+                   novel benchmark containing multiple tasks taken from
+                   classical graph theory, alongside existing benchmarks from
+                   real-world domains, all of which demonstrate the strength of
+                   our model. With this work, we hope to steer some of the GNN
+                   research towards new aggregation methods which we believe
+                   are essential in the search for powerful and robust models.",
+  month         =  apr,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2004.05718",
+}
+
+@MISC{Poulovassilis1994-bt,
+  title   = "A nested-graph model for the representation and manipulation of
+             complex objects",
+  author  = "Poulovassilis, Alexandra and Levene, Mark",
+  journal = "ACM Transactions on Information Systems",
+  volume  =  12,
+  number  =  1,
+  pages   = "35--68",
+  year    =  1994,
+}
+
+@ARTICLE{Gao2019-lf,
+  title         = "Graph U-Nets",
+  author        = "Gao, Hongyang and Ji, Shuiwang",
+  abstract      = "We consider the problem of representation learning for graph
+                   data. Convolutional neural networks can naturally operate on
+                   images, but have significant challenges in dealing with
+                   graph data. Given images are special cases of graphs with
+                   nodes lie on 2D lattices, graph embedding tasks have a
+                   natural correspondence with image pixel-wise prediction
+                   tasks such as segmentation. While encoder-decoder
+                   architectures like U-Nets have been successfully applied on
+                   many image pixel-wise prediction tasks, similar methods are
+                   lacking for graph data. This is due to the fact that pooling
+                   and up-sampling operations are not natural on graph data. To
+                   address these challenges, we propose novel graph pooling
+                   (gPool) and unpooling (gUnpool) operations in this work. The
+                   gPool layer adaptively selects some nodes to form a smaller
+                   graph based on their scalar projection values on a trainable
+                   projection vector. We further propose the gUnpool layer as
+                   the inverse operation of the gPool layer. The gUnpool layer
+                   restores the graph into its original structure using the
+                   position information of nodes selected in the corresponding
+                   gPool layer. Based on our proposed gPool and gUnpool layers,
+                   we develop an encoder-decoder model on graph, known as the
+                   graph U-Nets. Our experimental results on node
+                   classification and graph classification tasks demonstrate
+                   that our methods achieve consistently better performance
+                   than previous models.",
+  month         =  may,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1905.05178",
+}
+
+@MISC{Pope2019-py,
+  title   = "Explainability Methods for Graph Convolutional Neural Networks",
+  author  = "Pope, Phillip E and Kolouri, Soheil and Rostami, Mohammad and
+             Martin, Charles E and Hoffmann, Heiko",
+  journal = "2019 IEEE/CVF Conference on Computer Vision and Pattern
+             Recognition (CVPR)",
+  year    =  2019,
+}
+
+@ARTICLE{Zachary1977-jg,
+  title     = "An Information Flow Model for Conflict and Fission in Small
+               Groups",
+  author    = "Zachary, Wayne W",
+  abstract  = "Data from a voluntary association are used to construct a new
+               formal model for a traditional anthropological problem, fission
+               in small groups. The process leading to fission is viewed as an
+               unequal flow of sentiments and information across the ties in a
+               social network. This flow is unequal because it is uniquely
+               constrained by the contextual range and sensitivity of each
+               relationship in the network. The subsequent differential sharing
+               of sentiments leads to the formation of subgroups with more
+               internal stability than the group as a whole, and results in
+               fission. The Ford-Fulkerson labeling algorithm allows an
+               accurate prediction of membership in the subgroups and of the
+               locus of the fission to be made from measurements of the
+               potential for information flow across each edge in the network.
+               Methods for measurement of potential information flow are
+               discussed, and it is shown that all appropriate techniques will
+               generate the same predictions.",
+  journal   = "J. Anthropol. Res.",
+  publisher = "The University of Chicago Press",
+  volume    =  33,
+  number    =  4,
+  pages     = "452--473",
+  month     =  dec,
+  year      =  1977,
+}
+
+@ARTICLE{Duvenaud2015-yc,
+  title         = "Convolutional Networks on Graphs for Learning Molecular
+                   Fingerprints",
+  author        = "Duvenaud, David and Maclaurin, Dougal and
+                   Aguilera-Iparraguirre, Jorge and G{\'o}mez-Bombarelli,
+                   Rafael and Hirzel, Timothy and Aspuru-Guzik, Al{\'a}n and
+                   Adams, Ryan P",
+  abstract      = "We introduce a convolutional neural network that operates
+                   directly on graphs. These networks allow end-to-end learning
+                   of prediction pipelines whose inputs are graphs of arbitrary
+                   size and shape. The architecture we present generalizes
+                   standard molecular feature extraction methods based on
+                   circular fingerprints. We show that these data-driven
+                   features are more interpretable, and have better predictive
+                   performance on a variety of tasks.",
+  month         =  sep,
+  year          =  2015,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1509.09292",
+}
+
+@MISC{Pennington2014-kg,
+  title   = "Glove: Global Vectors for Word Representation",
+  author  = "Pennington, Jeffrey and Socher, Richard and Manning, Christopher",
+  journal = "Proceedings of the 2014 Conference on Empirical Methods in Natural
+             Language Processing (EMNLP)",
+  year    =  2014,
+}
+
+@ARTICLE{Velickovic2017-hf,
+  title    = "Graph Attention Networks",
+  author   = "Veli{\v c}kovi{\'c}, Petar and Cucurull, Guillem and Casanova,
+              Arantxa and Romero, Adriana and Li{\`o}, Pietro and Bengio,
+              Yoshua",
+  abstract = "We present graph attention networks (GATs), novel neural network
+              architectures that operate on graph-structured data, leveraging
+              masked self-attentional layers to address the shortcomings of
+              prior methods based on graph convolutions or their
+              approximations. By stacking layers in which nodes are able to
+              attend over their neighborhoods' features, we enable (implicitly)
+              specifying different weights to different nodes in a
+              neighborhood, without requiring any kind of costly matrix
+              operation (such as inversion) or depending on knowing the graph
+              structure upfront. In this way, we address several key challenges
+              of spectral-based graph neural networks simultaneously, and make
+              our model readily applicable to inductive as well as transductive
+              problems. Our GAT models have achieved or matched
+              state-of-the-art results across four established transductive and
+              inductive graph benchmarks: the Cora, Citeseer and Pubmed
+              citation network datasets, as well as a protein-protein
+              interaction dataset (wherein test graphs remain unseen during
+              training).",
+  month    =  oct,
+  year     =  2017,
+  eprint   = "1710.10903",
+}
+
+@ARTICLE{Vaswani2017-as,
+  title    = "Attention Is All You Need",
+  author   = "Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit,
+              Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, Lukasz and
+              Polosukhin, Illia",
+  abstract = "The dominant sequence transduction models are based on complex
+              recurrent or convolutional neural networks in an encoder-decoder
+              configuration. The best performing models also connect the
+              encoder and decoder through an attention mechanism. We propose a
+              new simple network architecture, the Transformer, based solely on
+              attention mechanisms, dispensing with recurrence and convolutions
+              entirely. Experiments on two machine translation tasks show these
+              models to be superior in quality while being more parallelizable
+              and requiring significantly less time to train. Our model
+              achieves 28.4 BLEU on the WMT 2014 English-to-German translation
+              task, improving over the existing best results, including
+              ensembles by over 2 BLEU. On the WMT 2014 English-to-French
+              translation task, our model establishes a new single-model
+              state-of-the-art BLEU score of 41.8 after training for 3.5 days
+              on eight GPUs, a small fraction of the training costs of the best
+              models from the literature. We show that the Transformer
+              generalizes well to other tasks by applying it successfully to
+              English constituency parsing both with large and limited training
+              data.",
+  month    =  jun,
+  year     =  2017,
+  eprint   = "1706.03762",
+}
+
+@ARTICLE{Lample2019-jg,
+  title    = "Deep Learning for Symbolic Mathematics",
+  author   = "Lample, Guillaume and Charton, Fran{\c c}ois",
+  abstract = "Neural networks have a reputation for being better at solving
+              statistical or approximate problems than at performing
+              calculations or working with symbolic data. In this paper, we
+              show that they can be surprisingly good at more elaborated tasks
+              in mathematics, such as symbolic integration and solving
+              differential equations. We propose a syntax for representing
+              mathematical problems, and methods for generating large datasets
+              that can be used to train sequence-to-sequence models. We achieve
+              results that outperform commercial Computer Algebra Systems such
+              as Matlab or Mathematica.",
+  month    =  dec,
+  year     =  2019,
+  eprint   = "1912.01412",
+}
+
+@ARTICLE{McCloskey2018-ml,
+  title         = "Using Attribution to Decode Dataset Bias in Neural Network
+                   Models for Chemistry",
+  author        = "McCloskey, Kevin and Taly, Ankur and Monti, Federico and
+                   Brenner, Michael P and Colwell, Lucy",
+  abstract      = "Deep neural networks have achieved state of the art accuracy
+                   at classifying molecules with respect to whether they bind
+                   to specific protein targets. A key breakthrough would occur
+                   if these models could reveal the fragment pharmacophores
+                   that are causally involved in binding. Extracting chemical
+                   details of binding from the networks could potentially lead
+                   to scientific discoveries about the mechanisms of drug
+                   actions. But doing so requires shining light into the black
+                   box that is the trained neural network model, a task that
+                   has proved difficult across many domains. Here we show how
+                   the binding mechanism learned by deep neural network models
+                   can be interrogated, using a recently described attribution
+                   method. We first work with carefully constructed synthetic
+                   datasets, in which the 'fragment logic' of binding is fully
+                   known. We find that networks that achieve perfect accuracy
+                   on held out test datasets still learn spurious correlations
+                   due to biases in the datasets, and we are able to exploit
+                   this non-robustness to construct adversarial examples that
+                   fool the model. The dataset bias makes these models
+                   unreliable for accurately revealing information about the
+                   mechanisms of protein-ligand binding. In light of our
+                   findings, we prescribe a test that checks for dataset bias
+                   given a hypothesis. If the test fails, it indicates that
+                   either the model must be simplified or regularized and/or
+                   that the training dataset requires augmentation.",
+  month         =  nov,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1811.11310",
+}
+
+@MISC{Rozemberczki2020-lq,
+  title   = "Little Ball of Fur",
+  author  = "Rozemberczki, Benedek and Kiss, Oliver and Sarkar, Rik",
+  journal = "Proceedings of the 29th ACM International Conference on
+             Information & Knowledge Management",
+  year    =  2020,
+}
+
+@BOOK{Berge1976-ss,
+  title     = "Graphs and Hypergraphs",
+  author    = "Berge, Claude",
+  publisher = "Elsevier",
+  year      =  1976,
+  language  = "en",
+}
+
+@MISC{Harary1969-qo,
+  title  = "Graph Theory",
+  author = "Harary, Frank",
+  year   =  1969,
+}
+
+@ARTICLE{Zaheer2017-uc,
+  title    = "Deep Sets",
+  author   = "Zaheer, Manzil and Kottur, Satwik and Ravanbakhsh, Siamak and
+              Poczos, Barnabas and Salakhutdinov, Ruslan and Smola, Alexander",
+  abstract = "We study the problem of designing models for machine learning
+              tasks defined on \textbackslashemph\{sets\}. In contrast to
+              traditional approach of operating on fixed dimensional vectors,
+              we consider objective functions defined on sets that are
+              invariant to permutations. Such problems are widespread, ranging
+              from estimation of population statistics
+              \textbackslashcite\{poczos13aistats\}, to anomaly detection in
+              piezometer data of embankment dams
+              \textbackslashcite\{Jung15Exploration\}, to cosmology
+              \textbackslashcite\{Ntampaka16Dynamical,Ravanbakhsh16ICML1\}. Our
+              main theorem characterizes the permutation invariant functions
+              and provides a family of functions to which any permutation
+              invariant objective function must belong. This family of
+              functions has a special structure which enables us to design a
+              deep network architecture that can operate on sets and which can
+              be deployed on a variety of scenarios including both unsupervised
+              and supervised learning tasks. We also derive the necessary and
+              sufficient conditions for permutation equivariance in deep
+              models. We demonstrate the applicability of our method on
+              population statistic estimation, point cloud classification, set
+              expansion, and outlier detection.",
+  month    =  mar,
+  year     =  2017,
+  eprint   = "1703.06114",
+}
+
+@MISC{Kunegis2013-er,
+  title   = "KONECT",
+  author  = "Kunegis, J{\'e}r{\^o}me",
+  journal = "Proceedings of the 22nd International Conference on World Wide Web
+             - WWW '13 Companion",
+  year    =  2013,
+}
+
+@ARTICLE{Zitnik2018-uk,
+  title    = "Modeling polypharmacy side effects with graph convolutional
+              networks",
+  author   = "Zitnik, Marinka and Agrawal, Monica and Leskovec, Jure",
+  abstract = "Motivation: The use of drug combinations, termed polypharmacy, is
+              common to treat patients with complex diseases or co-existing
+              conditions. However, a major consequence of polypharmacy is a
+              much higher risk of adverse side effects for the patient.
+              Polypharmacy side effects emerge because of drug-drug
+              interactions, in which activity of one drug may change, favorably
+              or unfavorably, if taken with another drug. The knowledge of drug
+              interactions is often limited because these complex relationships
+              are rare, and are usually not observed in relatively small
+              clinical testing. Discovering polypharmacy side effects thus
+              remains an important challenge with significant implications for
+              patient mortality and morbidity. Results: Here, we present
+              Decagon, an approach for modeling polypharmacy side effects. The
+              approach constructs a multimodal graph of protein-protein
+              interactions, drug-protein target interactions and the
+              polypharmacy side effects, which are represented as drug-drug
+              interactions, where each side effect is an edge of a different
+              type. Decagon is developed specifically to handle such multimodal
+              graphs with a large number of edge types. Our approach develops a
+              new graph convolutional neural network for multirelational link
+              prediction in multimodal networks. Unlike approaches limited to
+              predicting simple drug-drug interaction values, Decagon can
+              predict the exact side effect, if any, through which a given drug
+              combination manifests clinically. Decagon accurately predicts
+              polypharmacy side effects, outperforming baselines by up to 69\%.
+              We find that it automatically learns representations of side
+              effects indicative of co-occurrence of polypharmacy in patients.
+              Furthermore, Decagon models particularly well polypharmacy side
+              effects that have a strong molecular basis, while on
+              predominantly non-molecular side effects, it achieves good
+              performance because of effective sharing of model parameters
+              across edge types. Decagon opens up opportunities to use large
+              pharmacogenomic and patient population data to flag and
+              prioritize polypharmacy side effects for follow-up analysis via
+              formal pharmacological studies. Availability and implementation:
+              Source code and preprocessed datasets are at:
+              http://snap.stanford.edu/decagon.",
+  journal  = "Bioinformatics",
+  volume   =  34,
+  number   =  13,
+  pages    = "i457--i466",
+  month    =  jul,
+  year     =  2018,
+  language = "en",
+}
+
+@ARTICLE{Kearnes2016-rl,
+  title    = "Molecular graph convolutions: moving beyond fingerprints",
+  author   = "Kearnes, Steven and McCloskey, Kevin and Berndl, Marc and Pande,
+              Vijay and Riley, Patrick",
+  abstract = "Molecular ``fingerprints'' encoding structural information are
+              the workhorse of cheminformatics and machine learning in drug
+              discovery applications. However, fingerprint representations
+              necessarily emphasize particular aspects of the molecular
+              structure while ignoring others, rather than allowing the model
+              to make data-driven decisions. We describe molecular graph
+              convolutions, a machine learning architecture for learning from
+              undirected graphs, specifically small molecules. Graph
+              convolutions use a simple encoding of the molecular graph-atoms,
+              bonds, distances, etc.-which allows the model to take greater
+              advantage of information in the graph structure. Although graph
+              convolutions do not outperform all fingerprint-based methods,
+              they (along with other graph-based methods) represent a new
+              paradigm in ligand-based virtual screening with exciting
+              opportunities for future improvement.",
+  journal  = "J. Comput. Aided Mol. Des.",
+  volume   =  30,
+  number   =  8,
+  pages    = "595--608",
+  month    =  aug,
+  year     =  2016,
+  keywords = "Artificial neural networks; Deep learning; Machine learning;
+              Molecular descriptors; Virtual screening;references.bib",
+  language = "en",
+}
+
+@ARTICLE{Kipf2016-ky,
+  title    = "Variational Graph Auto-Encoders",
+  author   = "Kipf, Thomas N and Welling, Max",
+  abstract = "We introduce the variational graph auto-encoder (VGAE), a
+              framework for unsupervised learning on graph-structured data
+              based on the variational auto-encoder (VAE). This model makes use
+              of latent variables and is capable of learning interpretable
+              latent representations for undirected graphs. We demonstrate this
+              model using a graph convolutional network (GCN) encoder and a
+              simple inner product decoder. Our model achieves competitive
+              results on a link prediction task in citation networks. In
+              contrast to most existing models for unsupervised learning on
+              graph-structured data and link prediction, our model can
+              naturally incorporate node features, which significantly improves
+              predictive performance on a number of benchmark datasets.",
+  month    =  nov,
+  year     =  2016,
+  eprint   = "1611.07308",
+}
+
+@ARTICLE{You2018-vx,
+  title         = "GraphRNN: Generating Realistic Graphs with Deep
+                   Auto-regressive Models",
+  author        = "You, Jiaxuan and Ying, Rex and Ren, Xiang and Hamilton,
+                   William L and Leskovec, Jure",
+  abstract      = "Modeling and generating graphs is fundamental for studying
+                   networks in biology, engineering, and social sciences.
+                   However, modeling complex distributions over graphs and then
+                   efficiently sampling from these distributions is challenging
+                   due to the non-unique, high-dimensional nature of graphs and
+                   the complex, non-local dependencies that exist between edges
+                   in a given graph. Here we propose GraphRNN, a deep
+                   autoregressive model that addresses the above challenges and
+                   approximates any distribution of graphs with minimal
+                   assumptions about their structure. GraphRNN learns to
+                   generate graphs by training on a representative set of
+                   graphs and decomposes the graph generation process into a
+                   sequence of node and edge formations, conditioned on the
+                   graph structure generated so far. In order to quantitatively
+                   evaluate the performance of GraphRNN, we introduce a
+                   benchmark suite of datasets, baselines and novel evaluation
+                   metrics based on Maximum Mean Discrepancy, which measure
+                   distances between sets of graphs. Our experiments show that
+                   GraphRNN significantly outperforms all baselines, learning
+                   to generate diverse graphs that match the structural
+                   characteristics of a target set, while also scaling to
+                   graphs 50 times larger than previous deep models.",
+  month         =  feb,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1802.08773",
+}
+
+@ARTICLE{Devlin2018-mi,
+  title    = "BERT: Pre-training of Deep Bidirectional Transformers for
+              Language Understanding",
+  author   = "Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova,
+              Kristina",
+  abstract = "We introduce a new language representation model called BERT,
+              which stands for Bidirectional Encoder Representations from
+              Transformers. Unlike recent language representation models, BERT
+              is designed to pre-train deep bidirectional representations from
+              unlabeled text by jointly conditioning on both left and right
+              context in all layers. As a result, the pre-trained BERT model
+              can be fine-tuned with just one additional output layer to create
+              state-of-the-art models for a wide range of tasks, such as
+              question answering and language inference, without substantial
+              task-specific architecture modifications. BERT is conceptually
+              simple and empirically powerful. It obtains new state-of-the-art
+              results on eleven natural language processing tasks, including
+              pushing the GLUE score to 80.5\% (7.7\% point absolute
+              improvement), MultiNLI accuracy to 86.7\% (4.6\% absolute
+              improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5
+              point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1
+              point absolute improvement).",
+  month    =  oct,
+  year     =  2018,
+  eprint   = "1810.04805",
+}
+
+@ARTICLE{Liao2019-kf,
+  title    = "Efficient Graph Generation with Graph Recurrent Attention
+              Networks",
+  author   = "Liao, Renjie and Li, Yujia and Song, Yang and Wang, Shenlong and
+              Nash, Charlie and Hamilton, William L and Duvenaud, David and
+              Urtasun, Raquel and Zemel, Richard S",
+  abstract = "We propose a new family of efficient and expressive deep
+              generative models of graphs, called Graph Recurrent Attention
+              Networks (GRANs). Our model generates graphs one block of nodes
+              and associated edges at a time. The block size and sampling
+              stride allow us to trade off sample quality for efficiency.
+              Compared to previous RNN-based graph generative models, our
+              framework better captures the auto-regressive conditioning
+              between the already-generated and to-be-generated parts of the
+              graph using Graph Neural Networks (GNNs) with attention. This not
+              only reduces the dependency on node ordering but also bypasses
+              the long-term bottleneck caused by the sequential nature of RNNs.
+              Moreover, we parameterize the output distribution per block using
+              a mixture of Bernoulli, which captures the correlations among
+              generated edges within the block. Finally, we propose to handle
+              node orderings in generation by marginalizing over a family of
+              canonical orderings. On standard benchmarks, we achieve
+              state-of-the-art time efficiency and sample quality compared to
+              previous models. Additionally, we show our model is capable of
+              generating large graphs of up to 5K nodes with good quality. To
+              the best of our knowledge, GRAN is the first deep graph
+              generative model that can scale to this size. Our code is
+              released at: https://github.com/lrjconan/GRAN.",
+  month    =  oct,
+  year     =  2019,
+  eprint   = "1910.00760",
+}
+
+@ARTICLE{Dumoulin2018-tb,
+  title    = "Feature-wise transformations",
+  author   = "Dumoulin, Vincent and Perez, Ethan and Schucher, Nathan and
+              Strub, Florian and Vries, Harm de and Courville, Aaron and
+              Bengio, Yoshua",
+  abstract = "A simple and surprisingly effective family of conditioning
+              mechanisms.",
+  journal  = "Distill",
+  volume   =  3,
+  number   =  7,
+  pages    = "e11",
+  month    =  jul,
+  year     =  2018,
+}
+
+@ARTICLE{Lee2018-ti,
+  title    = "Set Transformer: A Framework for Attention-based
+              Permutation-Invariant Neural Networks",
+  author   = "Lee, Juho and Lee, Yoonho and Kim, Jungtaek and Kosiorek, Adam R
+              and Choi, Seungjin and Teh, Yee Whye",
+  abstract = "Many machine learning tasks such as multiple instance learning,
+              3D shape recognition, and few-shot image classification are
+              defined on sets of instances. Since solutions to such problems do
+              not depend on the order of elements of the set, models used to
+              address them should be permutation invariant. We present an
+              attention-based neural network module, the Set Transformer,
+              specifically designed to model interactions among elements in the
+              input set. The model consists of an encoder and a decoder, both
+              of which rely on attention mechanisms. In an effort to reduce
+              computational complexity, we introduce an attention scheme
+              inspired by inducing point methods from sparse Gaussian process
+              literature. It reduces the computation time of self-attention
+              from quadratic to linear in the number of elements in the set. We
+              show that our model is theoretically attractive and we evaluate
+              it on a range of tasks, demonstrating the state-of-the-art
+              performance compared to recent methods for set-structured data.",
+  month    =  oct,
+  year     =  2018,
+  eprint   = "1810.00825",
+}
+
+@ARTICLE{Skianis2019-ds,
+  title         = "Rep the Set: Neural Networks for Learning Set
+                   Representations",
+  author        = "Skianis, Konstantinos and Nikolentzos, Giannis and Limnios,
+                   Stratis and Vazirgiannis, Michalis",
+  abstract      = "In several domains, data objects can be decomposed into sets
+                   of simpler objects. It is then natural to represent each
+                   object as the set of its components or parts. Many
+                   conventional machine learning algorithms are unable to
+                   process this kind of representations, since sets may vary in
+                   cardinality and elements lack a meaningful ordering. In this
+                   paper, we present a new neural network architecture, called
+                   RepSet, that can handle examples that are represented as
+                   sets of vectors. The proposed model computes the
+                   correspondences between an input set and some hidden sets by
+                   solving a series of network flow problems. This
+                   representation is then fed to a standard neural network
+                   architecture to produce the output. The architecture allows
+                   end-to-end gradient-based learning. We demonstrate RepSet on
+                   classification tasks, including text categorization, and
+                   graph classification, and we show that the proposed neural
+                   network achieves performance better or comparable to
+                   state-of-the-art algorithms.",
+  month         =  apr,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1904.01962",
+}
+
+@INPROCEEDINGS{Gilmer2017-no,
+  title     = "Neural Message Passing for Quantum Chemistry",
+  booktitle = "Proceedings of the 34th International Conference on Machine
+               Learning",
+  author    = "Gilmer, Justin and Schoenholz, Samuel S and Riley, Patrick F and
+               Vinyals, Oriol and Dahl, George E",
+  editor    = "Precup, Doina and Teh, Yee Whye",
+  abstract  = "Supervised learning on molecules has incredible potential to be
+               useful in chemistry, drug discovery, and materials science.
+               Luckily, several promising and closely related neural network
+               models invariant to molecular symmetries have already been
+               described in the literature. These models learn a message
+               passing algorithm and aggregation procedure to compute a
+               function of their entire input graph. At this point, the next
+               step is to find a particularly effective variant of this general
+               approach and apply it to chemical prediction benchmarks until we
+               either solve them or reach the limits of the approach. In this
+               paper, we reformulate existing models into a single common
+               framework we call Message Passing Neural Networks (MPNNs) and
+               explore additional novel variations within this framework. Using
+               MPNNs we demonstrate state of the art results on an important
+               molecular property prediction benchmark; these results are
+               strong enough that we believe future work should focus on
+               datasets with larger molecules or more accurate ground truth
+               labels.",
+  publisher = "PMLR",
+  volume    =  70,
+  pages     = "1263--1272",
+  series    = "Proceedings of Machine Learning Research",
+  year      =  2017,
+  address   = "International Convention Centre, Sydney, Australia",
+}
+
+@ARTICLE{Allamanis2017-kz,
+  title         = "Learning to Represent Programs with Graphs",
+  author        = "Allamanis, Miltiadis and Brockschmidt, Marc and Khademi,
+                   Mahmoud",
+  abstract      = "Learning tasks on source code (i.e., formal languages) have
+                   been considered recently, but most work has tried to
+                   transfer natural language methods and does not capitalize on
+                   the unique opportunities offered by code's known syntax. For
+                   example, long-range dependencies induced by using the same
+                   variable or function in distant locations are often not
+                   considered. We propose to use graphs to represent both the
+                   syntactic and semantic structure of code and use graph-based
+                   deep learning methods to learn to reason over program
+                   structures. In this work, we present how to construct graphs
+                   from source code and how to scale Gated Graph Neural
+                   Networks training to such large graphs. We evaluate our
+                   method on two tasks: VarNaming, in which a network attempts
+                   to predict the name of a variable given its usage, and
+                   VarMisuse, in which the network learns to reason about
+                   selecting the correct variable that should be used at a
+                   given program location. Our comparison to methods that use
+                   less structured program representations shows the advantages
+                   of modeling known structure, and suggests that our models
+                   learn to infer meaningful names and to solve the VarMisuse
+                   task in many cases. Additionally, our testing showed that
+                   VarMisuse identifies a number of bugs in mature open-source
+                   projects.",
+  month         =  nov,
+  year          =  2017,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1711.00740",
+}
+
+@ARTICLE{Mena2018-ce,
+  title    = "Learning Latent Permutations with Gumbel-Sinkhorn Networks",
+  author   = "Mena, Gonzalo and Belanger, David and Linderman, Scott and Snoek,
+              Jasper",
+  abstract = "Permutations and matchings are core building blocks in a variety
+              of latent variable models, as they allow us to align,
+              canonicalize, and sort data. Learning in such models is
+              difficult, however, because exact marginalization over these
+              combinatorial objects is intractable. In response, this paper
+              introduces a collection of new methods for end-to-end learning in
+              such models that approximate discrete maximum-weight matching
+              using the continuous Sinkhorn operator. Sinkhorn iteration is
+              attractive because it functions as a simple, easy-to-implement
+              analog of the softmax operator. With this, we can define the
+              Gumbel-Sinkhorn method, an extension of the Gumbel-Softmax method
+              (Jang et al. 2016, Maddison2016 et al. 2016) to distributions
+              over latent matchings. We demonstrate the effectiveness of our
+              method by outperforming competitive baselines on a range of
+              qualitatively different tasks: sorting numbers, solving jigsaw
+              puzzles, and identifying neural signals in worms.",
+  month    =  feb,
+  year     =  2018,
+  eprint   = "1802.08665",
+}
+
+@MISC{Scarselli2009-ku,
+  title   = "The Graph Neural Network Model",
+  author  = "Scarselli, F and Gori, M and Tsoi, Ah Chung and Hagenbuchner, M
+             and Monfardini, G",
+  journal = "IEEE Transactions on Neural Networks",
+  volume  =  20,
+  number  =  1,
+  pages   = "61--80",
+  year    =  2009,
+}
+
+@ARTICLE{Krenn2019-gg,
+  title    = "Self-Referencing Embedded Strings (SELFIES): A 100% robust
+              molecular string representation",
+  author   = "Krenn, Mario and H{\"a}se, Florian and Nigam, Akshatkumar and
+              Friederich, Pascal and Aspuru-Guzik, Al{\'a}n",
+  abstract = "The discovery of novel materials and functional molecules can
+              help to solve some of society's most urgent challenges, ranging
+              from efficient energy harvesting and storage to uncovering novel
+              pharmaceutical drug candidates. Traditionally matter engineering
+              -- generally denoted as inverse design -- was based massively on
+              human intuition and high-throughput virtual screening. The last
+              few years have seen the emergence of significant interest in
+              computer-inspired designs based on evolutionary or deep learning
+              methods. The major challenge here is that the standard strings
+              molecular representation SMILES shows substantial weaknesses in
+              that task because large fractions of strings do not correspond to
+              valid molecules. Here, we solve this problem at a fundamental
+              level and introduce SELFIES (SELF-referencIng Embedded Strings),
+              a string-based representation of molecules which is 100% robust.
+              Every SELFIES string corresponds to a valid molecule, and SELFIES
+              can represent every molecule. SELFIES can be directly applied in
+              arbitrary machine learning models without the adaptation of the
+              models; each of the generated molecule candidates is valid. In
+              our experiments, the model's internal memory stores two orders of
+              magnitude more diverse molecules than a similar test with SMILES.
+              Furthermore, as all molecules are valid, it allows for
+              explanation and interpretation of the internal working of the
+              generative models.",
+  month    =  may,
+  year     =  2019,
+  eprint   = "1905.13741",
+}
+
+@ARTICLE{Goyal2020-wl,
+  title         = "GraphGen: A Scalable Approach to Domain-agnostic Labeled
+                   Graph Generation",
+  author        = "Goyal, Nikhil and Jain, Harsh Vardhan and Ranu, Sayan",
+  abstract      = "Graph generative models have been extensively studied in the
+                   data mining literature. While traditional techniques are
+                   based on generating structures that adhere to a pre-decided
+                   distribution, recent techniques have shifted towards
+                   learning this distribution directly from the data. While
+                   learning-based approaches have imparted significant
+                   improvement in quality, some limitations remain to be
+                   addressed. First, learning graph distributions introduces
+                   additional computational overhead, which limits their
+                   scalability to large graph databases. Second, many
+                   techniques only learn the structure and do not address the
+                   need to also learn node and edge labels, which encode
+                   important semantic information and influence the structure
+                   itself. Third, existing techniques often incorporate
+                   domain-specific rules and lack generalizability. Fourth, the
+                   experimentation of existing techniques is not comprehensive
+                   enough due to either using weak evaluation metrics or
+                   focusing primarily on synthetic or small datasets. In this
+                   work, we develop a domain-agnostic technique called GraphGen
+                   to overcome all of these limitations. GraphGen converts
+                   graphs to sequences using minimum DFS codes. Minimum DFS
+                   codes are canonical labels and capture the graph structure
+                   precisely along with the label information. The complex
+                   joint distributions between structure and semantic labels
+                   are learned through a novel LSTM architecture. Extensive
+                   experiments on million-sized, real graph datasets show
+                   GraphGen to be 4 times faster on average than
+                   state-of-the-art techniques while being significantly better
+                   in quality across a comprehensive set of 11 different
+                   metrics. Our code is released at
+                   https://github.com/idea-iitd/graphgen.",
+  month         =  jan,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2001.08184",
+}
+
+@INPROCEEDINGS{Ying2019-gk,
+  title     = "GNNExplainer: Generating Explanations for Graph Neural
+               Networks",
+  booktitle = "Advances in Neural Information Processing Systems",
+  author    = "Ying, Zhitao and Bourgeois, Dylan and You, Jiaxuan and Zitnik,
+               Marinka and Leskovec, Jure",
+  editor    = "Wallach, H and Larochelle, H and Beygelzimer, A and
+               d\textbackslashtextquotesingle Alch{\'e}-Buc, F and Fox, E and
+               Garnett, R",
+  publisher = "Curran Associates, Inc.",
+  volume    =  32,
+  pages     = "9244--9255",
+  year      =  2019,
+}
+
+@MISC{Sanchez-Lengeling2020-qq,
+  title    = "Leffingwell Odor Dataset",
+  author   = "Sanchez-Lengeling, Benjamin and Wei, Jennifer N and Lee, Brian K
+              and Gerkin, Richard C and Aspuru-Guzik, Al{\'a}n and Wiltschko,
+              Alexander B",
+  abstract = "Predicting properties of molecules is an area of growing research
+              in machine learning, particularly as models for learning from
+              graph-valued inputs improve in sophistication and robustness. A
+              molecular property prediction problem that has received
+              comparatively little attention during this surge in research
+              activity is building Structure-Odor Relationships (SOR) models
+              (as opposed to Quantitative Structure-Activity Relationships, a
+              term from medicinal chemistry). This is a 70+ year-old problem
+              straddling chemistry, physics, neuroscience, and machine
+              learning. To spur development on the SOR problem, we curated and
+              cleaned a dataset of 3523 molecules associated with
+              expert-labeled odor descriptors from the Leffingwell PMP 2001
+              database. We provide featurizations of all molecules in the
+              dataset using bit-based and count-based fingerprints, Mordred
+              molecular descriptors, and the embeddings from our trained GNN
+              model (Sanchez-Lengeling et al., 2019). This dataset is comprised
+              of two files: leffingwell\_data.csv: this contains molecular
+              structures, and what they smell like, along with train, test, and
+              cross-validation splits. More detail on the file structure is
+              found in leffingwell\_readme.pdf. leffingwell\_embeddings.npz:
+              this contains several featurizations of the molecules in the
+              dataset. leffingwell\_readme.pdf: a more detailed description of
+              the data and its provenance, including expected performance
+              metrics. LICENSE: a copy of the CC-BY-NC license language. The
+              dataset, and all associated features, is freely available for
+              research use under the CC-BY-NC license.",
+  month    =  oct,
+  year     =  2020,
+  keywords = "machine learning; artificial intelligence; olfaction;
+              neuroscience; chemistry; scent; fragrance",
+}
+
+@MISC{Hubler2008-us,
+  title   = "Metropolis Algorithms for Representative Subgraph Sampling",
+  author  = "H{\"u}bler, Christian and Kriegel, Hans-Peter and Borgwardt,
+             Karsten and Ghahramani, Zoubin",
+  journal = "2008 Eighth IEEE International Conference on Data Mining",
+  year    =  2008,
+}
+
+@ARTICLE{Mikolov2013-vr,
+  title    = "Distributed Representations of Words and Phrases and their
+              Compositionality",
+  author   = "Mikolov, Tomas and Sutskever, Ilya and Chen, Kai and Corrado,
+              Greg and Dean, Jeffrey",
+  abstract = "The recently introduced continuous Skip-gram model is an
+              efficient method for learning high-quality distributed vector
+              representations that capture a large number of precise syntactic
+              and semantic word relationships. In this paper we present several
+              extensions that improve both the quality of the vectors and the
+              training speed. By subsampling of the frequent words we obtain
+              significant speedup and also learn more regular word
+              representations. We also describe a simple alternative to the
+              hierarchical softmax called negative sampling. An inherent
+              limitation of word representations is their indifference to word
+              order and their inability to represent idiomatic phrases. For
+              example, the meanings of ``Canada'' and ``Air'' cannot be easily
+              combined to obtain ``Air Canada''. Motivated by this example, we
+              present a simple method for finding phrases in text, and show
+              that learning good vector representations for millions of phrases
+              is possible.",
+  month    =  oct,
+  year     =  2013,
+  eprint   = "1310.4546",
+}
+
+@ARTICLE{Xu2018-sf,
+  title    = "How Powerful are Graph Neural Networks?",
+  author   = "Xu, Keyulu and Hu, Weihua and Leskovec, Jure and Jegelka,
+              Stefanie",
+  abstract = "Graph Neural Networks (GNNs) are an effective framework for
+              representation learning of graphs. GNNs follow a neighborhood
+              aggregation scheme, where the representation vector of a node is
+              computed by recursively aggregating and transforming
+              representation vectors of its neighboring nodes. Many GNN
+              variants have been proposed and have achieved state-of-the-art
+              results on both node and graph classification tasks. However,
+              despite GNNs revolutionizing graph representation learning, there
+              is limited understanding of their representational properties and
+              limitations. Here, we present a theoretical framework for
+              analyzing the expressive power of GNNs to capture different graph
+              structures. Our results characterize the discriminative power of
+              popular GNN variants, such as Graph Convolutional Networks and
+              GraphSAGE, and show that they cannot learn to distinguish certain
+              simple graph structures. We then develop a simple architecture
+              that is provably the most expressive among the class of GNNs and
+              is as powerful as the Weisfeiler-Lehman graph isomorphism test.
+              We empirically validate our theoretical findings on a number of
+              graph classification benchmarks, and demonstrate that our model
+              achieves state-of-the-art performance.",
+  month    =  oct,
+  year     =  2018,
+  eprint   = "1810.00826",
+}
+
+@ARTICLE{Liu2018-kf,
+  title    = "N-Gram Graph: Simple Unsupervised Representation for Graphs,
+              with Applications to Molecules",
+  author   = "Liu, Shengchao and Demirel, Mehmet Furkan and Liang, Yingyu",
+  abstract = "Machine learning techniques have recently been adopted in various
+              applications in medicine, biology, chemistry, and material
+              engineering. An important task is to predict the properties of
+              molecules, which serves as the main subroutine in many downstream
+              applications such as virtual screening and drug design. Despite
+              the increasing interest, the key challenge is to construct proper
+              representations of molecules for learning algorithms. This paper
+              introduces the N-gram graph, a simple unsupervised representation
+              for molecules. The method first embeds the vertices in the
+              molecule graph. It then constructs a compact representation for
+              the graph by assembling the vertex embeddings in short walks in
+              the graph, which we show is equivalent to a simple graph neural
+              network that needs no training. The representations can thus be
+              efficiently computed and then used with supervised learning
+              methods for prediction. Experiments on 60 tasks from 10 benchmark
+              datasets demonstrate its advantages over both popular graph
+              neural networks and traditional representation methods. This is
+              complemented by theoretical analysis showing its strong
+              representation and prediction power.",
+  month    =  jun,
+  year     =  2018,
+  eprint   = "1806.09206",
+}
+
+@ARTICLE{Zhou2019-ko,
+  title     = "Optimization of Molecules via Deep Reinforcement Learning",
+  author    = "Zhou, Zhenpeng and Kearnes, Steven and Li, Li and Zare, Richard
+               N and Riley, Patrick",
+  abstract  = "We present a framework, which we call Molecule Deep Q-Networks
+               (MolDQN), for molecule optimization by combining domain
+               knowledge of chemistry and state-of-the-art reinforcement
+               learning techniques (double Q-learning and randomized value
+               functions). We directly define modifications on molecules,
+               thereby ensuring 100\% chemical validity. Further, we operate
+               without pre-training on any dataset to avoid possible bias from
+               the choice of that set. MolDQN achieves comparable or better
+               performance against several other recently published algorithms
+               for benchmark molecular optimization tasks. However, we also
+               argue that many of these tasks are not representative of real
+               optimization problems in drug discovery. Inspired by problems
+               faced during medicinal chemistry lead optimization, we extend
+               our model with multi-objective reinforcement learning, which
+               maximizes drug-likeness while maintaining similarity to the
+               original molecule. We further show the path through chemical
+               space to achieve optimization for a molecule to understand how
+               the model works.",
+  journal   = "Sci. Rep.",
+  publisher = "Nature Publishing Group",
+  volume    =  9,
+  number    =  1,
+  pages     = "1--10",
+  month     =  jul,
+  year      =  2019,
+  language  = "en",
+}
+
+@ARTICLE{Sanchez-Lengeling2019-vs,
+  title    = "Machine Learning for Scent: Learning Generalizable Perceptual
+              Representations of Small Molecules",
+  author   = "Sanchez-Lengeling, Benjamin and Wei, Jennifer N and Lee, Brian K
+              and Gerkin, Richard C and Aspuru-Guzik, Al{\'a}n and Wiltschko,
+              Alexander B",
+  abstract = "Predicting the relationship between a molecule's structure and
+              its odor remains a difficult, decades-old task. This problem,
+              termed quantitative structure-odor relationship (QSOR) modeling,
+              is an important challenge in chemistry, impacting human
+              nutrition, manufacture of synthetic fragrance, the environment,
+              and sensory neuroscience. We propose the use of graph neural
+              networks for QSOR, and show they significantly out-perform prior
+              methods on a novel data set labeled by olfactory experts.
+              Additional analysis shows that the learned embeddings from graph
+              neural networks capture a meaningful odor space representation of
+              the underlying relationship between structure and odor, as
+              demonstrated by strong performance on two challenging transfer
+              learning tasks. Machine learning has already had a large impact
+              on the senses of sight and sound. Based on these early results
+              with graph neural networks for molecular properties, we hope
+              machine learning can eventually do for olfaction what it has
+              already done for vision and hearing.",
+  month    =  oct,
+  year     =  2019,
+  eprint   = "1910.10685",
+}
+
+@ARTICLE{Murphy2018-fz,
+  title    = "Janossy Pooling: Learning Deep Permutation-Invariant Functions
+              for Variable-Size Inputs",
+  author   = "Murphy, Ryan L and Srinivasan, Balasubramaniam and Rao, Vinayak
+              and Ribeiro, Bruno",
+  abstract = "We consider a simple and overarching representation for
+              permutation-invariant functions of sequences (or multiset
+              functions). Our approach, which we call Janossy pooling,
+              expresses a permutation-invariant function as the average of a
+              permutation-sensitive function applied to all reorderings of the
+              input sequence. This allows us to leverage the rich and mature
+              literature on permutation-sensitive functions to construct novel
+              and flexible permutation-invariant functions. If carried out
+              naively, Janossy pooling can be computationally prohibitive. To
+              allow computational tractability, we consider three kinds of
+              approximations: canonical orderings of sequences, functions with
+              $k$-order interactions, and stochastic optimization algorithms
+              with random permutations. Our framework unifies a variety of
+              existing work in the literature, and suggests possible modeling
+              and algorithmic extensions. We explore a few in our experiments,
+              which demonstrate improved performance over current
+              state-of-the-art methods.",
+  month    =  nov,
+  year     =  2018,
+  eprint   = "1811.01900",
+}
+
+@MISC{Leskovec2006-st,
+  title   = "Sampling from large graphs",
+  author  = "Leskovec, Jure and Faloutsos, Christos",
+  journal = "Proceedings of the 12th ACM SIGKDD international conference on
+             Knowledge discovery and data mining - KDD '06",
+  year    =  2006,
+}
+
+@article{NEURIPS2020_6054,
+  title     = {Evaluating Attribution for Graph Neural Networks},
+  author = {Benjamin Sanchez-Lengeling and Jennifer Wei and Brian Lee and Emily Reif and Wesley Qian and Yiliu Wang and Kevin James McCloskey and Lucy Colwell and Alexander B Wiltschko},
+  booktitle = {Advances in Neural Information Processing Systems 33},
+  year      = {2020},
+  url       = {https://papers.nips.cc/paper/2020/hash/417fbbf2e9d5a28a855a11894b2e795a-Abstract.html},
+}
+
+
+@MISC{Joshi2020-ze,
+  title        = "Transformers are Graph Neural Networks",
+  author       = "Joshi, Chaitanya",
+  abstract     = "Engineer friends often ask me: Graph Deep Learning sounds
+                  great, but are there any big commercial success stories? Is
+                  it being deployed in practical applications? Besides the
+                  obvious ones--recommendation systems at Pinterest, Alibaba
+                  and Twitter--a slightly nuanced success story is the
+                  Transformer architecture, which has taken the NLP industry by
+                  storm. Through this post, I want to establish links between
+                  Graph Neural Networks (GNNs) and Transformers. I'll talk
+                  about the intuitions behind model architectures in the NLP
+                  and GNN communities, make connections using equations and
+                  figures, and discuss how we could work together to drive
+                  progress.",
+  publisher    = "NTU Graph Deep Learning Lab",
+  month        =  feb,
+  year         =  2020,
+  howpublished = "\url{https://graphdeeplearning.github.io/post/transformers-are-gnns/}",
+  note         = "Accessed: 2021-7-19"
+}
+
+
+@ARTICLE{Eksombatchai2017-il,
+  title         = "Pixie: A System for Recommending 3+ Billion Items to 200+
+                   Million Users in {Real-Time}",
+  author        = "Eksombatchai, Chantat and Jindal, Pranav and Liu, Jerry
+                   Zitao and Liu, Yuchen and Sharma, Rahul and Sugnet, Charles
+                   and Ulrich, Mark and Leskovec, Jure",
+  abstract      = "User experience in modern content discovery applications
+                   critically depends on high-quality personalized
+                   recommendations. However, building systems that provide such
+                   recommendations presents a major challenge due to a massive
+                   pool of items, a large number of users, and requirements for
+                   recommendations to be responsive to user actions and
+                   generated on demand in real-time. Here we present Pixie, a
+                   scalable graph-based real-time recommender system that we
+                   developed and deployed at Pinterest. Given a set of
+                   user-specific pins as a query, Pixie selects in real-time
+                   from billions of possible pins those that are most related
+                   to the query. To generate recommendations, we develop Pixie
+                   Random Walk algorithm that utilizes the Pinterest object
+                   graph of 3 billion nodes and 17 billion edges. Experiments
+                   show that recommendations provided by Pixie lead up to 50\%
+                   higher user engagement when compared to the previous
+                   Hadoop-based production system. Furthermore, we develop a
+                   graph pruning strategy at that leads to an additional 58\%
+                   improvement in recommendations. Last, we discuss system
+                   aspects of Pixie, where a single server executes 1,200
+                   recommendation requests per second with 60 millisecond
+                   latency. Today, systems backed by Pixie contribute to more
+                   than 80\% of all user engagement on Pinterest.",
+  month         =  nov,
+  year          =  2017,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.IR",
+  eprint        = "1711.07601"
+}
+
+@MISC{undated-sy,
+  title        = "Traffic prediction with advanced Graph Neural Networks",
+  author       = "*, Oliver Lange and Perez, Luis",
+  abstract     = "Working with our partners at Google Maps, we used advanced
+                  machine learning techniques including Graph Neural Networks,
+                  to improve the accuracy of real time ETAs by up to 50\%.",
+  howpublished = "\url{https://deepmind.com/blog/article/traffic-prediction-with-advanced-graph-neural-networks}",
+  note         = "Accessed: 2021-7-19"
+}
+
+@ARTICLE{Monti2019-tf,
+  title         = "Fake News Detection on Social Media using Geometric Deep
+                   Learning",
+  author        = "Monti, Federico and Frasca, Fabrizio and Eynard, Davide and
+                   Mannion, Damon and Bronstein, Michael M",
+  abstract      = "Social media are nowadays one of the main news sources for
+                   millions of people around the globe due to their low cost,
+                   easy access and rapid dissemination. This however comes at
+                   the cost of dubious trustworthiness and significant risk of
+                   exposure to 'fake news', intentionally written to mislead
+                   the readers. Automatically detecting fake news poses
+                   challenges that defy existing content-based analysis
+                   approaches. One of the main reasons is that often the
+                   interpretation of the news requires the knowledge of
+                   political or social context or 'common sense', which current
+                   NLP algorithms are still missing. Recent studies have shown
+                   that fake and real news spread differently on social media,
+                   forming propagation patterns that could be harnessed for the
+                   automatic fake news detection. Propagation-based approaches
+                   have multiple advantages compared to their content-based
+                   counterparts, among which is language independence and
+                   better resilience to adversarial attacks. In this paper we
+                   show a novel automatic fake news detection model based on
+                   geometric deep learning. The underlying core algorithms are
+                   a generalization of classical CNNs to graphs, allowing the
+                   fusion of heterogeneous data such as content, user profile
+                   and activity, social graph, and news propagation. Our model
+                   was trained and tested on news stories, verified by
+                   professional fact-checking organizations, that were spread
+                   on Twitter. Our experiments indicate that social network
+                   structure and propagation are important features allowing
+                   highly accurate (92.7\% ROC AUC) fake news detection.
+                   Second, we observe that fake news can be reliably detected
+                   at an early stage, after just a few hours of propagation.
+                   Third, we test the aging of our model on training and
+                   testing data separated in time. Our results point to the
+                   promise of propagation-based approaches for fake news
+                   detection as an alternative or complementary strategy to
+                   content-based approaches.",
+  month         =  feb,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.SI",
+  eprint        = "1902.06673"
+}
+
+@ARTICLE{Sanchez-Gonzalez2020-yo,
+  title         = "Learning to simulate complex physics with graph networks",
+  author        = "Sanchez-Gonzalez, Alvaro and Godwin, Jonathan and Pfaff,
+                   Tobias and Ying, Rex and Leskovec, Jure and Battaglia, Peter
+                   W",
+  abstract      = "Here we present a machine learning framework and model
+                   implementation that can learn to simulate a wide variety of
+                   challenging physical domains, involving fluids, rigid
+                   solids, and deformable materials interacting with one
+                   another. Our framework---which we term ``Graph Network-based
+                   Simulators'' (GNS)---represents the state of a physical
+                   system with particles, expressed as nodes in a graph, and
+                   computes dynamics via learned message-passing. Our results
+                   show that our model can generalize from single-timestep
+                   predictions with thousands of particles during training, to
+                   different initial conditions, thousands of timesteps, and at
+                   least an order of magnitude more particles at test time. Our
+                   model was robust to hyperparameter choices across various
+                   evaluation metrics: the main determinants of long-term
+                   performance were the number of message-passing steps, and
+                   mitigating the accumulation of error by corrupting the
+                   training data with noise. Our GNS framework advances the
+                   state-of-the-art in learned physical simulation, and holds
+                   promise for solving a wide range of complex forward and
+                   inverse problems.",
+  month         =  feb,
+  year          =  2020,
+  copyright     = "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2002.09405"
+}
+
+@ARTICLE{Stokes2020-az,
+  title    = "A Deep Learning Approach to Antibiotic Discovery",
+  author   = "Stokes, Jonathan M and Yang, Kevin and Swanson, Kyle and Jin,
+              Wengong and Cubillos-Ruiz, Andres and Donghia, Nina M and
+              MacNair, Craig R and French, Shawn and Carfrae, Lindsey A and
+              Bloom-Ackermann, Zohar and Tran, Victoria M and Chiappino-Pepe,
+              Anush and Badran, Ahmed H and Andrews, Ian W and Chory, Emma J
+              and Church, George M and Brown, Eric D and Jaakkola, Tommi S and
+              Barzilay, Regina and Collins, James J",
+  journal  = "Cell",
+  volume   =  181,
+  number   =  2,
+  pages    = "475--483",
+  month    =  apr,
+  year     =  2020,
+  language = "en"
+}
+
+@ARTICLE{Dwivedi2020-xm,
+  title         = "Benchmarking Graph Neural Networks",
+  author        = "Dwivedi, Vijay Prakash and Joshi, Chaitanya K and Laurent,
+                   Thomas and Bengio, Yoshua and Bresson, Xavier",
+  abstract      = "Graph neural networks (GNNs) have become the standard
+                   toolkit for analyzing and learning from data on graphs. As
+                   the field grows, it becomes critical to identify key
+                   architectures and validate new ideas that generalize to
+                   larger, more complex datasets. Unfortunately, it has been
+                   increasingly difficult to gauge the effectiveness of new
+                   models in the absence of a standardized benchmark with
+                   consistent experimental settings. In this paper, we
+                   introduce a reproducible GNN benchmarking framework, with
+                   the facility for researchers to add new models conveniently
+                   for arbitrary datasets. We demonstrate the usefulness of our
+                   framework by presenting a principled investigation into the
+                   recent Weisfeiler-Lehman GNNs (WL-GNNs) compared to message
+                   passing-based graph convolutional networks (GCNs) for a
+                   variety of graph tasks, i.e. graph regression/classification
+                   and node/link prediction, with medium-scale datasets.",
+  month         =  mar,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2003.00982"
+}
+
+@ARTICLE{You2020-vk,
+  title         = "Design Space for Graph Neural Networks",
+  author        = "You, Jiaxuan and Ying, Rex and Leskovec, Jure",
+  abstract      = "The rapid evolution of Graph Neural Networks (GNNs) has led
+                   to a growing number of new architectures as well as novel
+                   applications. However, current research focuses on proposing
+                   and evaluating specific architectural designs of GNNs, as
+                   opposed to studying the more general design space of GNNs
+                   that consists of a Cartesian product of different design
+                   dimensions, such as the number of layers or the type of the
+                   aggregation function. Additionally, GNN designs are often
+                   specialized to a single task, yet few efforts have been made
+                   to understand how to quickly find the best GNN design for a
+                   novel task or a novel dataset. Here we define and
+                   systematically study the architectural design space for GNNs
+                   which consists of 315,000 different designs over 32
+                   different predictive tasks. Our approach features three key
+                   innovations: (1) A general GNN design space; (2) a GNN task
+                   space with a similarity metric, so that for a given novel
+                   task/dataset, we can quickly identify/transfer the best
+                   performing architecture; (3) an efficient and effective
+                   design space evaluation method which allows insights to be
+                   distilled from a huge number of model-task combinations. Our
+                   key results include: (1) A comprehensive set of guidelines
+                   for designing well-performing GNNs; (2) while best GNN
+                   designs for different tasks vary significantly, the GNN task
+                   space allows for transferring the best designs across
+                   different tasks; (3) models discovered using our design
+                   space achieve state-of-the-art performance. Overall, our
+                   work offers a principled and scalable approach to transition
+                   from studying individual GNN designs for specific tasks, to
+                   systematically studying the GNN design space and the task
+                   space. Finally, we release GraphGym, a powerful platform for
+                   exploring different GNN designs and tasks. GraphGym features
+                   modularized GNN implementation, standardized GNN evaluation,
+                   and reproducible and scalable experiment management.",
+  month         =  nov,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2011.08843"
+}
+
+
+
+@ARTICLE{Zhong2020-mv,
+  title         = "Hierarchical Message-Passing Graph Neural Networks",
+  author        = "Zhong, Zhiqiang and Li, Cheng-Te and Pang, Jun",
+  abstract      = "Graph Neural Networks (GNNs) have become a promising
+                   approach to machine learning with graphs. Since existing GNN
+                   models are based on flat message-passing mechanisms, two
+                   limitations need to be tackled. One is costly in encoding
+                   global information on the graph topology. The other is
+                   failing to model meso- and macro-level semantics hidden in
+                   the graph, such as the knowledge of institutes and research
+                   areas in an academic collaboration network. To deal with
+                   these two issues, we propose a novel Hierarchical
+                   Message-Passing Graph Neural Networks framework. The main
+                   idea is to generate a hierarchical structure that
+                   re-organises all nodes in a graph into multi-level clusters,
+                   along with intra- and inter-level edge connections. The
+                   derived hierarchy not only creates shortcuts connecting
+                   far-away nodes so that global information can be efficiently
+                   accessed via message passing but also incorporates meso- and
+                   macro-level semantics into the learning of node embedding.
+                   We present the first model to implement this hierarchical
+                   message-passing mechanism, termed Hierarchical
+                   Community-aware Graph Neural Network (HC-GNN), based on
+                   hierarchical communities detected from the graph.
+                   Experiments conducted on eight datasets under transductive,
+                   inductive, and few-shot settings exhibit that HC-GNN can
+                   outperform state-of-the-art GNN models in network analysis
+                   tasks, including node classification, link prediction, and
+                   community detection.",
+  month         =  sep,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2009.03717"
+}
+
+@ARTICLE{Yadati2018-de,
+  title         = "HyperGCN: A New Method of Training Graph Convolutional
+                   Networks on Hypergraphs",
+  author        = "Yadati, Naganand and Nimishakavi, Madhav and Yadav, Prateek
+                   and Nitin, Vikram and Louis, Anand and Talukdar, Partha",
+  abstract      = "In many real-world network datasets such as co-authorship,
+                   co-citation, email communication, etc., relationships are
+                   complex and go beyond pairwise. Hypergraphs provide a
+                   flexible and natural modeling tool to model such complex
+                   relationships. The obvious existence of such complex
+                   relationships in many real-world networks naturaly motivates
+                   the problem of learning with hypergraphs. A popular learning
+                   paradigm is hypergraph-based semi-supervised learning (SSL)
+                   where the goal is to assign labels to initially unlabeled
+                   vertices in a hypergraph. Motivated by the fact that a graph
+                   convolutional network (GCN) has been effective for
+                   graph-based SSL, we propose HyperGCN, a novel GCN for SSL on
+                   attributed hypergraphs. Additionally, we show how HyperGCN
+                   can be used as a learning-based approach for combinatorial
+                   optimisation on NP-hard hypergraph problems. We demonstrate
+                   HyperGCN's effectiveness through detailed experimentation on
+                   real-world hypergraphs.",
+  month         =  sep,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1809.02589"
+}
+
+
+@ARTICLE{Stocker2020-tr,
+  title    = "Machine learning in chemical reaction space",
+  author   = "Stocker, Sina and Cs{\'a}nyi, G{\'a}bor and Reuter, Karsten and
+              Margraf, Johannes T",
+  abstract = "Chemical compound space refers to the vast set of all possible
+              chemical compounds, estimated to contain 1060 molecules. While
+              intractable as a whole, modern machine learning (ML) is
+              increasingly capable of accurately predicting molecular
+              properties in important subsets. Here, we therefore engage in the
+              ML-driven study of even larger reaction space. Central to
+              chemistry as a science of transformations, this space contains
+              all possible chemical reactions. As an important basis for
+              'reactive' ML, we establish a first-principles database (Rad-6)
+              containing closed and open-shell organic molecules, along with an
+              associated database of chemical reaction energies (Rad-6-RE). We
+              show that the special topology of reaction spaces, with central
+              hub molecules involved in multiple reactions, requires a
+              modification of existing compound space ML-concepts. Showcased by
+              the application to methane combustion, we demonstrate that the
+              learned reaction energies offer a non-empirical route to
+              rationally extract reduced reaction networks for detailed
+              microkinetic analyses.",
+  journal  = "Nat. Commun.",
+  volume   =  11,
+  number   =  1,
+  pages    = "5505",
+  month    =  oct,
+  year     =  2020,
+  language = "en"
+}
+
+
+@ARTICLE{Chiang2019-yh,
+  title         = "Cluster-GCN: An Efficient Algorithm for Training Deep and
+                   Large Graph Convolutional Networks",
+  author        = "Chiang, Wei-Lin and Liu, Xuanqing and Si, Si and Li, Yang
+                   and Bengio, Samy and Hsieh, Cho-Jui",
+  abstract      = "Graph convolutional network (GCN) has been successfully
+                   applied to many graph-based applications; however, training
+                   a large-scale GCN remains challenging. Current SGD-based
+                   algorithms suffer from either a high computational cost that
+                   exponentially grows with number of GCN layers, or a large
+                   space requirement for keeping the entire graph and the
+                   embedding of each node in memory. In this paper, we propose
+                   Cluster-GCN, a novel GCN algorithm that is suitable for
+                   SGD-based training by exploiting the graph clustering
+                   structure. Cluster-GCN works as the following: at each step,
+                   it samples a block of nodes that associate with a dense
+                   subgraph identified by a graph clustering algorithm, and
+                   restricts the neighborhood search within this subgraph. This
+                   simple but effective strategy leads to significantly
+                   improved memory and computational efficiency while being
+                   able to achieve comparable test accuracy with previous
+                   algorithms. To test the scalability of our algorithm, we
+                   create a new Amazon2M data with 2 million nodes and 61
+                   million edges which is more than 5 times larger than the
+                   previous largest publicly available dataset (Reddit). For
+                   training a 3-layer GCN on this data, Cluster-GCN is faster
+                   than the previous state-of-the-art VR-GCN (1523 seconds vs
+                   1961 seconds) and using much less memory (2.2GB vs 11.2GB).
+                   Furthermore, for training 4 layer GCN on this data, our
+                   algorithm can finish in around 36 minutes while all the
+                   existing GCN training algorithms fail to train due to the
+                   out-of-memory issue. Furthermore, Cluster-GCN allows us to
+                   train much deeper GCN without much time and memory overhead,
+                   which leads to improved prediction accuracy---using a
+                   5-layer Cluster-GCN, we achieve state-of-the-art test F1
+                   score 99.36 on the PPI dataset, while the previous best
+                   result was 98.71 by [16]. Our codes are publicly available
+                   at
+                   https://github.com/google-research/google-research/tree/master/cluster\_gcn.",
+  month         =  may,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1905.07953"
+}
+
+@ARTICLE{Zeng2019-eh,
+  title         = "GraphSAINT: Graph Sampling Based Inductive Learning Method",
+  author        = "Zeng, Hanqing and Zhou, Hongkuan and Srivastava, Ajitesh and
+                   Kannan, Rajgopal and Prasanna, Viktor",
+  abstract      = "Graph Convolutional Networks (GCNs) are powerful models for
+                   learning representations of attributed graphs. To scale GCNs
+                   to large graphs, state-of-the-art methods use various layer
+                   sampling techniques to alleviate the ``neighbor explosion''
+                   problem during minibatch training. We propose GraphSAINT, a
+                   graph sampling based inductive learning method that improves
+                   training efficiency and accuracy in a fundamentally
+                   different way. By changing perspective, GraphSAINT
+                   constructs minibatches by sampling the training graph,
+                   rather than the nodes or edges across GCN layers. Each
+                   iteration, a complete GCN is built from the properly sampled
+                   subgraph. Thus, we ensure fixed number of well-connected
+                   nodes in all layers. We further propose normalization
+                   technique to eliminate bias, and sampling algorithms for
+                   variance reduction. Importantly, we can decouple the
+                   sampling from the forward and backward propagation, and
+                   extend GraphSAINT with many architecture variants (e.g.,
+                   graph attention, jumping connection). GraphSAINT
+                   demonstrates superior performance in both accuracy and
+                   training time on five large graphs, and achieves new
+                   state-of-the-art F1 scores for PPI (0.995) and Reddit
+                   (0.970).",
+  month         =  jul,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1907.04931"
+}
+
+
+@ARTICLE{Markowitz2021-rn,
+  title         = "Graph Traversal with Tensor Functionals: A Meta-Algorithm
+                   for Scalable Learning",
+  author        = "Markowitz, Elan and Balasubramanian, Keshav and Mirtaheri,
+                   Mehrnoosh and Abu-El-Haija, Sami and Perozzi, Bryan and Ver
+                   Steeg, Greg and Galstyan, Aram",
+  abstract      = "Graph Representation Learning (GRL) methods have impacted
+                   fields from chemistry to social science. However, their
+                   algorithmic implementations are specialized to specific
+                   use-cases e.g.message passing methods are run differently
+                   from node embedding ones. Despite their apparent
+                   differences, all these methods utilize the graph structure,
+                   and therefore, their learning can be approximated with
+                   stochastic graph traversals. We propose Graph Traversal via
+                   Tensor Functionals(GTTF), a unifying meta-algorithm
+                   framework for easing the implementation of diverse graph
+                   algorithms and enabling transparent and efficient scaling to
+                   large graphs. GTTF is founded upon a data structure (stored
+                   as a sparse tensor) and a stochastic graph traversal
+                   algorithm (described using tensor operations). The algorithm
+                   is a functional that accept two functions, and can be
+                   specialized to obtain a variety of GRL models and
+                   objectives, simply by changing those two functions. We show
+                   for a wide class of methods, our algorithm learns in an
+                   unbiased fashion and, in expectation, approximates the
+                   learning as if the specialized implementations were run
+                   directly. With these capabilities, we scale otherwise
+                   non-scalable methods to set state-of-the-art on large graph
+                   datasets while being more efficient than existing GRL
+                   libraries - with only a handful of lines of code for each
+                   method specialization. GTTF and its various GRL
+                   implementations are on: https://github.com/isi-usc-edu/gttf.",
+  month         =  feb,
+  year          =  2021,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "2102.04350"
+}
+
+@ARTICLE{Du2019-hr,
+  title         = "Graph Neural Tangent Kernel: Fusing Graph Neural Networks
+                   with Graph Kernels",
+  author        = "Du, Simon S and Hou, Kangcheng and P{\'o}czos, Barnab{\'a}s
+                   and Salakhutdinov, Ruslan and Wang, Ruosong and Xu, Keyulu",
+  abstract      = "While graph kernels (GKs) are easy to train and enjoy
+                   provable theoretical guarantees, their practical
+                   performances are limited by their expressive power, as the
+                   kernel function often depends on hand-crafted combinatorial
+                   features of graphs. Compared to graph kernels, graph neural
+                   networks (GNNs) usually achieve better practical
+                   performance, as GNNs use multi-layer architectures and
+                   non-linear activation functions to extract high-order
+                   information of graphs as features. However, due to the large
+                   number of hyper-parameters and the non-convex nature of the
+                   training procedure, GNNs are harder to train. Theoretical
+                   guarantees of GNNs are also not well-understood.
+                   Furthermore, the expressive power of GNNs scales with the
+                   number of parameters, and thus it is hard to exploit the
+                   full power of GNNs when computing resources are limited. The
+                   current paper presents a new class of graph kernels, Graph
+                   Neural Tangent Kernels (GNTKs), which correspond to
+                   infinitely wide multi-layer GNNs trained by gradient
+                   descent. GNTKs enjoy the full expressive power of GNNs and
+                   inherit advantages of GKs. Theoretically, we show GNTKs
+                   provably learn a class of smooth functions on graphs.
+                   Empirically, we test GNTKs on graph classification datasets
+                   and show they achieve strong performance.",
+  month         =  may,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1905.13192"
+}
+
+@ARTICLE{Xu2018-hq,
+  title         = "Representation Learning on Graphs with Jumping Knowledge
+                   Networks",
+  author        = "Xu, Keyulu and Li, Chengtao and Tian, Yonglong and Sonobe,
+                   Tomohiro and Kawarabayashi, Ken-Ichi and Jegelka, Stefanie",
+  abstract      = "Recent deep learning approaches for representation learning
+                   on graphs follow a neighborhood aggregation procedure. We
+                   analyze some important properties of these models, and
+                   propose a strategy to overcome those. In particular, the
+                   range of ``neighboring'' nodes that a node's representation
+                   draws from strongly depends on the graph structure,
+                   analogous to the spread of a random walk. To adapt to local
+                   neighborhood properties and tasks, we explore an
+                   architecture -- jumping knowledge (JK) networks -- that
+                   flexibly leverages, for each node, different neighborhood
+                   ranges to enable better structure-aware representation. In a
+                   number of experiments on social, bioinformatics and citation
+                   networks, we demonstrate that our model achieves
+                   state-of-the-art performance. Furthermore, combining the JK
+                   framework with models like Graph Convolutional Networks,
+                   GraphSAGE and Graph Attention Networks consistently improves
+                   those models' performance.",
+  month         =  jun,
+  year          =  2018,
+  archivePrefix = "arXiv",
+  primaryClass  = "cs.LG",
+  eprint        = "1806.03536"
+}
+
+@ARTICLE{Velickovic2019-io,
+  title         = "Neural Execution of Graph Algorithms",
+  author        = "Veli{\v c}kovi{\'c}, Petar and Ying, Rex and Padovano,
+                   Matilde and Hadsell, Raia and Blundell, Charles",
+  abstract      = "Graph Neural Networks (GNNs) are a powerful representational
+                   tool for solving problems on graph-structured inputs. In
+                   almost all cases so far, however, they have been applied to
+                   directly recovering a final solution from raw inputs,
+                   without explicit guidance on how to structure their
+                   problem-solving. Here, instead, we focus on learning in the
+                   space of algorithms: we train several state-of-the-art GNN
+                   architectures to imitate individual steps of classical graph
+                   algorithms, parallel (breadth-first search, Bellman-Ford) as
+                   well as sequential (Prim's algorithm). As graph algorithms
+                   usually rely on making discrete decisions within
+                   neighbourhoods, we hypothesise that maximisation-based
+                   message passing neural networks are best-suited for such
+                   objectives, and validate this claim empirically. We also
+                   demonstrate how learning in the space of algorithms can
+                   yield new opportunities for positive transfer between
+                   tasks---showing how learning a shortest-path algorithm can
+                   be substantially improved when simultaneously learning a
+                   reachability algorithm.",
+  month         =  oct,
+  year          =  2019,
+  archivePrefix = "arXiv",
+  primaryClass  = "stat.ML",
+  eprint        = "1910.10593"
+}
+
+
+@MISC{noauthor_undated-qq,
+  author    = "Tai-Danae Bradley",
+  title        = "Viewing matrices & probability as graphs",
+  howpublished = "\url{https://www.math3ma.com/blog/matrices-probability-graphs}",
+
+}
+
+
+@BOOK{Bapat2014-fk,
+  title     = "Graphs and Matrices",
+  author    = "Bapat, Ravindra B",
+  abstract  = "This new edition illustrates the power of linear algebra in the
+               study of graphs. The emphasis on matrix techniques is greater
+               than in other texts on algebraic graph theory. Important
+               matrices associated with graphs (for example, incidence,
+               adjacency and Laplacian matrices) are treated in
+               detail.Presenting a useful overview of selected topics in
+               algebraic graph theory, early chapters of the text focus on
+               regular graphs, algebraic connectivity, the distance matrix of a
+               tree, and its generalized version for arbitrary graphs, known as
+               the resistance matrix. Coverage of later topics include
+               Laplacian eigenvalues of threshold graphs, the positive definite
+               completion problem and matrix games based on a graph.Such an
+               extensive coverage of the subject area provides a welcome prompt
+               for further exploration. The inclusion of exercises enables
+               practical learning throughout the book.In the new edition, a new
+               chapter is added on the line graph of a tree, while some results
+               in Chapter 6 on Perron-Frobenius theory are reorganized.Whilst
+               this book will be invaluable to students and researchers in
+               graph theory and combinatorial matrix theory, it will also
+               benefit readers in the sciences and engineering.",
+  publisher = "Springer",
+  month     =  sep,
+  year      =  2014,
+  language  = "en"
+}
+
+
+@BOOK{Bollobas2013-uk,
+  title     = "Modern Graph Theory",
+  author    = "Bollobas, Bela",
+  abstract  = "The time has now come when graph theory should be part of the
+               education of every serious student of mathematics and computer
+               science, both for its own sake and to enhance the appreciation
+               of mathematics as a whole. This book is an in-depth account of
+               graph theory, written with such a student in mind; it reflects
+               the current state of the subject and emphasizes connections with
+               other branches of pure mathematics. The volume grew out of the
+               author's earlier book, Graph Theory -- An Introductory Course,
+               but its length is well over twice that of its predecessor,
+               allowing it to reveal many exciting new developments in the
+               subject. Recognizing that graph theory is one of several courses
+               competing for the attention of a student, the book contains
+               extensive descriptive passages designed to convey the flavor of
+               the subject and to arouse interest. In addition to a modern
+               treatment of the classical areas of graph theory such as
+               coloring, matching, extremal theory, and algebraic graph theory,
+               the book presents a detailed account of newer topics, including
+               Szemer\textbackslash'edi's Regularity Lemma and its use,
+               Shelah's extension of the Hales-Jewett Theorem, the precise
+               nature of the phase transition in a random graph process, the
+               connection between electrical networks and random walks on
+               graphs, and the Tutte polynomial and its cousins in knot theory.
+               In no other branch of mathematics is it as vital to tackle and
+               solve challenging exercises in order to master the subject. To
+               this end, the book contains an unusually large number of well
+               thought-out exercises: over 600 in total. Although some are
+               straightforward, most of them are substantial, and others will
+               stretch even the most able reader.",
+  publisher = "Springer Science & Business Media",
+  month     =  dec,
+  year      =  2013,
+  language  = "en"
+}
+
+
+
+
+@ARTICLE{Pattanaik2020-jj,
+  title         = "Message Passing Networks for Molecules with Tetrahedral
+                   Chirality",
+  author        = "Pattanaik, Lagnajit and Ganea, Octavian-Eugen and Coley, Ian
+                   and Jensen, Klavs F and Green, William H and Coley, Connor W",
+  abstract      = "Molecules with identical graph connectivity can exhibit
+                   different physical and biological properties if they exhibit
+                   stereochemistry-a spatial structural characteristic.
+                   However, modern neural architectures designed for learning
+                   structure-property relationships from molecular structures
+                   treat molecules as graph-structured data and therefore are
+                   invariant to stereochemistry. Here, we develop two custom
+                   aggregation functions for message passing neural networks to
+                   learn properties of molecules with tetrahedral chirality,
+                   one common form of stereochemistry. We evaluate performance
+                   on synthetic data as well as a newly-proposed protein-ligand
+                   docking dataset with relevance to drug discovery. Results
+                   show modest improvements over a baseline sum aggregator,
+                   highlighting opportunities for further architecture
+                   development.",
+  month         =  nov,
+  year          =  2020,
+  archivePrefix = "arXiv",
+  primaryClass  = "q-bio.QM",
+  eprint        = "2012.00094"
+}

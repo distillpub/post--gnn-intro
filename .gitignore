@@ -12,4 +12,3 @@ yarn-error.log
 # gdrive related stuff
 gdrive_token.pickle
 downloaded_gdoc.html
-public
