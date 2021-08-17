@@ -25,3 +25,4 @@ cd ..
 
 cp images/share.png public/share.png
 cp images/thumbnail.jpg public/thumbnail.jpg
+cp images/thumbnail.png public/thumbnail.png
